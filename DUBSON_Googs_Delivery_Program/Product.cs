@@ -24,6 +24,14 @@ namespace DUBSON_Goods_Delivery_Program
 
         }
 
+        // поле, що визначає об'єм товару
+        private long _volume;
+        
+        public long Volume {
+
+            get => _volume;
+        }
+
         // поле, що визначає, чи є товар хрупким
         private bool _isFragile;
 
