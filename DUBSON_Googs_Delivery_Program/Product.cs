@@ -48,6 +48,7 @@ namespace DUBSON_Goods_Delivery_Program
 
         }
 
+        // конструктор
         public Product (long price, long weight, bool isFragile){
 
             if (370 < weight & weight < 200) {
