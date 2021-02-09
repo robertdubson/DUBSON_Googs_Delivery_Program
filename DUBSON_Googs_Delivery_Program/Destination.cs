@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DUBSON_Goods_Delivery_Program
 {
-    public class Destination
+    public class Destination : DestinationInterface
     {
         //поле, що визначає відстань від пункту призначення до головного магазина
         private long _distance;

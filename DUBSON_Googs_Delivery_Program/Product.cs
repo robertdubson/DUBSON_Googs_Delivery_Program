@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DUBSON_Goods_Delivery_Program
 {
-    public class Product
+    public class Product : ProductInterface
     {
         // поле, що визначає ціну на товар
         private long _price;
@@ -30,6 +30,7 @@ namespace DUBSON_Goods_Delivery_Program
         public long Volume {
 
             get => _volume;
+        
         }
 
         // поле, що визначає, чи є товар хрупким
@@ -66,6 +67,7 @@ namespace DUBSON_Goods_Delivery_Program
                 _type = ProductType.Little;
             }
             else if (weight>=370) {
+                
                 _type = ProductType.Huge;
             
             }

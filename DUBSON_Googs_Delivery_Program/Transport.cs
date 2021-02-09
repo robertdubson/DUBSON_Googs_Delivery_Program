@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DUBSON_Goods_Delivery_Program
 {
-    public class Transport
+    public class Transport : TransportInterface
     {
         // поле, що визначає швидкість виду транспорту field
         private long _speed;
@@ -45,6 +45,7 @@ namespace DUBSON_Goods_Delivery_Program
             }
             
             this._isCurrentlyBusy = false;
+        
         }
 
 
@@ -55,6 +56,5 @@ namespace DUBSON_Goods_Delivery_Program
         Truck,
         Giant_Truck,
         Car,
-
-    }
+        }
 }
