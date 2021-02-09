@@ -83,7 +83,8 @@ namespace DUBSON_Goods_Delivery_Program
                 _type = ProductSizeType.Huge;
             
             }
-
+            
+            _weight = weight;
             _price = price;
             _isFragile = isFragile;
 

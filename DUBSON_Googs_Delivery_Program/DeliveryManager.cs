@@ -46,6 +46,7 @@ namespace DUBSON_Goods_Delivery_Program
                 if (choosen_product.Type == ProductSizeType.Little) {
 
                     Transport selected_transport = _current_data_keeper.AvailableTransport.Find(transport => !_busy_transport.Contains(transport) && transport.Category == Transport_Category.Car);
+                    
                     StartDelivery(time_of_ordering, choosen_product, selected_destination, selected_transport);
 
 
@@ -53,6 +54,7 @@ namespace DUBSON_Goods_Delivery_Program
                 else if (choosen_product.Type == ProductSizeType.Medium) {
 
                     Transport selected_transport = _current_data_keeper.AvailableTransport.Find(transport => !_busy_transport.Contains(transport) && transport.Category == Transport_Category.Truck);
+                    
                     StartDelivery(time_of_ordering, choosen_product, selected_destination, selected_transport);
 
 
@@ -60,6 +62,7 @@ namespace DUBSON_Goods_Delivery_Program
                 else if (choosen_product.Type == ProductSizeType.Huge) {
 
                     Transport selected_transport = _current_data_keeper.AvailableTransport.Find(transport => !_busy_transport.Contains(transport) && transport.Category == Transport_Category.Giant_Truck);
+                    
                     StartDelivery(time_of_ordering, choosen_product, selected_destination, selected_transport);
 
                 }

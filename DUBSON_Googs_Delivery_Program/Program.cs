@@ -17,9 +17,12 @@ namespace DUBSON_Goods_Delivery_Program
             my_data_keeper.AvailableProducts.Add(product_1);
             my_data_keeper.AvailableProducts.Add(product_2);
             my_data_keeper.AvailableProducts.Add(product_3);
+            my_data_keeper.AvailableProducts.Add(new Product("Camera", 4400, 2, true));
+            my_data_keeper.AvailableProducts.Add(new Product("Chair", 3675, 10, false));
+            my_data_keeper.AvailableProducts.Add(new Product("DVD Player", 5000, 4, false));
 
             my_data_keeper.AvailableDestinations.Add(new Destination(10, "Paris"));
-            my_data_keeper.AvailableDestinations.Add(new Destination(10, "Київ"));
+            my_data_keeper.AvailableDestinations.Add(new Destination(8, "Київ"));
             my_data_keeper.AvailableDestinations.Add(new Destination(12, "Житомир"));
             my_data_keeper.AvailableDestinations.Add(new Destination(15, "Одеса"));
             my_data_keeper.AvailableDestinations.Add(new Destination(10, "Жовтi Води"));
@@ -39,7 +42,6 @@ namespace DUBSON_Goods_Delivery_Program
             DeliveryManager my_delivery_manager = new DeliveryManager(my_data_keeper);
 
             my_delivery_manager.ProcessTheOrder(DateTime.Now, scanner.SelectedProduct, scanner.SelectedDestination);
-
 
 
         }
