@@ -7,9 +7,9 @@ namespace DUBSON_Goods_Delivery_Program
     public class Destination : DestinationInterface
     {
         //поле, що визначає відстань від пункту призначення до головного магазина
-        private long _distance;
+        private double _distance;
 
-        public long Distance {
+        public double Distance {
 
             get => _distance;
         
@@ -24,7 +24,7 @@ namespace DUBSON_Goods_Delivery_Program
         }
 
         // конструктор
-        public Destination(long distance, string name) {
+        public Destination(double distance, string name) {
 
             _distance = distance;
             _name = name;

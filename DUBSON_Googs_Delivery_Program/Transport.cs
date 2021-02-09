@@ -7,10 +7,10 @@ namespace DUBSON_Goods_Delivery_Program
     public class Transport : TransportInterface
     {
         // поле, що визначає швидкість виду транспорту field
-        private long _speed;
+        private double _speed;
 
 
-        public long Speed {
+        public double Speed {
 
             get => _speed;
         

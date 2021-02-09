@@ -8,11 +8,11 @@ namespace DUBSON_Goods_Delivery_Program
     {
         
         public string Name { get; set; }
-        public long Price { get; }
+        public double Price { get; }
         
-        public long Weight { get; }
+        public double Weight { get; }
 
-        public long Volume { get; }
+        public double Volume { get; }
 
         public bool IsFragile { get; }
 

@@ -85,7 +85,7 @@ namespace DUBSON_Goods_Delivery_Program
 
 
 
-                long added_hours = 0;
+                double added_hours = 0;
 
                 added_hours = current_order.OrderDestination.Distance / current_order.UsedTransport.Speed;
 
@@ -95,12 +95,14 @@ namespace DUBSON_Goods_Delivery_Program
 
                 _processed_orders.Add(current_order);
 
-                Console.WriteLine("Товар буде доставлено через " + current_order.Delivery_Time);
+                Console.WriteLine("Товар буде доставлено " + current_order.Delivery_Time);
+
+                Console.WriteLine("Ви отримаєте його через " + current_order.Delivery_Time.Subtract(DateTime.Now).Seconds + " одиниць часу");
 
                 while (current_order.Delivery_Time.Subtract(DateTime.Now).Seconds >= 0)
                 {
 
-                    Console.WriteLine("Товар доставляється");
+                    Console.WriteLine("Товар в дорозі");
 
                 }
 
@@ -116,7 +118,7 @@ namespace DUBSON_Goods_Delivery_Program
 
                 Order current_order = new Order(choosen_product, selected_transport, time_of_ordering, selected_destination);
 
-                long added_hours = 0;
+                double added_hours = 0;
 
                 added_hours = current_order.OrderDestination.Distance / current_order.UsedTransport.Speed;
 
@@ -127,8 +129,10 @@ namespace DUBSON_Goods_Delivery_Program
                 _busy_transport.Add(selected_transport);
 
                 Console.WriteLine("Товар буде доставлено " + current_order.Delivery_Time );
-                
-                
+
+                Console.WriteLine("Ви отримаєте його через " + current_order.Delivery_Time.Subtract(DateTime.Now).Minutes + " одиниць часу");
+
+
                 while (current_order.Delivery_Time.Subtract(DateTime.Now).Seconds >= 0)
                 {
 

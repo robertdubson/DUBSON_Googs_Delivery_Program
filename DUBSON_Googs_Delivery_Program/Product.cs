@@ -17,27 +17,27 @@ namespace DUBSON_Goods_Delivery_Program
         
         // поле, що визначає ціну на товар
         
-        private long _price;
+        private double _price;
 
-        public long Price {
+        public double Price {
 
             get => _price;
 
         }
 
         // поле, що визначає масу товару
-        private long _weight;
+        private double _weight;
 
-        public long Weight {
+        public double Weight {
 
             get => _weight;
 
         }
 
         // поле, що визначає об'єм товару
-        private long _volume;
+        private double _volume;
         
-        public long Volume {
+        public double Volume {
 
             get => _volume;
         
@@ -60,7 +60,7 @@ namespace DUBSON_Goods_Delivery_Program
         }
 
         // конструктор
-        public Product (string name, long price, long weight, bool isFragile){
+        public Product (string name, double price, double weight, bool isFragile){
 
             _name = name;
             
@@ -69,7 +69,7 @@ namespace DUBSON_Goods_Delivery_Program
                 _type = ProductSizeType.Medium;
 
             }
-            else if ( 0< weight & weight<370 ) {
+            else if ( 0 < weight & weight<370 ) {
 
                 _type = ProductSizeType.Little;
             
