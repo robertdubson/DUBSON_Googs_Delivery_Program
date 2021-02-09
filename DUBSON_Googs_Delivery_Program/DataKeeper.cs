@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DUBSON_Goods_Delivery_Program
 {
-    public class DataKeeper
+    public class DataKeeper : DataKeeperInterface
     {
         private List<Destination> _available_destinations;
 
