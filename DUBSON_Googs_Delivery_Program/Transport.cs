@@ -26,10 +26,20 @@ namespace DUBSON_Goods_Delivery_Program
         
         }
 
+        private Transport_Category _category;
+
+        public Transport_Category Category {
+
+            get => _category;
+
+        }
+
         // конструктор
         public Transport(Transport_Category category) {
 
             // в залежності від категорії транспорту визначаємо швидкість, з якою засіб буде рухатись між містами
+
+            _category = category;
 
             if (category == Transport_Category.Car)
             {
