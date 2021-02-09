@@ -36,7 +36,9 @@ namespace DUBSON_Goods_Delivery_Program
         public DataKeeper() {
 
             this._available_destinations = new List<Destination>();
+            
             this._available_products = new List<Product>();
+            
             this._available_transport = new List<Transport>();
         
         }
