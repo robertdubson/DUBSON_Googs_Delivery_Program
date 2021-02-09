@@ -13,6 +13,7 @@ namespace DUBSON_Goods_Delivery_Program
         public long Speed {
 
             get => _speed;
+        
         }
         
         // поле, що визначає, чи в дорозі зараз транспортний засіб
@@ -30,18 +31,26 @@ namespace DUBSON_Goods_Delivery_Program
 
             // в залежності від категорії транспорту визначаємо швидкість, з якою засіб буде рухатись між містами
 
-            if (category == Transport_Category.Car) {
+            if (category == Transport_Category.Car)
+            {
                 this._speed = 70;
 
             }
-            else if (category == Transport_Category.Truck) {
+            else if (category == Transport_Category.Truck)
+            {
                 this._speed = 60;
 
             }
-            else if (category == Transport_Category.Giant_Truck) {
+            else if (category == Transport_Category.Giant_Truck)
+            {
 
                 this._speed = 50;
-            
+
+            }
+            else if (category == Transport_Category.HighlyProtectedDelivery) {
+
+                this._speed = 55;
+
             }
             
             this._isCurrentlyBusy = false;
@@ -56,5 +65,6 @@ namespace DUBSON_Goods_Delivery_Program
         Truck,
         Giant_Truck,
         Car,
+        HighlyProtectedDelivery
         }
 }

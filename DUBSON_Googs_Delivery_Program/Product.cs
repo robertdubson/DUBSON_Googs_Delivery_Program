@@ -41,9 +41,9 @@ namespace DUBSON_Goods_Delivery_Program
         
         }
 
-        private ProductType _type;
+        private ProductSizeType _type;
 
-        public ProductType Type {
+        public ProductSizeType Type {
 
             get => _type;
 
@@ -52,23 +52,23 @@ namespace DUBSON_Goods_Delivery_Program
         // конструктор
         public Product (long price, long weight, bool isFragile){
 
-            if (370 < weight & weight < 200) {
+            if (370 < weight & weight < 2000) {
 
-                _type = ProductType.Medium;
+                _type = ProductSizeType.Medium;
 
             }
             else if ( 0< weight & weight<370 ) {
 
-                _type = ProductType.Little;
+                _type = ProductSizeType.Little;
             
             }
             else if (weight<=0) {
 
-                _type = ProductType.Little;
+                _type = ProductSizeType.Little;
             }
-            else if (weight>=370) {
+            else if (weight>=2000) {
                 
-                _type = ProductType.Huge;
+                _type = ProductSizeType.Huge;
             
             }
 
@@ -81,7 +81,7 @@ namespace DUBSON_Goods_Delivery_Program
 
 
     }
-    public enum ProductType { 
+    public enum ProductSizeType { 
         
         Huge,
         Little,
