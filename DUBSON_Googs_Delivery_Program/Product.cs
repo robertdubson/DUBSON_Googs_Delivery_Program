@@ -6,7 +6,17 @@ namespace DUBSON_Goods_Delivery_Program
 {
     public class Product : ProductInterface
     {
+        private string _name;
+
+        public string Name {
+
+            get => _name;
+            set => _name = value;
+        
+        }
+        
         // поле, що визначає ціну на товар
+        
         private long _price;
 
         public long Price {
