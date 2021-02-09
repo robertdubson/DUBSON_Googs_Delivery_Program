@@ -20,9 +20,9 @@ namespace DUBSON_Goods_Delivery_Program
 
             my_data_keeper.AvailableDestinations.Add(new Destination(10, "Paris"));
             my_data_keeper.AvailableDestinations.Add(new Destination(10, "Київ"));
-            my_data_keeper.AvailableDestinations.Add(new Destination(10, "Житомир"));
-            my_data_keeper.AvailableDestinations.Add(new Destination(10, "Одеса"));
-            my_data_keeper.AvailableDestinations.Add(new Destination(10, "Жовті Води"));
+            my_data_keeper.AvailableDestinations.Add(new Destination(12, "Житомир"));
+            my_data_keeper.AvailableDestinations.Add(new Destination(15, "Одеса"));
+            my_data_keeper.AvailableDestinations.Add(new Destination(10, "Жовтi Води"));
 
             my_data_keeper.AvailableTransport.Add(new Transport(Transport_Category.Car));
             my_data_keeper.AvailableTransport.Add(new Transport(Transport_Category.Car));
