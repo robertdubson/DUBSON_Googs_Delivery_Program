@@ -60,8 +60,10 @@ namespace DUBSON_Goods_Delivery_Program
         }
 
         // конструктор
-        public Product (long price, long weight, bool isFragile){
+        public Product (string name, long price, long weight, bool isFragile){
 
+            _name = name;
+            
             if (370 < weight & weight < 2000) {
 
                 _type = ProductSizeType.Medium;

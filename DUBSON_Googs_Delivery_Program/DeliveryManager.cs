@@ -145,13 +145,13 @@ namespace DUBSON_Goods_Delivery_Program
 
                 added_hours = current_order.OrderDestination.Distance / current_order.UsedTransport.Speed;
 
-                current_order.Delivery_Time = current_order.OrderTime.AddSeconds(added_hours);
+                current_order.Delivery_Time = current_order.OrderTime.AddMinutes(added_hours);
 
                 current_order.Delivery_Time.AddSeconds(busy_order.Delivery_Time.Subtract(current_order.Delivery_Time).TotalSeconds);
 
                 _processed_orders.Add(current_order);
 
-                Console.WriteLine("Товар буде доставлено через " + current_order.Delivery_Time.Second + " одиниць часу ");
+                Console.WriteLine("Товар буде доставлено через " + current_order.Delivery_Time);
 
                 while (DateTime.Now != current_order.Delivery_Time)
                 {
@@ -176,18 +176,22 @@ namespace DUBSON_Goods_Delivery_Program
 
                 added_hours = current_order.OrderDestination.Distance / current_order.UsedTransport.Speed;
 
-                current_order.Delivery_Time = current_order.OrderTime.AddSeconds(added_hours);
+                current_order.Delivery_Time = current_order.OrderTime.AddMinutes(added_hours);
 
                 _processed_orders.Add(current_order);
 
                 _busy_transport.Add(selected_transport);
 
-                while (DateTime.Now != current_order.Delivery_Time)
+                Console.WriteLine("Товар буде доставлено " + current_order.Delivery_Time );
+                
+                
+                while (current_order.Delivery_Time.Subtract(DateTime.Now).Seconds >= 0)
                 {
 
                     Console.WriteLine("Товар доставляється");
 
                 }
+                
                 Console.WriteLine("Товар доставлено!");
 
                 _busy_transport.Remove(selected_transport);
