@@ -26,5 +26,7 @@ namespace DUBSON_Goods_Delivery_Program
             set;
         
         }
+
+        public void ReadTheDataFromUser();
     }
 }
