@@ -4,24 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data
+namespace Entity
 {
     public class OrderEntity : BaseEntity
     {
-        private int _destinationID;
+        public int DestinationID { get; set; }
 
-        public int DestinationID { get => _destinationID; set => _destinationID = value; }
+        public int ProductID { get; set; }
 
-        private int _productID;
+        public DateTime Time_Of_Ordering { get; set; }
 
-        public int ProductID { get => _productID; set => _productID = value; }
+        public double TimeNeededForDelivery { get; set; }
 
-        private DateTime _time_Of_Ordering;
-
-        public DateTime Time_Of_Ordering { get => _time_Of_Ordering; set => _time_Of_Ordering = value; }
-
-        private double _time_For_Delivery;
-
-        public double TimeNeededForDelivery { get => _time_For_Delivery; set => _time_For_Delivery = value; }
     }
 }

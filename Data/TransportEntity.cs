@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data
+namespace Entity
 {
     public class TransportEntity : BaseEntity
     {
-        private double _speed;
-
-        public double Speed { get => _speed; set => _speed = value; }
+        public double Speed { get; set; }
 
 
     }

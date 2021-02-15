@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity
+namespace DataLib
 {
-    public interface IBaseEntity
+    public class Class1
     {
-        int ID { get; set; }
     }
 }
