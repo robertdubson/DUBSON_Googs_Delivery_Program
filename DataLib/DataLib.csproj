@@ -41,18 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DestinationRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="OrderRepository.cs" />
+    <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\TransportRepository.cs" />
+    <Compile Include="TransportRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Entity.csproj">
       <Project>{0670aed0-e3a1-450c-b630-18d2123b8b8e}</Project>
       <Name>Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DUBSON_Googs_Delivery_Program\DUBSON_Goods_Delivery_Program.csproj">
-      <Project>{c433ff1b-3370-4ebb-99df-902b76d7ef53}</Project>
-      <Name>DUBSON_Goods_Delivery_Program</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
