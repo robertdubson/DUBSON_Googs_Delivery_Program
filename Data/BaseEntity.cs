@@ -10,7 +10,7 @@ namespace Entity
     public abstract class BaseEntity : IBaseEntity
     {
         public int ID { get; set; }
-
+        
         
 
     }
