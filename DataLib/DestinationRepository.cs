@@ -9,6 +9,7 @@ namespace DataLib
     public class DestinationRepository : IRepository<DestinationEntity>
     {
         public List<DestinationEntity> EntitiesFromDataSourse { get; set; }
+        
         public void Add(DestinationEntity example)
         {
             EntitiesFromDataSourse.Add(example);
