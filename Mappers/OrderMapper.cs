@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Mappers
 {
-    public interface IDestination
+    public class OrderMapper
     {
-        double Distance { get; set; }
 
-        string Name { get; set; };
-    
     }
 }

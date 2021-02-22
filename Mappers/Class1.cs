@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entity;
+using Domain;
 
-namespace Domain
+namespace Mappers
 {
-    public interface IDestination
+    public class Class1
     {
-        double Distance { get; set; }
-
-        string Name { get; set; };
-    
     }
 }

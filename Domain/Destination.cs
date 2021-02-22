@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IDestination
+    public class Destination : IDestination
     {
-        double Distance { get; set; }
+        public double Distance { get; set; }
 
-        string Name { get; set; };
-    
+        public string Name { get; set; }
     }
 }

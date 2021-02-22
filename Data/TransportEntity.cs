@@ -10,6 +10,16 @@ namespace Entity
     {
         public double Speed { get; set; }
 
+        public TransportType TransportType { get; set; }
 
+
+    }
+
+    public enum TransportType { 
+    
+        ProtectedVehicle,
+        Car,
+        Truck
+    
     }
 }

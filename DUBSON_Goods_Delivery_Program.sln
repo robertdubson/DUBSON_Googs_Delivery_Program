@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLib", "DataLib\DataLib.csproj", "{B6E598A5-53F8-4F0A-B8A5-B56F2005DFF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mappers", "Mappers\Mappers.csproj", "{9B6F8C71-A38D-4E44-BD65-0C8954531F5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B6E598A5-53F8-4F0A-B8A5-B56F2005DFF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6E598A5-53F8-4F0A-B8A5-B56F2005DFF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6E598A5-53F8-4F0A-B8A5-B56F2005DFF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B6F8C71-A38D-4E44-BD65-0C8954531F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B6F8C71-A38D-4E44-BD65-0C8954531F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B6F8C71-A38D-4E44-BD65-0C8954531F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B6F8C71-A38D-4E44-BD65-0C8954531F5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

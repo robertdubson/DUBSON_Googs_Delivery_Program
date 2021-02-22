@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IDestination
+    public class Truck : ITransport
     {
-        double Distance { get; set; }
-
-        string Name { get; set; };
-    
+        public double Speed { get; set; }
     }
 }
