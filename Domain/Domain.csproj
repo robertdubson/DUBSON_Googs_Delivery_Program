@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Destination.cs" />
     <Compile Include="FragileProduct.cs" />
     <Compile Include="HeavyProduct.cs" />

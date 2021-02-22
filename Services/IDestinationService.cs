@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entity;
-using Domain;
 
-namespace Mappers
+namespace Services
 {
-    public class Class1
+    public interface IDestinationService
     {
     }
 }
