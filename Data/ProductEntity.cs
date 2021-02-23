@@ -18,5 +18,25 @@ namespace Entity
 
         public double TimeForPreparation { get; set; }
 
+        public ProductEntity(string name, double weight, double volume, double price) {
+
+            
+            Name = name;
+
+            Weight = weight;
+
+            Volume = volume;
+
+            Price = price;
+        
+        
+        }
+
+
+        public ProductEntity() { 
+        
+        
+        
+        }
     }
 }

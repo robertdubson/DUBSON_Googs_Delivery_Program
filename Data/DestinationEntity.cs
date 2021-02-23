@@ -12,5 +12,19 @@ namespace Entity
 
         public double DistanceFromCenter { get; set; }
 
+
+        public DestinationEntity(string name, double distance) {
+
+            Name = name;
+
+            DistanceFromCenter = distance;
+        
+        }
+        
+        
+        public DestinationEntity(){
+        
+        }
+
     }
 }

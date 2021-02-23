@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DeliveryView
 {
-    public partial class Form1 : Form
+    public partial class DeliveryForm : Form
     {
-        public Form1()
+        public DeliveryForm()
         {
             InitializeComponent();
         }

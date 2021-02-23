@@ -16,5 +16,20 @@ namespace Entity
 
         public double TimeNeededForDelivery { get; set; }
 
+        public OrderEntity(DestinationEntity dest, ProductEntity prod, DateTime orderTime, double timeOfDelivery) {
+
+            Destination = dest;
+
+            Product = prod;
+
+            Time_Of_Ordering = orderTime;
+
+            TimeNeededForDelivery = timeOfDelivery;
+        
+        }
+
+        
+        public OrderEntity() { }
+
     }
 }

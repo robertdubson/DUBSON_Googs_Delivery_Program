@@ -13,6 +13,21 @@ namespace Entity
         public TransportType TransportType { get; set; }
 
 
+        public TransportEntity(double speed, TransportType type) {
+
+            Speed = speed;
+
+            TransportType = type;
+        
+        }
+
+        public TransportEntity() { 
+        
+        
+        
+        }
+
+
     }
 
     public enum TransportType { 
