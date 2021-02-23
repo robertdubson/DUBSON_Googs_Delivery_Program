@@ -34,7 +34,7 @@ namespace Mappers
   
         }
 
-        public TransportEntity FromDomainToEntity(Car transportFromDomain) {
+        public TransportEntity FromDomainToEntity(ITransport transportFromDomain) {
 
 
             return new TransportEntity { Speed = transportFromDomain.Speed,

@@ -13,7 +13,7 @@ namespace Services
     {
         void AddDestination(IDestination destination);
 
-        Destination GetDestinationByID(int ID);
+        IDestination GetDestinationByID(int ID);
 
         void DeleteDestination(int ID);
 

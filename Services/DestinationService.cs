@@ -13,26 +13,37 @@ namespace Services
 {
     public class DestinationService : IDestinationService
     {
+        private readonly IDestinationRepository _destinationRepository;
+
+        DestinationMapper _destinationMapper;
+
+        public DestinationService(IDestinationRepository repository) {
+
+            _destinationRepository = repository;
+
+            _destinationMapper = new DestinationMapper();
+        
+        }
 
         
         public void AddDestination(IDestination destination)
         {
-            throw new NotImplementedException();
+            _destinationRepository.Add(_destinationMapper.FromDomainToEntity(destination));
         }
 
         public void DeleteDestination(int ID)
         {
-            throw new NotImplementedException();
+            _destinationRepository.Delete(ID);
         }
 
-        public Destination GetDestinationByID(int ID)
+        public IDestination GetDestinationByID(int ID)
         {
-            throw new NotImplementedException();
+            return _destinationMapper.FromEmtityToDomain(_destinationRepository.GetByID(ID));
         }
 
         public void UpdateDestination(IDestination destination)
         {
-            throw new NotImplementedException();
+            _destinationRepository.Update(_destinationMapper.FromDomainToEntity(destination));
         }
     }
 }
