@@ -36,6 +36,15 @@ namespace Services
             _destinationRepository.Delete(ID);
         }
 
+        public List<IDestination> GetAllDestinations()
+        {
+            List<IDestination> allDestinations = new List<IDestination>();
+
+            _destinationRepository.EntitiesFromDataSourse.ForEach(dest => _destinationMapper.FromEmtityToDomain(dest));
+
+            return allDestinations;
+        }
+
         public IDestination GetDestinationByID(int ID)
         {
             return _destinationMapper.FromEmtityToDomain(_destinationRepository.GetByID(ID));

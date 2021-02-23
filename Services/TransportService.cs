@@ -43,5 +43,15 @@ namespace Services
         {
             _transportRepository.Update(_transportMapper.FromDomainToEntity(transport));
         }
+
+        public List<ITransport> GetAllTransports() {
+
+            List<ITransport> allTransports = new List<ITransport>();
+
+            _transportRepository.EntitiesFromDataSourse.ForEach(transport => allTransports.Add(_transportMapper.FromEntityToDomain(transport)));
+
+            return allTransports;
+
+        }
     }
 }

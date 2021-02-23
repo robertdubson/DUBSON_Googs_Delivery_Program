@@ -19,5 +19,7 @@ namespace Services
         void DeleteProduct(int ID);
 
         void UpdateProduct(IProduct product);
+
+        List<IProduct> GetAllProducts();
     }
 }

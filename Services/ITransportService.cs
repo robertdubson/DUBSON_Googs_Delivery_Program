@@ -20,5 +20,7 @@ namespace Services
 
         void UdateTransport(ITransport transport);
 
+        List<ITransport> GetAllTransports();
+
     }
 }

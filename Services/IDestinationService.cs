@@ -18,5 +18,7 @@ namespace Services
         void DeleteDestination(int ID);
 
         void UpdateDestination(IDestination destination);
+
+        List<IDestination> GetAllDestinations();
     }
 }

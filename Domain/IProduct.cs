@@ -19,5 +19,7 @@ namespace Domain
 
         double TimeForPreparation { get; set; }
 
+
+
     }
 }

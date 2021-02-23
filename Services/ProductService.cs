@@ -34,6 +34,16 @@ namespace Services
             _productRepository.Delete(ID);
         }
 
+        public List<IProduct> GetAllProducts()
+        {
+            List<IProduct> allProducts = new List<IProduct>();
+
+            _productRepository.EntitiesFromDataSourse.ForEach(prod => _productMapper.FromEntityToDomain(prod));
+
+            return allProducts;
+        
+        }
+
         public IProduct GetProductByID(int ID)
         {
             return _productMapper.FromEntityToDomain(_productRepository.GetByID(ID));
