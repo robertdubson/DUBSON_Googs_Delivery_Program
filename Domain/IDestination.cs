@@ -8,6 +8,8 @@ namespace Domain
 {
     public interface IDestination
     {
+        int ID { get; set; }
+
         double Distance { get; set; }
 
         string Name { get; set; };

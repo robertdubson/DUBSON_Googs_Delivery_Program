@@ -12,13 +12,13 @@ namespace Mappers
     {
         public IDestination FromEmtityToDomain(DestinationEntity entityFromDB) {
 
-            return new Destination { Distance = entityFromDB.DistanceFromCenter, Name = entityFromDB.Name };
+            return new Destination { Distance = entityFromDB.DistanceFromCenter, Name = entityFromDB.Name, ID = entityFromDB.ID };
         
         }
 
-        public DestinationEntity FromDomainToEntity(Destination destinationFromDomain) {
+        public DestinationEntity FromDomainToEntity(IDestination destinationFromDomain) {
 
-            return new DestinationEntity() { DistanceFromCenter = destinationFromDomain.Distance, Name = destinationFromDomain.Name };
+            return new DestinationEntity() { DistanceFromCenter = destinationFromDomain.Distance, Name = destinationFromDomain.Name, ID = destinationFromDomain.ID };
         
         }
     }

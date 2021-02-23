@@ -47,6 +47,7 @@ namespace Mappers
 
             return new TransportEntity
             {
+                ID = transportFromDomain.ID,
                 Speed = transportFromDomain.Speed,
                 TransportType = TransportType.Truck
             };
@@ -58,6 +59,7 @@ namespace Mappers
 
             return new TransportEntity
             {
+                ID = transportFromDomain.ID,
                 Speed = transportFromDomain.Speed,
                 TransportType = TransportType.ProtectedVehicle
             };

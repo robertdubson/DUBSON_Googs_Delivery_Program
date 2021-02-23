@@ -8,9 +8,9 @@ namespace Entity
 {
     public class OrderEntity : BaseEntity
     {
-        public int DestinationID { get; set; }
+        public DestinationEntity Destination { get; set; }
 
-        public int ProductID { get; set; }
+        public ProductEntity Product { get; set; }
 
         public DateTime Time_Of_Ordering { get; set; }
 

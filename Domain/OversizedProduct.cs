@@ -8,6 +8,6 @@ namespace Domain
 {
     public class OversizedProduct : Product
     {
-        public OversizedProduct(string name, double weight, double volume, double price, double timeForPreparation) : base(name, weight, volume, price, timeForPreparation) { }
+        public OversizedProduct(int ID, string name, double weight, double volume, double price, double timeForPreparation) : base(name, weight, volume, price, timeForPreparation) { }
     }
 }

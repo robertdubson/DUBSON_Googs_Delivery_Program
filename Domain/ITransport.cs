@@ -8,6 +8,7 @@ namespace Domain
 {
     public interface ITransport
     {
+        int ID { get; set; }
         double Speed { get; set; }
 
     }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class ProtectedVehicle : ITransport
+    public class ProtectedVehicle : Car
     {
-        public double Speed { get; set; }
+        
     }
 }

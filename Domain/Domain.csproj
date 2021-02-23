@@ -49,6 +49,7 @@
     <Compile Include="IProduct.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="IOrder.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="OversizedProduct.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

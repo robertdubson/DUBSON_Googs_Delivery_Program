@@ -9,6 +9,6 @@ namespace Domain
     public class Car : ITransport
     {
         public double Speed { get; set; }
-    
+        public int ID { get; set; }
     }
 }

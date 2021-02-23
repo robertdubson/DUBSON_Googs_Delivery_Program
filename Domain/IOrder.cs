@@ -8,6 +8,8 @@ namespace Domain
 {
     public interface IOrder
     {
+        int ID { get; set; }
+        
         IDestination Destination { get; set; }
 
         IProduct Product{ get; set; }

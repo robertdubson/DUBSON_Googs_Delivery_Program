@@ -15,28 +15,28 @@ namespace Mappers
             if (productFromDB.Volume > 1000)
             {
 
-                return new OversizedProduct(productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
+                return new OversizedProduct(productFromDB.ID, productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
 
             }
 
             else if (productFromDB.Weight > 950)
             {
 
-                return new HeavyProduct(productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
+                return new HeavyProduct(productFromDB.ID, productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
 
             }
 
             else if (productFromDB.Price > 1000)
             {
 
-                return new FragileProduct(productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
+                return new FragileProduct(productFromDB.ID, productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
 
             }
 
             else {
 
                 
-                return new Product(productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
+                return new Product(productFromDB.ID, productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
             
             }
         
@@ -46,6 +46,7 @@ namespace Mappers
 
             ProductEntity productForDB = new ProductEntity();
 
+            productForDB.ID = productFromDomain.ID;
             productForDB.Name = productFromDomain.Name;
             productForDB.Price = productFromDomain.Price;
             productForDB.Volume = productFromDomain.Volume;

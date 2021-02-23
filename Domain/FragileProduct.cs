@@ -8,7 +8,7 @@ namespace Domain
 {
     public class FragileProduct : Product
     {
-        public FragileProduct(string name, double weight, double volume, double price, double timeForPreparation) : base(name, weight, volume, price, timeForPreparation) { }
+        public FragileProduct(int ID, string name, double weight, double volume, double price, double timeForPreparation) : base(name, weight, volume, price, timeForPreparation) { }
     
     }
 }
