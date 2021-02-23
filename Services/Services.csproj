@@ -41,9 +41,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DestinationService.cs" />
     <Compile Include="IDestinationService.cs" />
+    <Compile Include="IOrderService.cs" />
+    <Compile Include="IProductService.cs" />
+    <Compile Include="ITransportService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLib\DataLib.csproj">
+      <Project>{b6e598a5-53f8-4f0a-b8a5-b56f2005dff0}</Project>
+      <Name>DataLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Entity.csproj">
+      <Project>{0670aed0-e3a1-450c-b630-18d2123b8b8e}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{20252b72-0f7c-445d-a709-92817efc9e1c}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mappers\Mappers.csproj">
+      <Project>{9b6f8c71-a38d-4e44-bd65-0c8954531f5a}</Project>
+      <Name>Mappers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

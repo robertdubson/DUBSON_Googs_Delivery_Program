@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 namespace DataLib
 {
-    public class DestinationRepository : IRepository<DestinationEntity>
+    public class DestinationRepository : IDestinationRepository
     {
         public List<DestinationEntity> EntitiesFromDataSourse { get; set; }
         

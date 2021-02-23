@@ -42,7 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DestinationRepository.cs" />
+    <Compile Include="IDestinationRepository.cs" />
+    <Compile Include="IOrderRepository.cs" />
+    <Compile Include="IProductRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="ITransportRepository.cs" />
     <Compile Include="OrderRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

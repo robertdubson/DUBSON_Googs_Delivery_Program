@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 namespace DataLib
 {
-    public class TransportRepository : IRepository<TransportEntity>
+    public class TransportRepository : ITransportRepository
     {
         public List<TransportEntity> EntitiesFromDataSourse { get; set; }
 

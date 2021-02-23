@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 namespace DataLib
 {
-    public class OrderRepository : IRepository<OrderEntity>
+    public class OrderRepository : IOrderRepository
     {
         public List<OrderEntity> EntitiesFromDataSourse { get; set; }
         public void Add(OrderEntity example)

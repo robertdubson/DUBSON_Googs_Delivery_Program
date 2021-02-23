@@ -7,7 +7,7 @@ using Entity;
 
 namespace DataLib
 {
-    public class ProductRepository : IRepository<ProductEntity>
+    public class ProductRepository : IProductRepository
     {
         public List<ProductEntity> EntitiesFromDataSourse { get; set; }
         public void Add(ProductEntity example)
