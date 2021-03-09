@@ -19,6 +19,8 @@ namespace Domain
 
         double TimeForPreparation { get; set; }
 
+        DeliveryType Type { get; set; }
+
 
 
     }

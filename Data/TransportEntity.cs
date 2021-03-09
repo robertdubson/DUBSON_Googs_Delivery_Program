@@ -10,14 +10,14 @@ namespace Entity
     {
         public double Speed { get; set; }
 
-        public TransportType TransportType { get; set; }
+        public DeliveryTypeEntity DeliveryType { get; set;  }
 
 
-        public TransportEntity(double speed, TransportType type) {
+        public TransportEntity(double speed, DeliveryTypeEntity type) {
 
             Speed = speed;
 
-            TransportType = type;
+            DeliveryType = type;
         
         }
 
@@ -30,11 +30,5 @@ namespace Entity
 
     }
 
-    public enum TransportType { 
     
-        ProtectedVehicle,
-        Car,
-        Truck
-    
-    }
 }

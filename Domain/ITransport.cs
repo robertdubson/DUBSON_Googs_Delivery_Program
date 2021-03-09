@@ -11,5 +11,6 @@ namespace Domain
         int ID { get; set; }
         double Speed { get; set; }
 
+        DeliveryType Type { get; set; }
     }
 }

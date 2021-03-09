@@ -18,7 +18,9 @@ namespace Entity
 
         public double TimeForPreparation { get; set; }
 
-        public ProductEntity(string name, double weight, double volume, double price) {
+        public DeliveryTypeEntity DeliveryType { get; set; }
+
+        public ProductEntity(string name, double weight, double volume, double price, DeliveryTypeEntity type) {
 
             
             Name = name;
@@ -28,6 +30,8 @@ namespace Entity
             Volume = volume;
 
             Price = price;
+
+            DeliveryType = type;
         
         
         }

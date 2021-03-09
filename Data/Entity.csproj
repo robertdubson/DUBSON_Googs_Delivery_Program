@@ -46,6 +46,7 @@
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="OrderEntity.cs" />
     <Compile Include="ProductEntity.cs" />
+    <Compile Include="DeliveryTypeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportEntity.cs" />
   </ItemGroup>

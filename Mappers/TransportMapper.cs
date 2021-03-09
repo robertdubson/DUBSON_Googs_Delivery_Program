@@ -10,26 +10,23 @@ namespace Mappers
 {
     public class TransportMapper
     {
+        DeliveryTypeMapper deliveryTypeMapper;
+        
+        public TransportMapper() {
+
+            deliveryTypeMapper = new DeliveryTypeMapper();
+        
+        }
+
         public ITransport FromEntityToDomain(TransportEntity transportFromDB) {
 
-            if (transportFromDB.TransportType == TransportType.Truck) 
+            return new Transport
             {
+                ID = transportFromDB.ID,
+                Speed = transportFromDB.Speed,
+                Type = deliveryTypeMapper.FromEntityToDomain(transportFromDB.DeliveryType)
 
-                return new Truck() { Speed = transportFromDB.Speed };
-
-            }
-            else if (transportFromDB.TransportType == TransportType.Car) 
-            {
-
-                return new Car() { Speed = transportFromDB.Speed };
-
-            }
-            else
-            {
-
-                return new ProtectedVehicle { Speed = transportFromDB.Speed };
-            
-            }
+            };
         
   
         }
@@ -37,33 +34,18 @@ namespace Mappers
         public TransportEntity FromDomainToEntity(ITransport transportFromDomain) {
 
 
-            return new TransportEntity { Speed = transportFromDomain.Speed,
-                                         TransportType = TransportType.Car
-                                       };
-
-        }
-
-        public TransportEntity FromDomainToEntity(Truck transportFromDomain) {
-
-            return new TransportEntity
-            {
-                ID = transportFromDomain.ID,
+            return new TransportEntity 
+            { 
+                
                 Speed = transportFromDomain.Speed,
-                TransportType = TransportType.Truck
+                ID = transportFromDomain.ID,
+                DeliveryType = deliveryTypeMapper.FromDomainToEntity(transportFromDomain.Type) 
+                                       
+            
             };
 
         }
 
-        public TransportEntity FromDomainToEntity(ProtectedVehicle transportFromDomain)
-        {
-
-            return new TransportEntity
-            {
-                ID = transportFromDomain.ID,
-                Speed = transportFromDomain.Speed,
-                TransportType = TransportType.ProtectedVehicle
-            };
-
-        }
+        
     }
 }

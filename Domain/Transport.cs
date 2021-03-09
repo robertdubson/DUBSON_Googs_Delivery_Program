@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Car : ITransport
+    public class Transport : ITransport
     {
         public double Speed { get; set; }
         public int ID { get; set; }
+        public DeliveryType Type { get; set; }
+    
     }
 }

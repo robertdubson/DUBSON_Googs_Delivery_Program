@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Truck : Car
+    public class DeliveryType
     {
-        
+        public int ID { get; set; }
+
+        public string Type { get; set; }
+
     }
 }

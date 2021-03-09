@@ -10,35 +10,32 @@ namespace Mappers
 {
     public class ProductMapper
     {
+        DeliveryTypeMapper deliveryTypeMapper;
+
+        public ProductMapper() {
+
+            deliveryTypeMapper = new DeliveryTypeMapper();
+        
+        }
+
+        
+        
         public IProduct FromEntityToDomain(ProductEntity productFromDB) {
 
-            if (productFromDB.Volume > 1000)
+            return new Product
             {
 
-                return new OversizedProduct(productFromDB.ID, productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
+                ID = productFromDB.ID,
+                //Weight = productFromDB.Weight,
+                Name = productFromDB.Name,
+                Weight = productFromDB.Weight,
+                Volume = productFromDB.Volume,
+                Price = productFromDB.Price,
+                //Volume = productFromDB.Volume,
+                TimeForPreparation = productFromDB.TimeForPreparation,
+                Type = deliveryTypeMapper.FromEntityToDomain(productFromDB.DeliveryType)
 
-            }
-
-            else if (productFromDB.Weight > 950)
-            {
-
-                return new HeavyProduct(productFromDB.ID, productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
-
-            }
-
-            else if (productFromDB.Price > 1000)
-            {
-
-                return new FragileProduct(productFromDB.ID, productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
-
-            }
-
-            else {
-
-                
-                return new Product(productFromDB.ID, productFromDB.Name, productFromDB.Weight, productFromDB.Volume, productFromDB.Price, productFromDB.TimeForPreparation);
-            
-            }
+            };
         
         }
 
@@ -51,6 +48,8 @@ namespace Mappers
             productForDB.Price = productFromDomain.Price;
             productForDB.Volume = productFromDomain.Volume;
             productForDB.Weight = productFromDomain.Weight;
+            productForDB.TimeForPreparation = productFromDomain.TimeForPreparation;
+            productForDB.DeliveryType = deliveryTypeMapper.FromDomainToEntity(productFromDomain.Type);
 
             return productForDB;
         
