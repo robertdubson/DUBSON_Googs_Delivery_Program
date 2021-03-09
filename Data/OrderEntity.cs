@@ -12,15 +12,19 @@ namespace Entity
 
         public ProductEntity Product { get; set; }
 
+        public TransportEntity InvolvedTransport { get; set; }
+
         public DateTime Time_Of_Ordering { get; set; }
 
         public double TimeNeededForDelivery { get; set; }
 
-        public OrderEntity(DestinationEntity dest, ProductEntity prod, DateTime orderTime, double timeOfDelivery) {
+        public OrderEntity(DestinationEntity dest, ProductEntity prod, DateTime orderTime, double timeOfDelivery, TransportEntity involvedTransport) {
 
             Destination = dest;
 
             Product = prod;
+
+            InvolvedTransport = involvedTransport;
 
             Time_Of_Ordering = orderTime;
 

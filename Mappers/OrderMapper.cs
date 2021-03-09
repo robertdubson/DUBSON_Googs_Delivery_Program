@@ -14,7 +14,7 @@ namespace Mappers
 
         ProductMapper prodMapper = new ProductMapper();
 
-        //TransportMapper transportMapper = new TransportMapper();
+        TransportMapper transportMapper = new TransportMapper();
 
         public OrderEntity FromDomainToEntity(IOrder orderFromDomain)
         {
@@ -26,6 +26,8 @@ namespace Mappers
                 Product = prodMapper.FromDomainToEntity(orderFromDomain.Product),
 
                 Destination = destMapper.FromDomainToEntity(orderFromDomain.Destination),
+
+                InvolvedTransport = transportMapper.FromDomainToEntity(orderFromDomain.InvolvedTransport),
 
                 Time_Of_Ordering = orderFromDomain.TimeOfOrdering,
 
@@ -46,6 +48,8 @@ namespace Mappers
                 Product = prodMapper.FromEntityToDomain(orderFromDB.Product),
 
                 Destination = destMapper.FromEmtityToDomain(orderFromDB.Destination),
+
+                InvolvedTransport = transportMapper.FromEntityToDomain(orderFromDB.InvolvedTransport),
 
                 TimeOfOrdering = orderFromDB.Time_Of_Ordering,
 

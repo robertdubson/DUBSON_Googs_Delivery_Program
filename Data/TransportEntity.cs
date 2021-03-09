@@ -12,12 +12,16 @@ namespace Entity
 
         public DeliveryTypeEntity DeliveryType { get; set;  }
 
+        public bool InTheShop { get; set; }
+
 
         public TransportEntity(double speed, DeliveryTypeEntity type) {
 
             Speed = speed;
 
             DeliveryType = type;
+
+            InTheShop = true;
         
         }
 

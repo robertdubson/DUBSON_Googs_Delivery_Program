@@ -11,6 +11,6 @@ namespace Domain
         public double Speed { get; set; }
         public int ID { get; set; }
         public DeliveryType Type { get; set; }
-    
+        public bool InTheShop { get; set; }
     }
 }

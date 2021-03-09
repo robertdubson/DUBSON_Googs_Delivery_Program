@@ -16,12 +16,16 @@ namespace Services
 
         OrderMapper _orderMapper;
 
+        TransportMapper _transportMapper;
+
         public OrderService(IOrderRepository repository){
 
             
             _orderRepository = repository;
 
             _orderMapper = new OrderMapper();
+
+            _transportMapper = new TransportMapper();
         
         
         
@@ -41,11 +45,46 @@ namespace Services
             return _orderMapper.FromEntityToDomain(_orderRepository.GetByID(ID));
         }
 
+        public IOrder GetOrderByInvolvedTransport(ITransport transport) {
+
+            return _orderMapper.FromEntityToDomain(_orderRepository.GetByInvolvedTransport(_transportMapper.FromDomainToEntity(transport)));       
+        
+        }
+
         public void UpdateOrder(IOrder order)
         {
             _orderRepository.Update(_orderMapper.FromDomainToEntity(order));
         }
 
+        public IOrder CreateAnOrder(IDestination destination, IProduct product, List<ITransport> suitableTransport) {
 
+            List<ITransport> currentTransports = suitableTransport;
+
+            List<DateTime> timesOfDelivery = new List<DateTime>();
+
+            Dictionary<DateTime, ITransport> dateTransportDictionary = new Dictionary<DateTime, ITransport>();
+            
+            if (!suitableTransport.Select(transport => transport.InTheShop).Any())
+            {
+                currentTransports.ForEach(transport =>dateTransportDictionary.Add(GetOrderByInvolvedTransport(transport).TimeOfOrdering.AddSeconds(GetOrderByInvolvedTransport(transport).TimeNeededForDelivery), transport));
+
+                DateTime theLeastTime = dateTransportDictionary.Keys.Min();
+
+                double timeNeededForDelivry = theLeastTime.Subtract(DateTime.Now).TotalSeconds + destination.Distance / dateTransportDictionary[theLeastTime].Speed + product.TimeForPreparation + GetOrderByInvolvedTransport(dateTransportDictionary[theLeastTime]).Destination.Distance / dateTransportDictionary[theLeastTime].Speed;
+
+                return new Order(destination, dateTransportDictionary[theLeastTime], product, DateTime.Now, timeNeededForDelivry);
+
+            }
+            else {
+
+                ITransport selectedTransport = suitableTransport.FindAll(transport => transport.InTheShop).ToList().First();
+
+                double timeNeededForDelivery = product.TimeForPreparation + destination.Distance / selectedTransport.Speed;
+
+                return new Order(destination, selectedTransport, product, DateTime.Now, timeNeededForDelivery);
+            
+            }
+        
+        }
     }
 }

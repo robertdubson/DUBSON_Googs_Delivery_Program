@@ -16,11 +16,15 @@ namespace Services
 
         TransportMapper _transportMapper;
 
+        ProductMapper _productMapper;
+
         public TransportService(ITransportRepository repository) {
 
             _transportRepository = repository;
 
             _transportMapper = new TransportMapper();
+
+            _productMapper = new ProductMapper();
         
         }
 
@@ -46,12 +50,16 @@ namespace Services
 
         public List<ITransport> GetAllTransports() {
 
-            List<ITransport> allTransports = new List<ITransport>();
-
-            _transportRepository.EntitiesFromDataSourse.ForEach(transport => allTransports.Add(_transportMapper.FromEntityToDomain(transport)));
-
-            return allTransports;
-
+            return _transportRepository.EntitiesFromDataSourse.Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
         }
+
+        public List<ITransport> GetSuitableTransport(IProduct product) {
+
+            // повертаємо усі одиниці транспорту, що підходять для перевезення продукту отриманого типу
+            
+            return _transportRepository.EntitiesFromDataSourse.FindAll(transport => transport.DeliveryType.Equals(_productMapper.FromDomainToEntity(product).DeliveryType)).Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
+        
+        }
+        
     }
 }

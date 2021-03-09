@@ -20,6 +20,8 @@ namespace Services
 
         void UdateTransport(ITransport transport);
 
+        List<ITransport> GetSuitableTransport(IProduct product);
+
         List<ITransport> GetAllTransports();
 
     }

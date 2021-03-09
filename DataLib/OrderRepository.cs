@@ -24,6 +24,11 @@ namespace DataLib
             return EntitiesFromDataSourse.Find(order => order.ID == ID);
         }
 
+        public OrderEntity GetByInvolvedTransport(TransportEntity transport)
+        {
+            return EntitiesFromDataSourse.Find(order => order.InvolvedTransport == transport);
+        }
+
         public void Update(OrderEntity example)
         {
             EntitiesFromDataSourse.Remove(EntitiesFromDataSourse.Find(order => order.ID == example.ID));

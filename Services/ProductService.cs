@@ -36,12 +36,7 @@ namespace Services
 
         public List<IProduct> GetAllProducts()
         {
-            List<IProduct> allProducts = new List<IProduct>();
-
-            _productRepository.EntitiesFromDataSourse.ForEach(prod => _productMapper.FromEntityToDomain(prod));
-
-            return allProducts;
-        
+            return _productRepository.EntitiesFromDataSourse.Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         }
 
         public IProduct GetProductByID(int ID)

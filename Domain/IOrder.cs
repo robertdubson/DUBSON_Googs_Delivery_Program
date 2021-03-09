@@ -12,6 +12,8 @@ namespace Domain
         
         IDestination Destination { get; set; }
 
+        ITransport InvolvedTransport { get; set; }
+
         IProduct Product{ get; set; }
 
         DateTime TimeOfOrdering { get; set; }
