@@ -12,7 +12,7 @@ namespace Domain
 
         double Distance { get; set; }
 
-        string Name { get; set; };
+        string Name { get; set; }
     
     }
 }

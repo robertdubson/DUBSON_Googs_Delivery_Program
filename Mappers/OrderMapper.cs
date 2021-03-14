@@ -8,7 +8,7 @@ using Domain;
 
 namespace Mappers
 {
-    public class OrderMapper
+    public class OrderMapper : IMapper<OrderEntity, IOrder>
     {
         DestinationMapper destMapper = new DestinationMapper();
 
@@ -16,44 +16,44 @@ namespace Mappers
 
         TransportMapper transportMapper = new TransportMapper();
 
-        public OrderEntity FromDomainToEntity(IOrder orderFromDomain)
+        public OrderEntity FromDomainToEntity(IOrder domainObject)
         {
 
             return new OrderEntity
             {
-                ID = orderFromDomain.ID,
+                ID = domainObject.ID,
 
-                Product = prodMapper.FromDomainToEntity(orderFromDomain.Product),
+                Product = prodMapper.FromDomainToEntity(domainObject.Product),
 
-                Destination = destMapper.FromDomainToEntity(orderFromDomain.Destination),
+                Destination = destMapper.FromDomainToEntity(domainObject.Destination),
 
-                InvolvedTransport = transportMapper.FromDomainToEntity(orderFromDomain.InvolvedTransport),
+                InvolvedTransport = transportMapper.FromDomainToEntity(domainObject.InvolvedTransport),
 
-                Time_Of_Ordering = orderFromDomain.TimeOfOrdering,
+                Time_Of_Ordering = domainObject.TimeOfOrdering,
 
-                TimeNeededForDelivery = orderFromDomain.TimeNeededForDelivery
+                TimeNeededForDelivery = domainObject.TimeNeededForDelivery
 
 
             };
 
         }
 
-        public IOrder FromEntityToDomain(OrderEntity orderFromDB)
+        public IOrder FromEntityToDomain(OrderEntity entityObject)
         {
 
             return new Order()
             {
-                ID = orderFromDB.ID,
+                ID = entityObject.ID,
 
-                Product = prodMapper.FromEntityToDomain(orderFromDB.Product),
+                Product = prodMapper.FromEntityToDomain(entityObject.Product),
 
-                Destination = destMapper.FromEmtityToDomain(orderFromDB.Destination),
+                Destination = destMapper.FromEntityToDomain(entityObject.Destination),
 
-                InvolvedTransport = transportMapper.FromEntityToDomain(orderFromDB.InvolvedTransport),
+                InvolvedTransport = transportMapper.FromEntityToDomain(entityObject.InvolvedTransport),
 
-                TimeOfOrdering = orderFromDB.Time_Of_Ordering,
+                TimeOfOrdering = entityObject.Time_Of_Ordering,
 
-                TimeNeededForDelivery = orderFromDB.TimeNeededForDelivery
+                TimeNeededForDelivery = entityObject.TimeNeededForDelivery
 
 
             };

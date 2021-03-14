@@ -8,7 +8,7 @@ using Entity;
 
 namespace Mappers
 {
-    public class ProductMapper
+    public class ProductMapper : IMapper<ProductEntity, IProduct>
     {
         DeliveryTypeMapper deliveryTypeMapper;
 
@@ -20,36 +20,36 @@ namespace Mappers
 
         
         
-        public IProduct FromEntityToDomain(ProductEntity productFromDB) {
+        public IProduct FromEntityToDomain(ProductEntity entityObject) {
 
             return new Product
             {
 
-                ID = productFromDB.ID,
+                ID = entityObject.ID,
                 //Weight = productFromDB.Weight,
-                Name = productFromDB.Name,
-                Weight = productFromDB.Weight,
-                Volume = productFromDB.Volume,
-                Price = productFromDB.Price,
+                Name = entityObject.Name,
+                Weight = entityObject.Weight,
+                Volume = entityObject.Volume,
+                Price = entityObject.Price,
                 //Volume = productFromDB.Volume,
-                TimeForPreparation = productFromDB.TimeForPreparation,
-                Type = deliveryTypeMapper.FromEntityToDomain(productFromDB.DeliveryType)
+                TimeForPreparation = entityObject.TimeForPreparation,
+                Type = deliveryTypeMapper.FromEntityToDomain(entityObject.DeliveryType)
 
             };
         
         }
 
-        public ProductEntity FromDomainToEntity(IProduct productFromDomain) {
+        public ProductEntity FromDomainToEntity(IProduct domainObject) {
 
             ProductEntity productForDB = new ProductEntity();
 
-            productForDB.ID = productFromDomain.ID;
-            productForDB.Name = productFromDomain.Name;
-            productForDB.Price = productFromDomain.Price;
-            productForDB.Volume = productFromDomain.Volume;
-            productForDB.Weight = productFromDomain.Weight;
-            productForDB.TimeForPreparation = productFromDomain.TimeForPreparation;
-            productForDB.DeliveryType = deliveryTypeMapper.FromDomainToEntity(productFromDomain.Type);
+            productForDB.ID = domainObject.ID;
+            productForDB.Name = domainObject.Name;
+            productForDB.Price = domainObject.Price;
+            productForDB.Volume = domainObject.Volume;
+            productForDB.Weight = domainObject.Weight;
+            productForDB.TimeForPreparation = domainObject.TimeForPreparation;
+            productForDB.DeliveryType = deliveryTypeMapper.FromDomainToEntity(domainObject.Type);
 
             return productForDB;
         

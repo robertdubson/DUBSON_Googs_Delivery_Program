@@ -8,18 +8,19 @@ using Domain;
 
 namespace Mappers
 {
-    public class DestinationMapper
+    public class DestinationMapper : IMapper<DestinationEntity, IDestination>
     {
-        public IDestination FromEmtityToDomain(DestinationEntity entityFromDB) {
+        
 
-            return new Destination { Distance = entityFromDB.DistanceFromCenter, Name = entityFromDB.Name, ID = entityFromDB.ID };
+        public DestinationEntity FromDomainToEntity(IDestination domainObject) {
+
+            return new DestinationEntity() { DistanceFromCenter = domainObject.Distance, Name = domainObject.Name, ID = domainObject.ID };
         
         }
 
-        public DestinationEntity FromDomainToEntity(IDestination destinationFromDomain) {
-
-            return new DestinationEntity() { DistanceFromCenter = destinationFromDomain.Distance, Name = destinationFromDomain.Name, ID = destinationFromDomain.ID };
-        
+        public IDestination FromEntityToDomain(DestinationEntity entityObject)
+        {
+            return new Destination { Distance = entityObject.DistanceFromCenter, Name = entityObject.Name, ID = entityObject.ID };
         }
     }
 }

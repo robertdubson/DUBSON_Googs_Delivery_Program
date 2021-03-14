@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DeliveryTypeMapper.cs" />
     <Compile Include="DestinationMapper.cs" />
+    <Compile Include="IMapper.cs" />
     <Compile Include="OrderMapper.cs" />
     <Compile Include="ProductMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

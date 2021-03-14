@@ -8,7 +8,7 @@ using Domain;
 
 namespace Mappers
 {
-    public class TransportMapper
+    public class TransportMapper : IMapper<TransportEntity, ITransport>
     {
         DeliveryTypeMapper deliveryTypeMapper;
         
@@ -18,28 +18,28 @@ namespace Mappers
         
         }
 
-        public ITransport FromEntityToDomain(TransportEntity transportFromDB) {
+        public ITransport FromEntityToDomain(TransportEntity entityObject) {
 
             return new Transport
             {
-                ID = transportFromDB.ID,
-                Speed = transportFromDB.Speed,
-                Type = deliveryTypeMapper.FromEntityToDomain(transportFromDB.DeliveryType)
+                ID = entityObject.ID,
+                Speed = entityObject.Speed,
+                Type = deliveryTypeMapper.FromEntityToDomain(entityObject.DeliveryType)
 
             };
         
   
         }
 
-        public TransportEntity FromDomainToEntity(ITransport transportFromDomain) {
+        public TransportEntity FromDomainToEntity(ITransport domainObject) {
 
 
             return new TransportEntity 
             { 
                 
-                Speed = transportFromDomain.Speed,
-                ID = transportFromDomain.ID,
-                DeliveryType = deliveryTypeMapper.FromDomainToEntity(transportFromDomain.Type) 
+                Speed = domainObject.Speed,
+                ID = domainObject.ID,
+                DeliveryType = deliveryTypeMapper.FromDomainToEntity(domainObject.Type) 
                                        
             
             };

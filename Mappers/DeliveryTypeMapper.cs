@@ -9,16 +9,16 @@ namespace Mappers
 {
     public class DeliveryTypeMapper
     {
-        public DeliveryTypeEntity FromDomainToEntity(DeliveryType delTypeFromDomain) {
+        public DeliveryTypeEntity FromDomainToEntity(DeliveryType domainObject) {
 
-            return new DeliveryTypeEntity { ID = delTypeFromDomain.ID, DeliveryType = delTypeFromDomain.Type };
+            return new DeliveryTypeEntity { ID = domainObject.ID, DeliveryType = domainObject.Type };
         
         
         }
 
-        public DeliveryType FromEntityToDomain(DeliveryTypeEntity delTypeFromDB) {
+        public DeliveryType FromEntityToDomain(DeliveryTypeEntity entityObject) {
 
-            return new DeliveryType { ID = delTypeFromDB.ID, Type = delTypeFromDB.DeliveryType };
+            return new DeliveryType { ID = entityObject.ID, Type = entityObject.DeliveryType };
         
         }
     }
