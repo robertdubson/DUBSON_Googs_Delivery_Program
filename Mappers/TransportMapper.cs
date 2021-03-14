@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 using Domain;
+using Model;
 
 namespace Mappers
 {
-    public class TransportMapper : IMapper<TransportEntity, ITransport>
+    public class TransportMapper : IMapper<TransportEntity, ITransport, TransportModel>
     {
         DeliveryTypeMapper deliveryTypeMapper;
         
@@ -46,6 +47,14 @@ namespace Mappers
 
         }
 
-        
+        public TransportModel FromDomainToModel(ITransport domainObject)
+        {
+            return new TransportModel { ID = domainObject.ID, DeliveryType = deliveryTypeMapper.FromDomainToModel(domainObject.Type), InTheShop = domainObject.InTheShop, Speed = domainObject.Speed };
+        }
+
+        public ITransport FromModelToDomain(TransportModel modelObject)
+        {
+            return new Transport { ID = modelObject.ID, Type = deliveryTypeMapper.FromModelToDomain(modelObject.DeliveryType), InTheShop = modelObject.InTheShop, Speed = modelObject.Speed };
+        }
     }
 }

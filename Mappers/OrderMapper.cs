@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 using Domain;
+using Model;
 
 namespace Mappers
 {
-    public class OrderMapper : IMapper<OrderEntity, IOrder>
+    public class OrderMapper : IMapper<OrderEntity, IOrder, OrderModel>
     {
         DestinationMapper destMapper = new DestinationMapper();
 
@@ -38,6 +39,11 @@ namespace Mappers
 
         }
 
+        public OrderModel FromDomainToModel(IOrder domainObject)
+        {
+            return new OrderModel { ID = domainObject.ID, Destination = destMapper.FromDomainToModel(domainObject.Destination), InvolvedTransport = transportMapper.FromDomainToModel(domainObject.InvolvedTransport), Product = prodMapper.FromDomainToModel(domainObject.Product), TimeOfOrdering = domainObject.TimeOfOrdering };
+        }
+
         public IOrder FromEntityToDomain(OrderEntity entityObject)
         {
 
@@ -58,6 +64,11 @@ namespace Mappers
 
             };
 
+        }
+
+        public IOrder FromModelToDomain(OrderModel modelObject)
+        {
+            return new Order { ID = modelObject.ID, Destination = destMapper.FromModelToDomain(modelObject.Destination), InvolvedTransport = transportMapper.FromModelToDomain(modelObject.InvolvedTransport), Product = prodMapper.FromModelToDomain(modelObject.Product), TimeNeededForDelivery = modelObject.TimeNeededForDelivery, TimeOfOrdering = modelObject.TimeOfOrdering};
         }
     }
 }

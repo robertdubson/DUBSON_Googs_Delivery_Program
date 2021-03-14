@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Mappers
 {
-    public interface IMapper<EntityClass, DomainClass>
+    public interface IMapper<Entity, Domain, Model>
     {
-        DomainClass FromEntityToDomain(EntityClass entityObject);
+        Domain FromEntityToDomain(Entity entityObject);
 
-        EntityClass FromDomainToEntity(DomainClass domainObject);
+        Entity FromDomainToEntity(Domain domainObject);
+
+        Model FromDomainToModel(Domain domainObject);
+
+        Domain FromModelToDomain(Model modelObject);
         
         
         

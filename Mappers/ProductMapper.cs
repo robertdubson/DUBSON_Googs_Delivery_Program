@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain;
 using Entity;
+using Model;
 
 namespace Mappers
 {
-    public class ProductMapper : IMapper<ProductEntity, IProduct>
+    public class ProductMapper : IMapper<ProductEntity, IProduct, ProductModel>
     {
         DeliveryTypeMapper deliveryTypeMapper;
 
@@ -54,6 +55,16 @@ namespace Mappers
             return productForDB;
         
         
+        }
+
+        public ProductModel FromDomainToModel(IProduct domainObject)
+        {
+            return new ProductModel { ID = domainObject.ID, Name = domainObject.Name, DeliveryType = deliveryTypeMapper.FromDomainToModel(domainObject.Type), Price = domainObject.Price, TimeForPreparation = domainObject.TimeForPreparation, Volume = domainObject.Volume, Weight = domainObject.Weight };
+        }
+
+        public IProduct FromModelToDomain(ProductModel modelObject)
+        {
+            return new Product { ID = modelObject.ID, Type = deliveryTypeMapper.FromModelToDomain(modelObject.DeliveryType), Name = modelObject.Name, Price = modelObject.Price, TimeForPreparation = modelObject.TimeForPreparation, Volume = modelObject.Volume, Weight = modelObject.Weight };
         }
     }
 }

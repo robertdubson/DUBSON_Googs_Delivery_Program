@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01A7EB3A-F47D-47E7-B310-7AA8A2A28BE2}</ProjectGuid>
+    <ProjectGuid>{2A2BE46D-11D7-4959-B38D-EA23E5E53D95}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Controllers</RootNamespace>
-    <AssemblyName>Controllers</AssemblyName>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,30 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrontController.cs" />
+    <Compile Include="DeliveryTypeModel.cs" />
+    <Compile Include="DestinationModel.cs" />
+    <Compile Include="OrderModel.cs" />
+    <Compile Include="ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataLib\DataLib.csproj">
-      <Project>{b6e598a5-53f8-4f0a-b8a5-b56f2005dff0}</Project>
-      <Name>DataLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Data\Entity.csproj">
-      <Project>{0670aed0-e3a1-450c-b630-18d2123b8b8e}</Project>
-      <Name>Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{20252b72-0f7c-445d-a709-92817efc9e1c}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mappers\Mappers.csproj">
-      <Project>{9b6f8c71-a38d-4e44-bd65-0c8954531f5a}</Project>
-      <Name>Mappers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
-      <Project>{90403b8f-a5db-49eb-b130-75175fcaf7e6}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
+    <Compile Include="TransportModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
