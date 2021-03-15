@@ -40,14 +40,14 @@ namespace Services
         {
             List<IDestination> allDestinations = new List<IDestination>();
 
-            _destinationRepository.EntitiesFromDataSourse.ForEach(dest => _destinationMapper.FromEmtityToDomain(dest));
+            _destinationRepository.EntitiesFromDataSourse.ForEach(dest => _destinationMapper.FromEntityToDomain(dest));
 
             return allDestinations;
         }
 
         public IDestination GetDestinationByID(int ID)
         {
-            return _destinationMapper.FromEmtityToDomain(_destinationRepository.GetByID(ID));
+            return _destinationMapper.FromEntityToDomain(_destinationRepository.GetByID(ID));
         }
 
         public void UpdateDestination(IDestination destination)

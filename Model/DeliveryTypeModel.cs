@@ -11,5 +11,11 @@ namespace Model
         public int ID { get; set; }
 
         public string DeliveryType { get; set; }
+
+        public override string ToString() {
+
+            return DeliveryType;
+
+        }
     }
 }

@@ -21,5 +21,7 @@ namespace Services
         void UpdateProduct(IProduct product);
 
         List<IProduct> GetAllProducts();
+
+        List<DeliveryType> GetAllTypes();
     }
 }

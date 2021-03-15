@@ -16,11 +16,15 @@ namespace Services
 
         ProductMapper _productMapper;
 
+        DeliveryTypeMapper _deliveryTypeMapper;
+
         public ProductService(IProductRepository repository) {
 
             _productRepository = repository;
 
             _productMapper = new ProductMapper();
+
+            _deliveryTypeMapper = new DeliveryTypeMapper();
         
         }
 
@@ -39,6 +43,11 @@ namespace Services
             return _productRepository.EntitiesFromDataSourse.Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         }
 
+        public List<DeliveryType> GetAllTypes()
+        {
+            return _productRepository.GetAllTypes().Select(deliveryType => _deliveryTypeMapper.FromEntityToDomain(deliveryType)).ToList();
+        }
+
         public IProduct GetProductByID(int ID)
         {
             return _productMapper.FromEntityToDomain(_productRepository.GetByID(ID));
@@ -47,6 +56,12 @@ namespace Services
         public void UpdateProduct(IProduct product)
         {
             _productRepository.Update(_productMapper.FromDomainToEntity(product));
+        }
+
+        public List<IProduct> GetProductsByType(DeliveryType delType) {
+
+            return _productRepository.EntitiesFromDataSourse.FindAll(prod => prod.DeliveryType.DeliveryType == _deliveryTypeMapper.FromDomainToEntity(delType).DeliveryType).Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
+        
         }
     }
 }

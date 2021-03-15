@@ -15,5 +15,10 @@ namespace Model
         public double TimeForPreparation { get; set; }
         public int ID { get; set; }
         public  DeliveryTypeModel DeliveryType { get; set; }
+
+        public override string ToString()
+        {
+            return Name + " " + Weight + " kg " + Volume + " sq m" + Price + " $";
+        }
     }
 }

@@ -14,6 +14,6 @@ namespace DUBSON_Goods_Delivery_Program
 
         public void ProcessTheOrder(DateTime time_of_ordering, Product choosen_product, Destination selected_destination);
 
-        public void StartDelivery(DateTime time_of_ordering, Product choosen_product, Destination selected_destination, Transport selected_transport)
+        public void StartDelivery(DateTime time_of_ordering, Product choosen_product, Destination selected_destination, Transport selected_transport);
     }
 }

@@ -10,6 +10,8 @@ namespace DataLib
     public class ProductRepository : IProductRepository
     {
         public List<ProductEntity> EntitiesFromDataSourse { get; set; }
+        public List<DeliveryTypeEntity> typesOfDelivery { get; set; }
+
         public void Add(ProductEntity example)
         {
             EntitiesFromDataSourse.Add(example);
@@ -19,6 +21,11 @@ namespace DataLib
         {
             EntitiesFromDataSourse.Remove(EntitiesFromDataSourse.Find(product => product.ID == ID));
 
+        }
+
+        public List<DeliveryTypeEntity> GetAllTypes()
+        {
+            return typesOfDelivery;
         }
 
         public ProductEntity GetByID(int ID)

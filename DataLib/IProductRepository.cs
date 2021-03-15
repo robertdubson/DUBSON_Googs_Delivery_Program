@@ -9,6 +9,7 @@ namespace DataLib
 {
     public interface IProductRepository : IRepository<ProductEntity>
     {
-
+        List<DeliveryTypeEntity> typesOfDelivery { get; set; }
+        List<DeliveryTypeEntity> GetAllTypes();
     }
 }

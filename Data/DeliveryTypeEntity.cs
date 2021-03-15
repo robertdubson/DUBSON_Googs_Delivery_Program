@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class DeliveryTypeEntity
+    public class DeliveryTypeEntity : BaseEntity
     {
-        public int ID { get; set; }
+        
 
         public string DeliveryType { get; set; } 
 
