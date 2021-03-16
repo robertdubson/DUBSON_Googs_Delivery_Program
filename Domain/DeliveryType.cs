@@ -12,5 +12,18 @@ namespace Domain
 
         public string Type { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as DeliveryType);
+        }
+        public bool Equals(DeliveryType deltype) {
+
+            return (deltype.ID == this.ID) && (deltype.Type == this.Type);
+
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

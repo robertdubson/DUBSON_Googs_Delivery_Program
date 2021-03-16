@@ -28,6 +28,12 @@ namespace DeliveryViewForms
 
             productForm.Show();
 
+            this.Hide();
+
+            //this.Dispose();
+
+            
+
             
         }
     }

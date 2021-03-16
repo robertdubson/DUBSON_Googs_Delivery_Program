@@ -53,6 +53,7 @@
             this.buttonBack.TabIndex = 1;
             this.buttonBack.Text = "НАЗАД";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonSelectProduct
             // 
@@ -62,6 +63,7 @@
             this.buttonSelectProduct.TabIndex = 3;
             this.buttonSelectProduct.Text = "ОБРАТИ";
             this.buttonSelectProduct.UseVisualStyleBackColor = true;
+            this.buttonSelectProduct.Click += new System.EventHandler(this.buttonSelectProduct_Click);
             // 
             // listBoxDeliveryTypes
             // 

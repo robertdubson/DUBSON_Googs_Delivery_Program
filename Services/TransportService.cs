@@ -57,7 +57,7 @@ namespace Services
 
             // повертаємо усі одиниці транспорту, що підходять для перевезення продукту отриманого типу
             
-            return _transportRepository.EntitiesFromDataSourse.FindAll(transport => transport.DeliveryType.Equals(_productMapper.FromDomainToEntity(product).DeliveryType)).Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
+            return _transportRepository.EntitiesFromDataSourse.FindAll(transport => transport.DeliveryType.ID == _productMapper.FromDomainToEntity(product).DeliveryType.ID).Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
         
         }
         

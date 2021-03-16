@@ -68,7 +68,11 @@ namespace Services
             {
                 currentTransports.ForEach(transport =>dateTransportDictionary.Add(GetOrderByInvolvedTransport(transport).TimeOfOrdering.AddSeconds(GetOrderByInvolvedTransport(transport).TimeNeededForDelivery), transport));
 
-                DateTime theLeastTime = dateTransportDictionary.Keys.Min();
+                List<DateTime> keysList = dateTransportDictionary.Keys.ToList();
+
+                keysList.Sort((date1, date2) => date1.CompareTo(date2));
+
+                DateTime theLeastTime = keysList.ElementAt(0);
 
                 double timeNeededForDelivry = theLeastTime.Subtract(DateTime.Now).TotalSeconds + destination.Distance / dateTransportDictionary[theLeastTime].Speed + product.TimeForPreparation + GetOrderByInvolvedTransport(dateTransportDictionary[theLeastTime]).Destination.Distance / dateTransportDictionary[theLeastTime].Speed;
 
@@ -77,9 +81,17 @@ namespace Services
             }
             else {
 
-                ITransport selectedTransport = suitableTransport.FindAll(transport => transport.InTheShop).ToList().First();
+                ITransport selectedTransport = suitableTransport.FindAll(transport => transport.InTheShop).ToList().ElementAt(0);
 
-                double timeNeededForDelivery = product.TimeForPreparation + destination.Distance / selectedTransport.Speed;
+                double timeNeededForDelivery = 0;
+                
+                timeNeededForDelivery =  (double)destination.Distance / selectedTransport.Speed;
+
+                timeNeededForDelivery = product.TimeForPreparation + timeNeededForDelivery;
+
+                //selectedTransport.InTheShop = false;
+
+
 
                 return new Order(destination, selectedTransport, product, DateTime.Now, timeNeededForDelivery);
             

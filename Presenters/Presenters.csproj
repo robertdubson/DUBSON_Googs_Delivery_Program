@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DestinationPresenter.cs" />
+    <Compile Include="IDestinationView.cs" />
     <Compile Include="IProductView.cs" />
     <Compile Include="ProductPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

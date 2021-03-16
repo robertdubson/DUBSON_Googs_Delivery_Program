@@ -25,7 +25,8 @@ namespace Mappers
             {
                 ID = entityObject.ID,
                 Speed = entityObject.Speed,
-                Type = deliveryTypeMapper.FromEntityToDomain(entityObject.DeliveryType)
+                Type = deliveryTypeMapper.FromEntityToDomain(entityObject.DeliveryType),
+                InTheShop = entityObject.InTheShop
 
             };
         
@@ -35,12 +36,13 @@ namespace Mappers
         public TransportEntity FromDomainToEntity(ITransport domainObject) {
 
 
-            return new TransportEntity 
-            { 
-                
+            return new TransportEntity
+            {
+
                 Speed = domainObject.Speed,
                 ID = domainObject.ID,
-                DeliveryType = deliveryTypeMapper.FromDomainToEntity(domainObject.Type) 
+                DeliveryType = deliveryTypeMapper.FromDomainToEntity(domainObject.Type),
+                InTheShop = domainObject.InTheShop
                                        
             
             };

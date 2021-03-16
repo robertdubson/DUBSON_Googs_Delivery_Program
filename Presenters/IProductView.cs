@@ -16,9 +16,6 @@ namespace Presenters
         DeliveryTypeModel SelectedType { get; set; }
 
         ProductModel SelectedProduct { get; set; }
-        Dictionary<string, DeliveryTypeModel> DeliveryTypes { get; set; }
-
-        Dictionary<string, ProductModel> Products { get; set; }
 
         void DisplayData(List<DeliveryTypeModel> deliveryTypeItems, List<ProductModel> productItems); 
 

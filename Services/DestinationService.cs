@@ -38,11 +38,7 @@ namespace Services
 
         public List<IDestination> GetAllDestinations()
         {
-            List<IDestination> allDestinations = new List<IDestination>();
-
-            _destinationRepository.EntitiesFromDataSourse.ForEach(dest => _destinationMapper.FromEntityToDomain(dest));
-
-            return allDestinations;
+            return _destinationRepository.EntitiesFromDataSourse.Select(dest => _destinationMapper.FromEntityToDomain(dest)).ToList();
         }
 
         public IDestination GetDestinationByID(int ID)

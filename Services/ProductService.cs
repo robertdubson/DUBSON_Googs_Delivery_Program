@@ -60,7 +60,7 @@ namespace Services
 
         public List<IProduct> GetProductsByType(DeliveryType delType) {
 
-            return _productRepository.EntitiesFromDataSourse.FindAll(prod => prod.DeliveryType.DeliveryType == _deliveryTypeMapper.FromDomainToEntity(delType).DeliveryType).Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
+            return _productRepository.EntitiesFromDataSourse.FindAll(prod => prod.DeliveryType.ID == _deliveryTypeMapper.FromDomainToEntity(delType).ID).Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         
         }
     }

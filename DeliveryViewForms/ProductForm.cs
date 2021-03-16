@@ -18,23 +18,21 @@ namespace DeliveryViewForms
 
         public event Action CategorySelected;
 
-        public Dictionary<string, DeliveryTypeModel> DeliveryTypes { get; set; }
+        // public event Action GetBack;
 
-        public Dictionary<string, ProductModel> Products { get; set; }
+        // public event Action GoToDestinationSelection;
+        
         public ProductModel SelectedProduct { get { return listBoxProducts.SelectedItem as ProductModel; } set { } }
 
         public DeliveryTypeModel SelectedType { get { return listBoxDeliveryTypes.SelectedItem as DeliveryTypeModel; } set { } }
 
         public ProductForm()
         {
+            
             InitializeComponent();
 
             BindComponent();
 
-            DeliveryTypes = new Dictionary<string, DeliveryTypeModel>();
-
-            Products = new Dictionary<string, ProductModel>();
-        
         }
 
 
@@ -50,31 +48,13 @@ namespace DeliveryViewForms
 
         }
 
-       
-
-        
-
         public void DisplayData(List<DeliveryTypeModel> deliveryTypeItems, List<ProductModel> productItems)
         {
 
             listBoxDeliveryTypes.DataSource = deliveryTypeItems;
 
             listBoxProducts.DataSource = productItems;
-            //foreach (DeliveryTypeModel delType in deliveryTypeItems) {
-
-                //listBoxDeliveryTypes.Items.Add(delType.ToString());
-
-               // DeliveryTypes.Add(delType.ToString(), delType);
             
-            //}
-
-            //foreach (ProductModel prod in productItems) {
-
-                //listBoxProducts.Items.Add(prod.ToString());
-
-               //Products.Add(prod.ToString(), prod);
-            
-            //}
         }
 
         public void ProdSel()
@@ -101,6 +81,32 @@ namespace DeliveryViewForms
             {
                 this.CategorySelected();
             }
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            StartForm startForm = new StartForm();
+
+            this.Hide();
+            
+            this.Dispose();
+
+            startForm.Show();
+
+                 
+        }
+
+        private void buttonSelectProduct_Click(object sender, EventArgs e)
+        {
+            DestinationsForm destinationForm = new DestinationsForm(SelectedProduct);
+
+            this.Hide();
+            this.Dispose();
+
+            DestinationPresenter destinationPresenter = new DestinationPresenter(destinationForm, SelectedProduct);
+
+            destinationForm.Show();
+        
         }
     }
 }
