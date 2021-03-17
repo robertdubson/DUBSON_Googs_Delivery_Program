@@ -10,5 +10,7 @@ namespace DataLib
     public interface IOrderRepository : IRepository<OrderEntity>
     {
         OrderEntity GetByInvolvedTransport(TransportEntity transport);
+
+        void Delete(OrderEntity example);
     }
 }

@@ -63,5 +63,73 @@ namespace Services
             return _productRepository.EntitiesFromDataSourse.FindAll(prod => prod.DeliveryType.ID == _deliveryTypeMapper.FromDomainToEntity(delType).ID).Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         
         }
+
+        public List<IProduct> FindByText(string text) {
+
+            List<IProduct> suitableProducts = new List<IProduct>();
+
+            if (text == "")
+            {
+
+                return this.GetAllProducts();
+
+
+            }
+            else {
+
+                foreach (char ch in text)
+                {
+
+                    foreach (IProduct prod in this.GetAllProducts())
+                    {
+
+                        if (prod.ToString().Contains(ch))
+                        {
+
+                            suitableProducts.Add(prod);
+
+                        }
+                    }
+                }
+
+                return suitableProducts.Distinct().ToList();
+
+            }            
+        
+        }
+
+        public List<IProduct> FindByParameters(double maxWeight, double minWeight, double minVolume, double maxVolume, double maxPrice, double minPrice) {
+
+            List<IProduct> resultList = new List<IProduct>();
+
+            foreach (IProduct prod in this.GetAllProducts()) {
+
+                if (prod.Price > minPrice) {
+
+                    resultList.Add(prod);
+                
+                }
+                if (prod.Volume > minVolume) {
+
+                    resultList.Add(prod);
+                
+                }
+                if (prod.Weight > minVolume) {
+
+                    resultList.Add(prod);
+                
+                }          
+            
+            }     
+
+            return resultList;
+        
+        }
+
+        //public List<IProduct> FindByParameters(double maxWeight, double minWeight, double minVolume, double maxVolume, double maxPrice, double minPrice) {
+
+            //return this.GetAllProducts().FindAll(prod => (prod.Weight >= minWeight) && (prod.Weight <= maxWeight) && (prod.Volume >= minVolume) && (prod.Volume <= maxVolume) && (prod.Price >= minPrice) && (prod.Price <= maxPrice));
+        
+        //}
     }
 }

@@ -24,6 +24,8 @@ namespace Presenters
 
         OrderMapper _orderMapper;
 
+        TransportMapper _transportMapper;
+
         DestinationService destinationService;
 
         TransportService transportService;
@@ -37,6 +39,8 @@ namespace Presenters
             SelectedProduct = selectedProduct;
 
             _destinationMapper = new DestinationMapper();
+
+            _transportMapper = new TransportMapper();
 
             _productMapper = new ProductMapper();
 
@@ -69,6 +73,8 @@ namespace Presenters
                 OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(_view.SelectedDestination), _productMapper.FromModelToDomain(SelectedProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(SelectedProduct))));
 
                 orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
+
+                transportService.UdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
 
                 _view.DisplayCurrentOrderInfo(newOrder);
 

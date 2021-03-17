@@ -37,7 +37,7 @@
             // seeAllProducts
             // 
             this.seeAllProducts.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.seeAllProducts.Location = new System.Drawing.Point(156, 145);
+            this.seeAllProducts.Location = new System.Drawing.Point(156, 124);
             this.seeAllProducts.Name = "seeAllProducts";
             this.seeAllProducts.Size = new System.Drawing.Size(161, 47);
             this.seeAllProducts.TabIndex = 0;
@@ -48,22 +48,24 @@
             // buttonAbout
             // 
             this.buttonAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAbout.Location = new System.Drawing.Point(156, 198);
+            this.buttonAbout.Location = new System.Drawing.Point(156, 177);
             this.buttonAbout.Name = "buttonAbout";
             this.buttonAbout.Size = new System.Drawing.Size(161, 41);
             this.buttonAbout.TabIndex = 1;
             this.buttonAbout.Text = "About";
             this.buttonAbout.UseVisualStyleBackColor = true;
+            this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
             // 
             // buttonExit
             // 
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonExit.Location = new System.Drawing.Point(156, 245);
+            this.buttonExit.Location = new System.Drawing.Point(156, 224);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(161, 41);
             this.buttonExit.TabIndex = 2;
             this.buttonExit.Text = "EXIT";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // labelFront
             // 
@@ -79,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 315);
+            this.ClientSize = new System.Drawing.Size(449, 304);
             this.Controls.Add(this.labelFront);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonAbout);

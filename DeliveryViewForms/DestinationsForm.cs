@@ -16,6 +16,8 @@ namespace DeliveryViewForms
     {
         public ProductModel SelectedProduct { get; set; }
 
+        
+
         public DestinationModel SelectedDestination { get { return listBoxDestinations.SelectedItem as DestinationModel; } set { } }
 
         public event Action DestinationSelected;
@@ -23,6 +25,8 @@ namespace DeliveryViewForms
         public void DisplayData(List<DestinationModel> destinations) {
 
             this.listBoxDestinations.DataSource = destinations;
+
+            
             
         }
 
@@ -46,8 +50,15 @@ namespace DeliveryViewForms
 
         public void DisplayCurrentOrderInfo(OrderModel order) {
 
-            MessageBox.Show("Ви замовили продукт " + order.Product.Name + ", що коштує " + order.Product.Price + " $ . Товар буде доставлено до пункту " + order.Destination.Name + "за " + order.TimeNeededForDelivery + " одиниць часу");
-        
+            MessageBox.Show("Ви замовили продукт " + order.Product.Name + ", що коштує " + order.Product.Price + " $ . Товар буде доставлено до пункту " + order.Destination.Name + " за " + order.TimeNeededForDelivery + " одиниць часу");
+
+            StartForm startForm = new StartForm();
+
+            startForm.Show();
+
+            this.Hide();
+
+            this.Dispose();
         }
 
         public void BindComponent()
@@ -65,18 +76,25 @@ namespace DeliveryViewForms
 
         private void buttonSelectDestination_Click(object sender, EventArgs e)
         {
-            if (this.DestinationSelected != null)
-            {
-
-                this.DestinationSelected();
-
-            }
+            
+                DestinationSelected();
         }
 
         public void DestinationWasntSelected() {
 
             MessageBox.Show("Будь ласка, оберіть пункт призначення!");
         
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            ProductForm productForm = new ProductForm();
+
+            ProductPresenter presenter = new ProductPresenter(productForm);
+
+            productForm.Show();
+
+            this.Hide();
         }
     }
 }

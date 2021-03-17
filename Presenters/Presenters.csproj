@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="DestinationPresenter.cs" />
     <Compile Include="IDestinationView.cs" />
+    <Compile Include="IOrderView.cs" />
     <Compile Include="IProductView.cs" />
+    <Compile Include="OrdersPresenter.cs" />
     <Compile Include="ProductPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

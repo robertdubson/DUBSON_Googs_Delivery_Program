@@ -19,6 +19,12 @@ namespace DataLib
             EntitiesFromDataSourse.Remove(EntitiesFromDataSourse.Find(order => order.ID == ID));
         }
 
+        public void Delete(OrderEntity example) {
+
+            EntitiesFromDataSourse.Remove(example);
+
+        }
+
         public OrderEntity GetByID(int ID)
         {
             return EntitiesFromDataSourse.Find(order => order.ID == ID);

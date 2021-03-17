@@ -23,5 +23,10 @@ namespace Services
         List<IProduct> GetAllProducts();
 
         List<DeliveryType> GetAllTypes();
+
+        List<IProduct> FindByText(string text);
+
+        List<IProduct> FindByParameters(double maxWeight, double minWeight, double minVolume, double maxVolume, double maxPrice, double minPrice);
+
     }
 }

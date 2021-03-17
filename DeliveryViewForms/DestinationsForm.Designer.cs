@@ -41,6 +41,7 @@
             this.buttonCancel.TabIndex = 0;
             this.buttonCancel.Text = "СКАСУВАТИ";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSelectDestination
             // 
@@ -50,7 +51,6 @@
             this.buttonSelectDestination.TabIndex = 1;
             this.buttonSelectDestination.Text = "ОБРАТИ";
             this.buttonSelectDestination.UseVisualStyleBackColor = true;
-            this.buttonSelectDestination.Click += new System.EventHandler(this.buttonSelectDestination_Click);
             // 
             // listBoxDestinations
             // 

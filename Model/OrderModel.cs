@@ -19,5 +19,10 @@ namespace Model
         public DateTime TimeOfOrdering { get; set; }
 
         public double TimeNeededForDelivery { get; set; }
+
+        public override string ToString()
+        {
+            return Destination.Name + Product.Name + Product.Price + TimeOfOrdering.ToString();
+        }
     }
 }

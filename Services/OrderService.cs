@@ -40,6 +40,11 @@ namespace Services
             _orderRepository.Delete(ID);
         }
 
+        public void DeleteOrder(IOrder order)
+        {
+            _orderRepository.Delete(_orderMapper.FromDomainToEntity(order));
+        }
+
         public IOrder GetOrderByID(int ID)
         {
             return _orderMapper.FromEntityToDomain(_orderRepository.GetByID(ID));
@@ -54,6 +59,12 @@ namespace Services
         public void UpdateOrder(IOrder order)
         {
             _orderRepository.Update(_orderMapper.FromDomainToEntity(order));
+        }
+
+        public List<IOrder> GetAllOrders() {
+
+            return _orderRepository.EntitiesFromDataSourse.Select(ord => _orderMapper.FromEntityToDomain(ord)).ToList();
+        
         }
 
         public IOrder CreateAnOrder(IDestination destination, IProduct product, List<ITransport> suitableTransport) {
@@ -84,8 +95,14 @@ namespace Services
                 ITransport selectedTransport = suitableTransport.FindAll(transport => transport.InTheShop).ToList().ElementAt(0);
 
                 double timeNeededForDelivery = 0;
-                
-                timeNeededForDelivery =  (double)destination.Distance / selectedTransport.Speed;
+
+                double dist = destination.Distance;
+
+                double speed = selectedTransport.Speed;
+
+                timeNeededForDelivery = dist / speed;
+
+                //timeNeededForDelivery =  Convert.ToDouble(destination.Distance)  / Convert.ToDouble(selectedTransport.Speed);
 
                 timeNeededForDelivery = product.TimeForPreparation + timeNeededForDelivery;
 

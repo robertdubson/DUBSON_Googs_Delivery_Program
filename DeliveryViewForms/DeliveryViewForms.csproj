@@ -52,6 +52,18 @@
     <Compile Include="DestinationsForm.Designer.cs">
       <DependentUpon>DestinationsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecentOrdersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecentOrdersForm.Designer.cs">
+      <DependentUpon>RecentOrdersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +80,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DestinationsForm.resx">
       <DependentUpon>DestinationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecentOrdersForm.resx">
+      <DependentUpon>RecentOrdersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
@@ -98,6 +116,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataLib\DataLib.csproj">
+      <Project>{b6e598a5-53f8-4f0a-b8a5-b56f2005dff0}</Project>
+      <Name>DataLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mappers\Mappers.csproj">
       <Project>{9b6f8c71-a38d-4e44-bd65-0c8954531f5a}</Project>
       <Name>Mappers</Name>

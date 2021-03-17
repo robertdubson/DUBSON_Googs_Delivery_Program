@@ -34,5 +34,10 @@ namespace Domain
         
         }
 
+        public override string ToString()
+        {
+            return Name + Weight.ToString()  + Volume.ToString()  + Price.ToString() + "$";
+        }
+
     }
 }

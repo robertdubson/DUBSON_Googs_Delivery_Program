@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Presenters;
+using DataLib;
 namespace DeliveryViewForms
 {
     public partial class StartForm : Form
     {
+        DataInitializer dataInitializer;
+        
         public StartForm()
         {
             InitializeComponent();
 
-            
+            dataInitializer = new DataInitializer();
             
         }
 
@@ -35,6 +38,22 @@ namespace DeliveryViewForms
             
 
             
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Dispose();
+            this.Close();
+        }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            FormAbout about = new FormAbout();
+
+            about.Show();
+
+            this.Hide();
         }
     }
 }

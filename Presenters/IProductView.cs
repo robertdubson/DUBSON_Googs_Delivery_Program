@@ -13,6 +13,24 @@ namespace Presenters
 
         event Action CategorySelected;
 
+        event Action parametersChanged;
+
+        event Action textChanged;
+
+        string InsertedText { get; }
+
+        decimal minWeight { get; }
+
+        decimal maxWeight { get; }
+
+        decimal minVolume { get; }
+
+        decimal maxVolume { get; }
+
+        decimal minPrice { get; }
+
+        decimal maxPrice { get; }
+
         DeliveryTypeModel SelectedType { get; set; }
 
         ProductModel SelectedProduct { get; set; }
@@ -21,9 +39,7 @@ namespace Presenters
 
         
 
-        void ProdSel();
-
-        void CatSel();
+        
 
 
     }

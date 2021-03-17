@@ -45,6 +45,10 @@ namespace Presenters
 
             _view.CategorySelected += RebuildCategoryTable;
 
+            _view.textChanged += FindByText;
+
+            _view.parametersChanged += FindByParameters;
+
             //this.initialize();
 
             
@@ -62,10 +66,22 @@ namespace Presenters
 
         //public void initialize() {
 
-           // _view.CategorySelected += RebuildCategoryTable;
+        // _view.CategorySelected += RebuildCategoryTable;
 
-            //_view.ProductSelected += SelectTheProduct;
+        //_view.ProductSelected += SelectTheProduct;
         //}
+
+        public void FindByText() {
+
+            _view.DisplayData(deliveryTypes, _productService.FindByText(_view.InsertedText).Select(prod => productMapper.FromDomainToModel(prod)).ToList());
+        
+        }
+
+        public void FindByParameters() {
+
+            _view.DisplayData(deliveryTypes, _productService.FindByParameters(Convert.ToDouble(_view.maxWeight), Convert.ToDouble(_view.minWeight), Convert.ToDouble(_view.minVolume), Convert.ToDouble(_view.maxVolume), Convert.ToDouble(_view.maxPrice), Convert.ToDouble(_view.minPrice)).Select(prod => productMapper.FromDomainToModel(prod)).ToList());
+        
+        }
 
         public void SelectTheProduct() {
 
