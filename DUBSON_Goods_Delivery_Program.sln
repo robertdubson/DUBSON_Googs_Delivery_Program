@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryViewForms", "DeliveryViewForms\DeliveryViewForms.csproj", "{1178B747-4888-49ED-9784-4CB78AFF30DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryAppWPF", "DeliveryAppWPF\DeliveryAppWPF.csproj", "{CBCCAFDC-11C5-4FB8-8EAC-886F7E487148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{6A50F153-3578-4754-8693-FC896AFD3D3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{1178B747-4888-49ED-9784-4CB78AFF30DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1178B747-4888-49ED-9784-4CB78AFF30DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1178B747-4888-49ED-9784-4CB78AFF30DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCCAFDC-11C5-4FB8-8EAC-886F7E487148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCCAFDC-11C5-4FB8-8EAC-886F7E487148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCCAFDC-11C5-4FB8-8EAC-886F7E487148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCCAFDC-11C5-4FB8-8EAC-886F7E487148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A50F153-3578-4754-8693-FC896AFD3D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A50F153-3578-4754-8693-FC896AFD3D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A50F153-3578-4754-8693-FC896AFD3D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A50F153-3578-4754-8693-FC896AFD3D3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
