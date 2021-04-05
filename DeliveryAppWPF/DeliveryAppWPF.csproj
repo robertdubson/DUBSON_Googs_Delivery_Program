@@ -58,13 +58,21 @@
     <Compile Include="AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DestinationWindow.xaml.cs">
+      <DependentUpon>DestinationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProductsWindow.xaml.cs">
       <DependentUpon>ProductsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RecentOrdersWindow.xaml.cs">
       <DependentUpon>RecentOrdersWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowService.cs" />
     <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DestinationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +124,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Commands\Commands.csproj">
+      <Project>{b6842f17-8c5d-4432-9222-daf61e9b4679}</Project>
+      <Name>Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{6a50f153-3578-4754-8693-fc896afd3d3c}</Project>
       <Name>ViewModels</Name>

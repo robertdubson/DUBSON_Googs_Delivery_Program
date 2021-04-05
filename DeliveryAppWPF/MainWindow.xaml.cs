@@ -23,32 +23,12 @@ namespace DeliveryAppWPF
         public MainWindow()
         {
             InitializeComponent();
+
+            WindowService windowService = new WindowService(this);
+
+            this.DataContext = windowService;
+        
         }
-
-        private void buttonExit_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void buttonSeeOrders_Click(object sender, RoutedEventArgs e)
-        {
-            RecentOrdersWindow ordersWindow = new RecentOrdersWindow();
-            
-            ordersWindow.Show();
-
-        }
-
-        private void buttonAbout_Click(object sender, RoutedEventArgs e)
-        {
-            AboutWindow about = new AboutWindow();
-            about.Show();
-        }
-
-        private void buttonSeeProducts_Click(object sender, RoutedEventArgs e)
-        {
-            ProductsWindow products = new ProductsWindow();
-
-            products.Show();
-        }
+        
     }
 }

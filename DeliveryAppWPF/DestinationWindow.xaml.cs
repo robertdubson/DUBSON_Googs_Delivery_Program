@@ -11,30 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ViewModels;
 
 namespace DeliveryAppWPF
 {
     /// <summary>
-    /// Interaction logic for ProductsWindow.xaml
+    /// Interaction logic for DestinationWindow.xaml
     /// </summary>
-    public partial class ProductsWindow : Window
+    public partial class DestinationWindow : Window
     {
-        ProductViewModel prodViewModel;
-
-        DestinationViewModel destinationViewModel;
-        public ProductsWindow()
+        public DestinationWindow()
         {
             InitializeComponent();
-
-            prodViewModel = new ProductViewModel();
-
-            destinationViewModel = new DestinationViewModel();
-
-            this.DataContext = prodViewModel;
-        
         }
-
-        
     }
 }

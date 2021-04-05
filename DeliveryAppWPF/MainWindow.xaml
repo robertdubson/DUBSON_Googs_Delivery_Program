@@ -39,27 +39,27 @@
                     Grid.Row="2"
                     Grid.Column="1" Margin="165,13,165,10"
                     Background="BlueViolet"
-                    Click="buttonSeeProducts_Click"
+                    Command="{Binding Path=GoToProductsCommand}"
                     />
         <Button x:Name="buttonSeeOrders" Content="Recent Orders"
                 Grid.Row="3"
                     Grid.Column="2" Margin="165,13,165,10"
                     Background="BlueViolet"
-                Click="buttonSeeOrders_Click"
+                Command="{Binding Path=GoToRecentOrdersCommand}"
                 
                 />
         <Button x:Name="buttonAbout" Content="About"
                 Grid.Row="4"
                     Grid.Column="2" Margin="165,13,165,10"
                     Background="BlueViolet"
-               Click="buttonAbout_Click" 
+               Command="{Binding Path=GoToAboutCommand}"
                 
                 />
         <Button x:Name="buttonExit" Content="Exit"
                 Grid.Row="5"
                     Grid.Column="2" Margin="165,13,165,10"
                     Background="BlueViolet"
-                Click="buttonExit_Click"
+                Command="{Binding Path=ExitCommand}"
                 
                 />
 

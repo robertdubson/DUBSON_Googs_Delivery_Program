@@ -15,6 +15,8 @@ namespace ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private ProductModel currentProduct;
+
         public void OnPropertyChanged(string propertyName) {
 
 
@@ -26,7 +28,7 @@ namespace ViewModels
 
         ProductMapper productMapper;
 
-        private List<ProductModel> modelObects;
+        private List<ProductModel> modelObjects;
 
         public ProductViewModel() {
 
@@ -34,17 +36,19 @@ namespace ViewModels
 
             productMapper = new ProductMapper();
 
-            modelObects = new List<ProductModel>();
+            modelObjects = new List<ProductModel>();
 
             LoadData();
         
         }
 
-        public List<ProductModel> ModelObjects { get { return modelObects; } set { modelObects = value; OnPropertyChanged("modelObjects"); } }
+        public List<ProductModel> ModelObjects { get { return modelObjects; } set { modelObjects = value; OnPropertyChanged("modelObjects"); } }
+
+        public ProductModel CurrentProduct { get { return currentProduct; } set { currentProduct = value; OnPropertyChanged("currentProduct"); } }
 
         public void LoadData() {
 
-            modelObects = productService.GetAllProducts().Select(prod => productMapper.FromDomainToModel(prod)).ToList();
+            modelObjects = productService.GetAllProducts().Select(prod => productMapper.FromDomainToModel(prod)).ToList();
         
         }
     }

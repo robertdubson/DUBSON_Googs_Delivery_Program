@@ -9,7 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -26,13 +26,7 @@
                    VerticalAlignment="Center"
                    Margin="15"
                    />
-        <TextBlock Text="Будь ласка, оберіть бажане місце призначення: "
-                   Grid.Column="1"
-                   Grid.Row="0"
-                   FontSize="16"
-                   VerticalAlignment="Center"
-                   Margin="15"
-                   />
+        
 
         <TextBox Name="productSearchBar"
                  
@@ -42,32 +36,37 @@
                  
                  />
 
-        <TextBox Name="destinationSearchBar"
-                 
-                 Grid.Row="1"
-                 Grid.Column="1" Margin="32,22,47,69"
-                 
-                 
-                 />
+        
 
         <DataGrid Name="Products"
                   AutoGenerateColumns="False"
                   Grid.Column="0"
                   Grid.Row="2"
-                  ItemsSource="{Binding Path=modelObjects}"
-                  
-                  />
+                  ItemsSource="{Binding Path=ModelObjects}"
+                  SelectedItem="{Binding Path=CurrentProduct, Mode=TwoWay}"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="PRODUCT" Width="auto"
+                                    
+                                    Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="WEIGHT" Width="auto"
+                                    
+                                    Binding="{Binding Path=Weight}"/>
+                <DataGridTextColumn Header="VOLUME" Width="auto"
+                                    
+                                    Binding="{Binding Path=Volume}"/>
+                <DataGridTextColumn Header="PRICE" Width="auto"
+                                    
+                                    Binding="{Binding Path=Price}"/>
+                </DataGrid.Columns>
+            
+        </DataGrid>
+
         
-        <DataGrid Name="Destinations"
-                  AutoGenerateColumns="False"
-                  Grid.Column="1"
-                  Grid.Row="2"
-                  
-                  />
-        <Button Name="acceptButton"
-                Content="Замовити"
+        <Button Name="selectProductButton"
+                Content="Обрати"
                 
-                Grid.Column="1"
+                Grid.Column="0"
                 Grid.Row="4" Margin="86,40,96,39"
                 />
     </Grid>
