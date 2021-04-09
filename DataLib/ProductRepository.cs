@@ -4,39 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entity;
-
+using System.Data.Entity;
 namespace DataLib
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : Repository<ProductEntity>, IProductRepository
     {
-        public List<ProductEntity> EntitiesFromDataSourse { get; set; }
-        public List<DeliveryTypeEntity> typesOfDelivery { get; set; }
+        //public List<ProductEntity> Context { get; set; }
 
-        public void Add(ProductEntity example)
-        {
-            EntitiesFromDataSourse.Add(example);
+        
+
+        IEnumerable<DeliveryTypeEntity> typesOfDelivery;
+
+        public ProductRepository(DbContext context) : base(context) {
+
+            
+        
         }
 
-        public void Delete(int ID)
-        {
-            EntitiesFromDataSourse.Remove(EntitiesFromDataSourse.Find(product => product.ID == ID));
-
-        }
-
-        public List<DeliveryTypeEntity> GetAllTypes()
+        
+        public IEnumerable<DeliveryTypeEntity> GetAllTypes()
         {
             return typesOfDelivery;
         }
 
-        public ProductEntity GetByID(int ID)
-        {
-            return EntitiesFromDataSourse.Find(product => product.ID == ID);
-        }
-
-        public void Update(ProductEntity example)
-        {
-            EntitiesFromDataSourse.Remove(EntitiesFromDataSourse.Find(product => product.ID == example.ID));
-            EntitiesFromDataSourse.Add(example);
-        }
+        
+       
     }
 }

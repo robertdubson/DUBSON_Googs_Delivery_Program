@@ -18,15 +18,16 @@ namespace DataLib
 
         public DataInitializer() {
 
+        /*
             destinationRepository = new DestinationRepository();
 
-            destinationRepository.EntitiesFromDataSourse = new List<DestinationEntity>();
+            destinationRepository.Context = new List<DestinationEntity>();
 
-            destinationRepository.EntitiesFromDataSourse.Add(new DestinationEntity("Kyiv", 640.0));
-            destinationRepository.EntitiesFromDataSourse.Add(new DestinationEntity("Harkiv", 740.0));
-            destinationRepository.EntitiesFromDataSourse.Add(new DestinationEntity("Dnipro", 100.0));
-            destinationRepository.EntitiesFromDataSourse.Add(new DestinationEntity("Lviv", 700.0));
-            destinationRepository.EntitiesFromDataSourse.Add(new DestinationEntity("Chernivzi", 500.0));
+            destinationRepository.Context.Add(new DestinationEntity("Kyiv", 640.0));
+            destinationRepository.Context.Add(new DestinationEntity("Harkiv", 740.0));
+            destinationRepository.Context.Add(new DestinationEntity("Dnipro", 100.0));
+            destinationRepository.Context.Add(new DestinationEntity("Lviv", 700.0));
+            destinationRepository.Context.Add(new DestinationEntity("Chernivzi", 500.0));
 
             DeliveryTypeEntity deliveryType1 = new DeliveryTypeEntity { ID = 1, DeliveryType = "Fragile" };
             DeliveryTypeEntity deliveryType2 = new DeliveryTypeEntity { ID = 2, DeliveryType = "SuperHeavy" };
@@ -36,13 +37,13 @@ namespace DataLib
 
             orderRepository = new OrderRepository();
 
-            orderRepository.EntitiesFromDataSourse = new List<OrderEntity>();
+            orderRepository.Context = new List<OrderEntity>();
 
             
 
             transportRepository = new TransportRepository();
 
-            transportRepository.EntitiesFromDataSourse = new List<TransportEntity>();
+            transportRepository.Context = new List<TransportEntity>();
 
             transportRepository.Add(new TransportEntity(65.0, deliveryType1));
             transportRepository.Add(new TransportEntity(65.0, deliveryType2));
@@ -54,7 +55,7 @@ namespace DataLib
 
             productRepository = new ProductRepository();
 
-            productRepository.EntitiesFromDataSourse = new List<ProductEntity>();
+            productRepository.Context = new List<ProductEntity>();
 
             productRepository.typesOfDelivery = new List<DeliveryTypeEntity>();
 
@@ -63,9 +64,10 @@ namespace DataLib
             productRepository.typesOfDelivery.Add(deliveryType3);
             productRepository.typesOfDelivery.Add(deliveryType4);
 
-            productRepository.EntitiesFromDataSourse.Add(new ProductEntity("Laptop", 4, 5, 3000, 200.0, deliveryType3));
-            productRepository.EntitiesFromDataSourse.Add(new ProductEntity("Fridge", 4, 5, 4500, 100.0, deliveryType2));
-            productRepository.EntitiesFromDataSourse.Add(new ProductEntity("Table", 4, 5, 3000, 150.0, deliveryType2));
+            productRepository.Context.Add(new ProductEntity("Laptop", 4, 5, 3000, 200.0, deliveryType3));
+            productRepository.Context.Add(new ProductEntity("Fridge", 4, 5, 4500, 100.0, deliveryType2));
+            productRepository.Context.Add(new ProductEntity("Table", 4, 5, 3000, 150.0, deliveryType2));
+            */
         }
     }
 }

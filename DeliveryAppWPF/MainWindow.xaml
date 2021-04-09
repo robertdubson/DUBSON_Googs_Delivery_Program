@@ -4,14 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeliveryAppWPF"
+        xmlns:viewmodels="clr-namespace:ViewModels;assembly=ViewModels"
         mc:Ignorable="d"
-        Title="Dubson Delivery Service" Height="450" Width="800">
-    <Grid>
+        Title="Dubson Delivery Service" Height="450" Width="992">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:AboutViewModel}">
+            <local:AboutView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:ProductViewModel}">
+            <local:ProductsView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:OrderViewModel}">
+            <local:OrdersView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Margin="0,10,23,0">
+
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="357.5"/>
+            <ColumnDefinition Width="174"/>
 
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="347"/>
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,41 +39,49 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
+        <ContentControl Content="{Binding CurrentWindowViewModel}" Grid.Column="0"
+                        
+                        Height="auto"
+                        
+                        Margin="15,15,162,10" Grid.RowSpan="7" Grid.ColumnSpan="3"
+                        
+                        />
+
         <TextBlock Text="Delivery Service"
                    Grid.Row="0"
-                   Grid.ColumnSpan="2"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="20"
                    FontWeight="Bold" 
-                   FontStyle="Italic"
+                   FontStyle="Italic" RenderTransformOrigin="0.49,0.519" Grid.Column="2" Margin="200,15,0,16" Height="28" Width="148"
                    
                    />
-        
-            <Button Name="buttonSeeProducts" 
+
+        <Button Name="buttonSeeProducts" 
                     Content="Products" 
                     Grid.Row="2"
-                    Grid.Column="1" Margin="165,13,165,10"
+                    Grid.Column="2" Margin="200,10,38,13"
                     Background="BlueViolet"
-                    Command="{Binding Path=GoToProductsCommand}"
+                    Command="{Binding SetProductsVMCommand}"
                     />
         <Button x:Name="buttonSeeOrders" Content="Recent Orders"
                 Grid.Row="3"
-                    Grid.Column="2" Margin="165,13,165,10"
+                    Grid.Column="2" Margin="200,10,38,13"
                     Background="BlueViolet"
-                Command="{Binding Path=GoToRecentOrdersCommand}"
+                Command="{Binding SetOrdersVMCommand}"
                 
                 />
         <Button x:Name="buttonAbout" Content="About"
                 Grid.Row="4"
-                    Grid.Column="2" Margin="165,13,165,10"
+                    Grid.Column="2" Margin="200,10,38,13"
                     Background="BlueViolet"
-               Command="{Binding Path=GoToAboutCommand}"
-                
+               Command="{Binding SetAboutVMCommand}"
+               
                 />
         <Button x:Name="buttonExit" Content="Exit"
                 Grid.Row="5"
-                    Grid.Column="2" Margin="165,13,165,10"
+                    Grid.Column="2" Margin="200,10,38,13"
                     Background="BlueViolet"
                 Command="{Binding Path=ExitCommand}"
                 

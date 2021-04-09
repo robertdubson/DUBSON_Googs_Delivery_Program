@@ -74,7 +74,7 @@ namespace Presenters
 
                 orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
 
-                transportService.UdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
+                transportService.UpdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
 
                 _view.DisplayCurrentOrderInfo(newOrder);
 

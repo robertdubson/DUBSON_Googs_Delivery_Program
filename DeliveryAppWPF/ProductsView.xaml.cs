@@ -16,21 +16,15 @@ using ViewModels;
 namespace DeliveryAppWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProductsView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProductsView : UserControl
     {
-        public MainWindow()
+        public ProductsView()
         {
             InitializeComponent();
 
-            //WindowService windowService = new WindowService(this);
-
-            //this.DataContext = windowService;
-
-            this.DataContext = new ApplicationViewModel();
-        
+            this.DataContext = new ProductViewModel();
         }
-        
     }
 }

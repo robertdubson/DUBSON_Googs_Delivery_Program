@@ -43,22 +43,29 @@ namespace Services
             return _transportMapper.FromEntityToDomain(_transportRepository.GetByID(ID));
         }
 
-        public void UdateTransport(ITransport transport)
-        {
-            _transportRepository.Update(_transportMapper.FromDomainToEntity(transport));
-        }
+        
 
         public List<ITransport> GetAllTransports() {
 
-            return _transportRepository.EntitiesFromDataSourse.Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
+            return _transportRepository.GetAll().Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
         }
 
         public List<ITransport> GetSuitableTransport(IProduct product) {
 
             // повертаємо усі одиниці транспорту, що підходять для перевезення продукту отриманого типу
             
-            return _transportRepository.EntitiesFromDataSourse.FindAll(transport => transport.DeliveryType.ID == _productMapper.FromDomainToEntity(product).DeliveryType.ID).Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
+            return _transportRepository.GetAll().ToList().FindAll(transport => transport.DeliveryType.ID == _productMapper.FromDomainToEntity(product).DeliveryType.ID).Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
         
+        }
+
+        public void UpdateTransport(ITransport transport) {
+
+            _transportRepository.GetByID(transport.ID).InTheShop = _transportMapper.FromDomainToEntity(transport).InTheShop;
+
+            _transportRepository.GetByID(transport.ID).Speed = _transportMapper.FromDomainToEntity(transport).Speed;
+
+            _transportRepository.GetByID(transport.ID).DeliveryType = _transportMapper.FromDomainToEntity(transport).DeliveryType;
+
         }
         
     }

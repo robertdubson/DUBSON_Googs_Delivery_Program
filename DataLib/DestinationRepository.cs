@@ -3,34 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 using Entity;
+using System.Data.Entity;
+
 namespace DataLib
 {
-    public class DestinationRepository : IDestinationRepository
+    public class DestinationRepository : Repository<DestinationEntity>, IDestinationRepository
     {
-        public List<DestinationEntity> EntitiesFromDataSourse { get; set; }
+        //public List<DestinationEntity> Context { get; set; }
+
         
-        public void Add(DestinationEntity example)
-        {
-            EntitiesFromDataSourse.Add(example);
-        }
 
-        public void Delete(int ID)
-        {
-            EntitiesFromDataSourse.Remove(EntitiesFromDataSourse.Find(dest => dest.ID == ID));
-        }
+        public DestinationRepository(DbContext context) : base(context) { 
+        
 
-        public DestinationEntity GetByID(int ID)
-        {
-            return EntitiesFromDataSourse.Find(dest => dest.ID == ID);
-        }
-
-        public void Update(DestinationEntity example)
-        {
-            EntitiesFromDataSourse.Remove(EntitiesFromDataSourse.Find(dest => dest.ID == example.ID));
-            EntitiesFromDataSourse.Add(example);
+        
         }
 
         
+
+       
     }
 }

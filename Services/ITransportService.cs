@@ -18,7 +18,7 @@ namespace Services
 
         void DeleteTransport(int ID);
 
-        void UdateTransport(ITransport transport);
+        void UpdateTransport(ITransport transport);
 
         List<ITransport> GetSuitableTransport(IProduct product);
 

@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutViewModel.cs" />
+    <Compile Include="ApplicationViewModel.cs" />
     <Compile Include="DestinationViewModel.cs" />
+    <Compile Include="HomeViewModel.cs" />
+    <Compile Include="IViewModel.cs" />
     <Compile Include="OrderViewModel.cs" />
     <Compile Include="ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

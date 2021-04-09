@@ -6,10 +6,46 @@ using System.Threading.Tasks;
 using Model;
 using Services;
 using System.ComponentModel;
-
+using DataLib;
+using Mappers;
 namespace ViewModels
 {
-    public class OrderViewModel
+    public class OrderViewModel : IViewModel, INotifyPropertyChanged
     {
+        List<OrderModel> modelObjects;
+
+        OrderModel currentOrder;
+
+        OrderService _orderService;
+
+        OrderMapper orderMapper;
+
+        public OrderViewModel()
+        {
+            _orderService = new OrderService(new DataInitializer().orderRepository);
+            
+            orderMapper = new OrderMapper();
+
+            LoadData();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string propertyName)
+        {
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        }
+
+        public List<OrderModel> ModelObjects { get { return modelObjects; } set { modelObjects = value; OnPropertyChanged("modelObjects"); } }
+
+        public OrderModel CurrentOrder { get { return currentOrder; } set { currentOrder = value; OnPropertyChanged("CurrentOrder"); } }
+
+        public void LoadData() {
+
+            ModelObjects = _orderService.GetAllOrders().Select(order => orderMapper.FromDomainToModel(order)).ToList();
+        
+        }
     }
 }

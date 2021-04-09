@@ -56,14 +56,10 @@ namespace Services
         
         }
 
-        public void UpdateOrder(IOrder order)
-        {
-            _orderRepository.Update(_orderMapper.FromDomainToEntity(order));
-        }
-
+       
         public List<IOrder> GetAllOrders() {
 
-            return _orderRepository.EntitiesFromDataSourse.Select(ord => _orderMapper.FromEntityToDomain(ord)).ToList();
+            return _orderRepository.GetAll().Select(ord => _orderMapper.FromEntityToDomain(ord)).ToList();
         
         }
 

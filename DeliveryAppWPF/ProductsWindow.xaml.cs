@@ -29,7 +29,7 @@ namespace DeliveryAppWPF
 
             prodViewModel = new ProductViewModel();
 
-            destinationViewModel = new DestinationViewModel();
+            
 
             this.DataContext = prodViewModel;
         

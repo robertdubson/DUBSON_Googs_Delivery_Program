@@ -38,7 +38,7 @@ namespace Services
 
         public List<IDestination> GetAllDestinations()
         {
-            return _destinationRepository.EntitiesFromDataSourse.Select(dest => _destinationMapper.FromEntityToDomain(dest)).ToList();
+            return _destinationRepository.GetAll().Select(dest => _destinationMapper.FromEntityToDomain(dest)).ToList();
         }
 
         public IDestination GetDestinationByID(int ID)
@@ -46,9 +46,6 @@ namespace Services
             return _destinationMapper.FromEntityToDomain(_destinationRepository.GetByID(ID));
         }
 
-        public void UpdateDestination(IDestination destination)
-        {
-            _destinationRepository.Update(_destinationMapper.FromDomainToEntity(destination));
-        }
+        
     }
 }

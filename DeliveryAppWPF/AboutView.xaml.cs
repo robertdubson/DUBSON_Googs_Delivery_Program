@@ -12,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ViewModels;
+
 namespace DeliveryAppWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AboutView : UserControl
     {
-        public MainWindow()
+        public AboutView()
         {
             InitializeComponent();
-
-            //WindowService windowService = new WindowService(this);
-
-            //this.DataContext = windowService;
-
-            this.DataContext = new ApplicationViewModel();
-        
         }
-        
     }
 }
