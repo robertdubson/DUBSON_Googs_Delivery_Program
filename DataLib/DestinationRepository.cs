@@ -15,9 +15,9 @@ namespace DataLib
 
         
 
-        public DestinationRepository(DbContext context) : base(context) { 
-        
+        public DestinationRepository(DbContext context) : base(context) {
 
+            _DbSet = context.Set<DestinationEntity>();
         
         }
 

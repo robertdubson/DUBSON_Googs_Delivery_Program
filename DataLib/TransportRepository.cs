@@ -11,7 +11,9 @@ namespace DataLib
     {
         
 
-        public TransportRepository(DbContext context) : base(context) { 
+        public TransportRepository(DbContext context) : base(context) {
+
+            _DbSet = context.Set<TransportEntity>();
         
         }
 

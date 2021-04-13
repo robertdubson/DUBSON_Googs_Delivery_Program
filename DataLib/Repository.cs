@@ -10,30 +10,40 @@ namespace DataLib
     {
         private readonly DbContext Context;
 
+        public DbSet<EntityName> _DbSet;
+
         public Repository(DbContext context) {
 
             Context = context;
+
+            _DbSet = Context.Set<EntityName>();
         
         }
 
         public void Add(EntityName example)
         {
-            Context.Set<EntityName>().Add(example);
+            _DbSet.Add(example);
         }
 
         public void Delete(int ID)
         {
-            Context.Set<EntityName>().Remove(Context.Set<EntityName>().Find(ID));
+            _DbSet.Remove(Context.Set<EntityName>().Find(ID));
         }
 
         public IEnumerable<EntityName> GetAll()
         {
-            return Context.Set<EntityName>();
+            return _DbSet;
         }
 
         public EntityName GetByID(int ID)
         {
-            return Context.Set<EntityName>().Find(ID);
+            return _DbSet.Find(ID);
+        }
+
+        public void Update(EntityName example)
+        {
+            Context.Entry(example).State = EntityState.Modified;
+            Context.SaveChanges();
         }
     }
 }

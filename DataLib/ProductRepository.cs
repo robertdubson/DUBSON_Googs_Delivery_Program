@@ -17,11 +17,17 @@ namespace DataLib
 
         public ProductRepository(DbContext context) : base(context) {
 
-            
+            _DbSet = context.Set<ProductEntity>();
+
+            typesOfDelivery = context.Set<DeliveryTypeEntity>();
         
         }
 
-        
+        public void AddNewType(DeliveryTypeEntity deliveryType)
+        {
+            typesOfDelivery.ToList().Add(deliveryType);
+        }
+
         public IEnumerable<DeliveryTypeEntity> GetAllTypes()
         {
             return typesOfDelivery;

@@ -5,18 +5,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6E598A5-53F8-4F0A-B8A5-B56F2005DFF0}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataLib</RootNamespace>
-    <AssemblyName>DataLib</AssemblyName>
+    <ProjectGuid>{CBFF1041-124C-4F8D-9358-2A257861DF2F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TestForEF</RootNamespace>
+    <AssemblyName>TestForEF</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -51,48 +53,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationContext.cs" />
-    <Compile Include="DataInitializer.cs" />
-    <Compile Include="DestinationRepository.cs" />
-    <Compile Include="IDestinationRepository.cs" />
-    <Compile Include="IOrderRepository.cs" />
-    <Compile Include="IProductRepository.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="ITransportRepository.cs" />
-    <Compile Include="Migrations\202104131133018_InitialCreate.cs" />
-    <Compile Include="Migrations\202104131133018_InitialCreate.designer.cs">
-      <DependentUpon>202104131133018_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104131202064_CreateDestination.cs" />
-    <Compile Include="Migrations\202104131202064_CreateDestination.designer.cs">
-      <DependentUpon>202104131202064_CreateDestination.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="OrderRepository.cs" />
-    <Compile Include="ProductRepository.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="TransportRepository.cs" />
-    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="UnitOfWork\UnitOfWork.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data\Entity.csproj">
-      <Project>{0670aed0-e3a1-450c-b630-18d2123b8b8e}</Project>
-      <Name>Entity</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202104131133018_InitialCreate.resx">
-      <DependentUpon>202104131133018_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104131202064_CreateDestination.resx">
-      <DependentUpon>202104131202064_CreateDestination.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\DataLib\DataLib.csproj">
+      <Project>{b6e598a5-53f8-4f0a-b8a5-b56f2005dff0}</Project>
+      <Name>DataLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Entity.csproj">
+      <Project>{0670aed0-e3a1-450c-b630-18d2123b8b8e}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mappers\Mappers.csproj">
+      <Project>{9b6f8c71-a38d-4e44-bd65-0c8954531f5a}</Project>
+      <Name>Mappers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -17,7 +17,7 @@ namespace DataLib
 
         EntityName GetByID(int ID);
 
-        
+        void Update(EntityName example);
 
         void Delete(int ID);
 
