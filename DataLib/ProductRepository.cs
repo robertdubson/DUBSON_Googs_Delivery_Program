@@ -13,19 +13,26 @@ namespace DataLib
 
         
 
-        IEnumerable<DeliveryTypeEntity> typesOfDelivery;
+        DbSet<DeliveryTypeEntity> typesOfDelivery;
 
         public ProductRepository(DbContext context) : base(context) {
 
             _DbSet = context.Set<ProductEntity>();
 
             typesOfDelivery = context.Set<DeliveryTypeEntity>();
+
+            _DbSet.Include(prod => prod.DeliveryType).ToList();
         
         }
 
         public void AddNewType(DeliveryTypeEntity deliveryType)
         {
-            typesOfDelivery.ToList().Add(deliveryType);
+            typesOfDelivery.Add(deliveryType);
+        }
+
+        public DeliveryTypeEntity FindTypeByID(int ID)
+        {
+            return typesOfDelivery.Find(ID);
         }
 
         public IEnumerable<DeliveryTypeEntity> GetAllTypes()

@@ -21,6 +21,8 @@ namespace DataLib
 
         void Delete(int ID);
 
+        void Delete(EntityName example);
+
         
 
     }

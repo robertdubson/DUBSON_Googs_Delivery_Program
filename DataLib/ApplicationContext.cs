@@ -20,6 +20,8 @@ namespace DataLib
             modelBuilder.Entity<ProductEntity>().ToTable("Product");
 
             modelBuilder.Entity<DeliveryTypeEntity>().ToTable("DeliveryType");
+
+            
         }
 
         public ApplicationContext() : base("ApplicationConnection") { 

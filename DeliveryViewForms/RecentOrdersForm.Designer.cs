@@ -52,7 +52,7 @@
             this.buttonCancelTheOrder.TabIndex = 1;
             this.buttonCancelTheOrder.Text = "СКАСУВАТИ ЗАМОВЛЕННЯ";
             this.buttonCancelTheOrder.UseVisualStyleBackColor = true;
-            this.buttonCancelTheOrder.Click += new System.EventHandler(this.buttonCancelTheOrder_Click);
+            
             // 
             // listBoxRecentOrders
             // 

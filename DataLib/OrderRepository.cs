@@ -16,13 +16,16 @@ namespace DataLib
         public OrderRepository(DbContext context) : base(context) { 
         
             _DbSet = context.Set<OrderEntity>();
-        
+
+            _DbSet.Include(transport => transport.InvolvedTransport).ToList();
+
+            _DbSet.Include(prod => prod.Product).ToList();
+
+            _DbSet.Include(dest => dest.Destination).ToList();
+
         }
 
-        public void Delete(OrderEntity example)
-        {
-            _DbSet.Remove(example);
-        }
+        
 
         public OrderEntity GetByInvolvedTransport(TransportEntity transport)
         {

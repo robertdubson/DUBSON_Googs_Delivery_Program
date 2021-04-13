@@ -7,6 +7,7 @@ using Services;
 using Mappers;
 using Model;
 using DataLib;
+using DataLib.UnitOfWork;
 
 namespace Presenters
 {
@@ -20,11 +21,16 @@ namespace Presenters
 
         List<OrderModel> orders;
 
+        UnitOfWork _unitOfWork;
+
+
         public OrdersPresenter(IOrderView view) {
 
             _view = view;
 
-            orderService = new OrderService(new DataInitializer().orderRepository);
+            _unitOfWork = new UnitOfWork(new ApplicationContext());
+
+            orderService = new OrderService(_unitOfWork.OrderRepository);
 
             orderMapper = new OrderMapper();
 
@@ -44,9 +50,15 @@ namespace Presenters
             }
             else {
 
-                orderService.DeleteOrder(orderMapper.FromModelToDomain(_view.SelectedOrder));
+                orderService.DeleteOrder(_view.SelectedOrder.ID);
+
+                _unitOfWork.Complete();
 
                 _view.DisplayData(orderService.GetAllOrders().Select(ord => orderMapper.FromDomainToModel(ord)).ToList());
+
+                
+                
+                //_unitOfWork.Dispose();
 
             }
             

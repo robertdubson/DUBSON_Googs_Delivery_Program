@@ -11,6 +11,6 @@ namespace DataLib
     {
         OrderEntity GetByInvolvedTransport(TransportEntity transport);
 
-        void Delete(OrderEntity example);
+        
     }
 }

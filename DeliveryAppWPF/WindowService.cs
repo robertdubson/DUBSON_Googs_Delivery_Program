@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace DeliveryAppWPF
 {
     public class WindowService
     {
+
+        
+
         MainWindow mainWindow;
         public WindowService(MainWindow window)
         {

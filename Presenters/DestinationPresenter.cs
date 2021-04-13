@@ -7,7 +7,9 @@ using Model;
 using Services;
 using Mappers;
 using DataLib;
-
+using DataLib.UnitOfWork;
+using System.Data.Entity;
+using Entity;
 namespace Presenters
 {
     public class DestinationPresenter
@@ -32,6 +34,8 @@ namespace Presenters
 
         OrderService orderService;
 
+        UnitOfWork _unitOfWork;
+
         public DestinationPresenter(IDestinationView view, ProductModel selectedProduct) {
 
             _view = view;
@@ -46,11 +50,13 @@ namespace Presenters
 
             _orderMapper = new OrderMapper();
 
-            destinationService = new DestinationService(new DataInitializer().destinationRepository);
+            _unitOfWork = new UnitOfWork(new ApplicationContext());
 
-            transportService = new TransportService(new DataInitializer().transportRepository);
+            destinationService = new DestinationService(_unitOfWork.DestinationRepository);
 
-            orderService = new OrderService(new DataInitializer().orderRepository);
+            transportService = new TransportService(_unitOfWork.TransportRepository);
+
+            orderService = new OrderService(_unitOfWork.OrderRepository);
 
             destinations = destinationService.GetAllDestinations().Select(dest => _destinationMapper.FromDomainToModel(dest)).ToList();
 
@@ -70,15 +76,20 @@ namespace Presenters
             }
             else {
 
+        
                 OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(_view.SelectedDestination), _productMapper.FromModelToDomain(SelectedProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(SelectedProduct))));
 
                 orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
+
+                //_unitOfWork.OrderRepository.Add(_orderMapper.FromDomainToEntity(_orderMapper.FromModelToDomain(newOrder)));
 
                 transportService.UpdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
 
                 _view.DisplayCurrentOrderInfo(newOrder);
 
+                _unitOfWork.Complete();
 
+                _unitOfWork.Dispose();
             }
 
             

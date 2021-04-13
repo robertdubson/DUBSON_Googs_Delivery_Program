@@ -30,6 +30,12 @@ namespace DataLib
             _DbSet.Remove(Context.Set<EntityName>().Find(ID));
         }
 
+        public void Delete(EntityName example)
+        {
+            Context.Entry(example).State = EntityState.Deleted;
+            Context.SaveChanges();
+        }
+
         public IEnumerable<EntityName> GetAll()
         {
             return _DbSet;

@@ -42,8 +42,7 @@ namespace DeliveryViewForms
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            this.Dispose();
+            
             this.Close();
         }
 
@@ -52,6 +51,17 @@ namespace DeliveryViewForms
             FormAbout about = new FormAbout();
 
             about.Show();
+
+            this.Hide();
+        }
+
+        private void buttonRecentOrders_Click(object sender, EventArgs e)
+        {
+            RecentOrdersForm recentOrdersForm = new RecentOrdersForm();
+
+            OrdersPresenter ordersPresenter = new OrdersPresenter(recentOrdersForm);
+
+            recentOrdersForm.Show();
 
             this.Hide();
         }

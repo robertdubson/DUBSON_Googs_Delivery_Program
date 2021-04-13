@@ -9,11 +9,15 @@ namespace DataLib
 {
     public class TransportRepository : Repository<TransportEntity>, ITransportRepository
     {
-        
+        DbSet<DeliveryTypeEntity> deliveryTypes;
 
         public TransportRepository(DbContext context) : base(context) {
 
             _DbSet = context.Set<TransportEntity>();
+
+            deliveryTypes = context.Set<DeliveryTypeEntity>();
+
+            _DbSet.Include(transport => transport.DeliveryType).ToList();
         
         }
 

@@ -9,6 +9,8 @@ using Services;
 using Mappers;
 using DataLib;
 using Domain;
+using DataLib.UnitOfWork;
+
 namespace Presenters
 {
     public class ProductPresenter
@@ -25,13 +27,19 @@ namespace Presenters
 
         IProductView _view;
 
+        UnitOfWork _unitOFWork;
+
         public ProductPresenter(IProductView view) {
 
-            _productService = new ProductService(new DataInitializer().productRepository);
+            
 
             productMapper = new ProductMapper();
 
             deliveryTypeMapper = new DeliveryTypeMapper();
+
+            _unitOFWork = new UnitOfWork(new ApplicationContext());
+
+            _productService = new ProductService(_unitOFWork.ProductRepository);
 
             deliveryTypes = _productService.GetAllTypes().Select(delType => deliveryTypeMapper.FromDomainToModel(delType)).ToList();
 

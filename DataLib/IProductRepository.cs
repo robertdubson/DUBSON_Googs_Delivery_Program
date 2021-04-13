@@ -13,5 +13,7 @@ namespace DataLib
         IEnumerable<DeliveryTypeEntity> GetAllTypes();
 
         void AddNewType(DeliveryTypeEntity deliveryType);
+
+        DeliveryTypeEntity FindTypeByID(int ID);
     }
 }

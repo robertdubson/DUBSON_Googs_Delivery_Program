@@ -32,6 +32,7 @@
             this.buttonAbout = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.labelFront = new System.Windows.Forms.Label();
+            this.buttonRecentOrders = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // seeAllProducts
@@ -48,7 +49,7 @@
             // buttonAbout
             // 
             this.buttonAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAbout.Location = new System.Drawing.Point(156, 177);
+            this.buttonAbout.Location = new System.Drawing.Point(156, 223);
             this.buttonAbout.Name = "buttonAbout";
             this.buttonAbout.Size = new System.Drawing.Size(161, 41);
             this.buttonAbout.TabIndex = 1;
@@ -59,7 +60,7 @@
             // buttonExit
             // 
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonExit.Location = new System.Drawing.Point(156, 224);
+            this.buttonExit.Location = new System.Drawing.Point(156, 270);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(161, 41);
             this.buttonExit.TabIndex = 2;
@@ -77,11 +78,23 @@
             this.labelFront.TabIndex = 3;
             this.labelFront.Text = "DELIVERY SERVICE";
             // 
+            // buttonRecentOrders
+            // 
+            this.buttonRecentOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRecentOrders.Location = new System.Drawing.Point(156, 177);
+            this.buttonRecentOrders.Name = "buttonRecentOrders";
+            this.buttonRecentOrders.Size = new System.Drawing.Size(161, 41);
+            this.buttonRecentOrders.TabIndex = 4;
+            this.buttonRecentOrders.Text = "Замовлення";
+            this.buttonRecentOrders.UseVisualStyleBackColor = true;
+            this.buttonRecentOrders.Click += new System.EventHandler(this.buttonRecentOrders_Click);
+            // 
             // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 304);
+            this.ClientSize = new System.Drawing.Size(449, 339);
+            this.Controls.Add(this.buttonRecentOrders);
             this.Controls.Add(this.labelFront);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonAbout);
@@ -99,6 +112,7 @@
         private System.Windows.Forms.Button buttonAbout;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Label labelFront;
+        private System.Windows.Forms.Button buttonRecentOrders;
     }
 }
 
