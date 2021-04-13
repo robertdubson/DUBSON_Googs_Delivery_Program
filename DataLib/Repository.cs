@@ -22,6 +22,7 @@ namespace DataLib
 
         public void Add(EntityName example)
         {
+            //_DbSet.Attach(example);
             _DbSet.Add(example);
         }
 
