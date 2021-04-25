@@ -14,5 +14,7 @@ namespace Domain
         bool InTheShop { get; set; }
 
         IDeliveryType Type { get; set; }
+
+        ITransportType TransportType { get; set; }
     }
 }

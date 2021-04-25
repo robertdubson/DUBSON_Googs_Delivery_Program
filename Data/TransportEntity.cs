@@ -10,9 +10,11 @@ namespace Entity
     {
         public double Speed { get; set; }
 
-        public DeliveryTypeEntity DeliveryType { get; set;  }
+        public DeliveryTypeEntity DeliveryType { get; set; }
 
         public bool InTheShop { get; set; }
+
+        public TransportTypeEntity TransportType { get; set; }
 
 
         public TransportEntity(double speed, DeliveryTypeEntity type) {

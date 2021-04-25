@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Entity
 {
-    public interface IDeliveryType
+    public class TransportTypeEntity : BaseEntity
     {
-        int ID { get; set; }
-        string Type { get; set; }
+        public string Type { get; set; }
     }
 }

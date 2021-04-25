@@ -12,10 +12,14 @@ namespace Mappers
     public class TransportMapper : IMapper<TransportEntity, ITransport, TransportModel>
     {
         DeliveryTypeMapper deliveryTypeMapper;
+
+        TransportTypeMapper _transportTypeMapper;
         
         public TransportMapper() {
 
             deliveryTypeMapper = new DeliveryTypeMapper();
+
+            _transportTypeMapper = new TransportTypeMapper();
         
         }
 
@@ -26,7 +30,9 @@ namespace Mappers
                 ID = entityObject.ID,
                 Speed = entityObject.Speed,
                 Type = deliveryTypeMapper.FromEntityToDomain(entityObject.DeliveryType),
-                InTheShop = entityObject.InTheShop
+                InTheShop = entityObject.InTheShop,
+                TransportType = _transportTypeMapper.FromEntityToDomain(entityObject.TransportType)
+                
 
             };
         
@@ -42,7 +48,8 @@ namespace Mappers
                 Speed = domainObject.Speed,
                 ID = domainObject.ID,
                 DeliveryType = deliveryTypeMapper.FromDomainToEntity(domainObject.Type),
-                InTheShop = domainObject.InTheShop
+                InTheShop = domainObject.InTheShop,
+                TransportType = _transportTypeMapper.FromDomainToEntity(domainObject.TransportType)
                                        
             
             };
@@ -51,12 +58,12 @@ namespace Mappers
 
         public TransportModel FromDomainToModel(ITransport domainObject)
         {
-            return new TransportModel { ID = domainObject.ID, DeliveryType = deliveryTypeMapper.FromDomainToModel(domainObject.Type), InTheShop = domainObject.InTheShop, Speed = domainObject.Speed };
+            return new TransportModel { ID = domainObject.ID, DeliveryType = deliveryTypeMapper.FromDomainToModel(domainObject.Type), InTheShop = domainObject.InTheShop, Speed = domainObject.Speed, TransportType = _transportTypeMapper.FromDomainToModel(domainObject.TransportType) };
         }
 
         public ITransport FromModelToDomain(TransportModel modelObject)
         {
-            return new Transport { ID = modelObject.ID, Type = deliveryTypeMapper.FromModelToDomain(modelObject.DeliveryType), InTheShop = modelObject.InTheShop, Speed = modelObject.Speed };
+            return new Transport { ID = modelObject.ID, Type = deliveryTypeMapper.FromModelToDomain(modelObject.DeliveryType), InTheShop = modelObject.InTheShop, Speed = modelObject.Speed, TransportType = _transportTypeMapper.FromModelToDomain(modelObject.TransportType) };
         }
     }
 }

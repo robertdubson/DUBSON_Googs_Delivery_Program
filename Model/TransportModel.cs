@@ -12,5 +12,7 @@ namespace Model
         public int ID { get; set; }
         public DeliveryTypeModel DeliveryType { get; set; }
         public bool InTheShop { get; set; }
+
+        public TransportTypeModel TransportType { get; set; }
     }
 }

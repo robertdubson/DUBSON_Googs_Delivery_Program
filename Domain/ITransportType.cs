@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IDeliveryType
+    public interface ITransportType
     {
         int ID { get; set; }
+
         string Type { get; set; }
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="IProductRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ITransportRepository.cs" />
+    <Compile Include="ITransportTypeRepository.cs" />
     <Compile Include="Migrations\202104131133018_InitialCreate.cs" />
     <Compile Include="Migrations\202104131133018_InitialCreate.designer.cs">
       <DependentUpon>202104131133018_InitialCreate.cs</DependentUpon>
@@ -75,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="TransportRepository.cs" />
+    <Compile Include="TransportTypeRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>

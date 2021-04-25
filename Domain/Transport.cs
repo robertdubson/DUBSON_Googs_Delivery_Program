@@ -11,6 +11,9 @@ namespace Domain
         public double Speed { get; set; }
         public int ID { get; set; }
         public IDeliveryType Type { get; set; }
+
+        public ITransportType TransportType { get; set; }
+
         public bool InTheShop { get; set; }
     }
 }
