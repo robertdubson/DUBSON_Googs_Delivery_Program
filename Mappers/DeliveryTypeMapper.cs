@@ -8,27 +8,27 @@ using Entity;
 using Model;
 namespace Mappers
 {
-    public class DeliveryTypeMapper : IMapper<DeliveryTypeEntity, DeliveryType, DeliveryTypeModel>
+    public class DeliveryTypeMapper : IMapper<DeliveryTypeEntity, IDeliveryType, DeliveryTypeModel>
     {
-        public DeliveryTypeEntity FromDomainToEntity(DeliveryType domainObject) {
+        public DeliveryTypeEntity FromDomainToEntity(IDeliveryType domainObject) {
 
             return new DeliveryTypeEntity { ID = domainObject.ID, DeliveryType = domainObject.Type };
         
         
         }
 
-        public DeliveryTypeModel FromDomainToModel(DeliveryType domainObject)
+        public DeliveryTypeModel FromDomainToModel(IDeliveryType domainObject)
         {
             return new DeliveryTypeModel { ID = domainObject.ID, DeliveryType = domainObject.Type };
         }
 
-        public DeliveryType FromEntityToDomain(DeliveryTypeEntity entityObject) {
+        public IDeliveryType FromEntityToDomain(DeliveryTypeEntity entityObject) {
 
             return new DeliveryType { ID = entityObject.ID, Type = entityObject.DeliveryType };
         
         }
 
-        public DeliveryType FromModelToDomain(DeliveryTypeModel modelObject)
+        public IDeliveryType FromModelToDomain(DeliveryTypeModel modelObject)
         {
             return new DeliveryType { ID = modelObject.ID, Type = modelObject.DeliveryType };
         }

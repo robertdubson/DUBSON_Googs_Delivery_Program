@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLib.UnitOfWork
 {
-    public interface IUnitOfWork : IDisposable 
+    public interface IUnitOfWork : IDisposable
     {
         IDestinationRepository DestinationRepository { get; }
 
@@ -15,6 +15,8 @@ namespace DataLib.UnitOfWork
         IOrderRepository OrderRepository { get; }
 
         ITransportRepository TransportRepository { get; }
+
+        IDeliveryTypeRepository DeliveryTypeRepository { get; }
 
         int Complete();
     }

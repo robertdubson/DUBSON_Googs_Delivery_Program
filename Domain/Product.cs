@@ -14,7 +14,7 @@ namespace Domain
         public double Price { get; set; }
         public double TimeForPreparation { get; set; }
         public int ID { get; set; }
-        public DeliveryType Type { get; set; }
+        public IDeliveryType Type { get; set; }
 
         public Product(int ID, string name, double weight, double volume, double price, double timeForPreparation, DeliveryType type) {
 

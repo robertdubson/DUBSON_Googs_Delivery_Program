@@ -9,6 +9,9 @@ using Services;
 using DataLib;
 using Mappers;
 using Commands;
+using DataLib.UnitOfWork;
+using System.Data.Entity;
+
 namespace ViewModels
 {
     public class ProductViewModel : INotifyPropertyChanged, IViewModel
@@ -67,15 +70,16 @@ namespace ViewModels
 
         public ProductViewModel() {
 
-            productService = new ProductService(new DataInitializer().productRepository);
+            productService = new ProductService(new UnitOfWork(new ApplicationContext()).ProductRepository);
 
-            transportService = new TransportService(new DataInitializer().transportRepository);
+            transportService = new TransportService(new UnitOfWork(new ApplicationContext()).TransportRepository);
 
+            
             transportMapper = new TransportMapper();
 
             _productMapper = new ProductMapper();
 
-            destinationService = new DestinationService(new DataInitializer().destinationRepository);
+            destinationService = new DestinationService(new UnitOfWork(new ApplicationContext()).DestinationRepository);
 
             _destinationMapper = new DestinationMapper();
 
@@ -85,13 +89,15 @@ namespace ViewModels
 
             CreateOrderCommand = new RelayCommand(CreateAnOrder);
 
-            destinationVM = new DestinationViewModel();
+            new DestinationViewModel();
+            
+            destinationVM =  DestinationViewModel.Instance;
 
             //DestinationModelView.parentViewModel = this;
 
             _orderMapper = new OrderMapper();
 
-            orderService = new OrderService(new DataInitializer().orderRepository);
+            orderService = new OrderService(new UnitOfWork(new ApplicationContext()).OrderRepository);
             
             
 
@@ -115,7 +121,7 @@ namespace ViewModels
 
             //DestinationModelView = new DestinationViewModel();
 
-            SelectedDestination = destinationVM.SelectedDestination;
+            SelectedDestination = DestinationViewModel.Instance.SelectedDestination;
 
             OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(SelectedDestination), _productMapper.FromModelToDomain(CurrentProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(CurrentProduct))));
 

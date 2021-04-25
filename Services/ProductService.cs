@@ -43,7 +43,7 @@ namespace Services
             return _productRepository.GetAll().Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         }
 
-        public List<DeliveryType> GetAllTypes()
+        public List<IDeliveryType> GetAllTypes()
         {
             return _productRepository.GetAllTypes().Select(deliveryType => _deliveryTypeMapper.FromEntityToDomain(deliveryType)).ToList();
         }
@@ -55,7 +55,7 @@ namespace Services
 
         
 
-        public List<IProduct> GetProductsByType(DeliveryType delType) {
+        public List<IProduct> GetProductsByType(IDeliveryType delType) {
 
             return _productRepository.GetAll().ToList().FindAll(prod => prod.DeliveryType.ID == _deliveryTypeMapper.FromDomainToEntity(delType).ID).Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         

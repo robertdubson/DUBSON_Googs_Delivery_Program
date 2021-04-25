@@ -39,7 +39,8 @@ namespace DataLib
 
         public IEnumerable<EntityName> GetAll()
         {
-            return _DbSet;
+            //return _DbSet.AsNoTracking().ToList();
+            return _DbSet.ToList();
         }
 
         public EntityName GetByID(int ID)

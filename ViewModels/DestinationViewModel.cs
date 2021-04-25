@@ -8,6 +8,7 @@ using Model;
 using System.ComponentModel;
 using Mappers;
 using DataLib;
+using DataLib.UnitOfWork;
 namespace ViewModels
 {
     public class DestinationViewModel : IViewModel, INotifyPropertyChanged
@@ -27,6 +28,8 @@ namespace ViewModels
 
         DestinationService _destinationService;
 
+        private static DestinationViewModel instance;
+
         DestinationModel _selectedDestination;
 
         DestinationMapper _destinationMapper;
@@ -35,7 +38,7 @@ namespace ViewModels
         {
             
 
-            _destinationService = new DestinationService(new DataInitializer().destinationRepository);
+            _destinationService = new DestinationService(new UnitOfWork(new ApplicationContext()).DestinationRepository);
 
             _destinationMapper = new DestinationMapper();
 
@@ -44,10 +47,14 @@ namespace ViewModels
             //_selectedDestination = new DestinationModel();
 
             LoadData();
+
+            instance = this;
         }
 
         public DestinationModel SelectedDestination { get { return _selectedDestination; } set { _selectedDestination = value; OnPropertyChanged("SelectedDestination"); } }
 
+        public static DestinationViewModel Instance { get { return instance; }  }
+        
         public List<DestinationModel> ModelObjects { get { return modelObjects; } set { modelObjects = value; OnPropertyChanged("ModelObjects"); } }
 
         public void LoadData() {

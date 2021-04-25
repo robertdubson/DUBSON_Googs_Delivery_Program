@@ -22,7 +22,7 @@ namespace Services
 
         List<IProduct> GetAllProducts();
 
-        List<DeliveryType> GetAllTypes();
+        List<IDeliveryType> GetAllTypes();
 
         List<IProduct> FindByText(string text);
 

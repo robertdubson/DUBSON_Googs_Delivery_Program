@@ -63,6 +63,8 @@ namespace Services
         
         }
 
+        
+
         public IOrder CreateAnOrder(IDestination destination, IProduct product, List<ITransport> suitableTransport) {
 
             List<ITransport> currentTransports = suitableTransport;
@@ -83,7 +85,11 @@ namespace Services
 
                 double timeNeededForDelivry = theLeastTime.Subtract(DateTime.Now).TotalSeconds + destination.Distance / dateTransportDictionary[theLeastTime].Speed + product.TimeForPreparation + GetOrderByInvolvedTransport(dateTransportDictionary[theLeastTime]).Destination.Distance / dateTransportDictionary[theLeastTime].Speed;
 
-                return new Order(destination, dateTransportDictionary[theLeastTime], product, DateTime.Now, timeNeededForDelivry);
+                Order newOrder = new Order(destination, dateTransportDictionary[theLeastTime], product, DateTime.Now, timeNeededForDelivry);
+
+                AddOrder(newOrder);
+
+                return newOrder;
 
             }
             else {
@@ -104,12 +110,17 @@ namespace Services
 
                 //selectedTransport.InTheShop = false;
 
+                Order newOrder = new Order(destination, selectedTransport, product, DateTime.Now, timeNeededForDelivery);
 
+                AddOrder(newOrder);
 
-                return new Order(destination, selectedTransport, product, DateTime.Now, timeNeededForDelivery);
+                return newOrder;
             
             }
         
         }
+
+        
+
     }
 }

@@ -53,7 +53,9 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="DataInitializer.cs" />
+    <Compile Include="DeliveryTypeRepository.cs" />
     <Compile Include="DestinationRepository.cs" />
+    <Compile Include="IDeliveryTypeRepository.cs" />
     <Compile Include="IDestinationRepository.cs" />
     <Compile Include="IOrderRepository.cs" />
     <Compile Include="IProductRepository.cs" />

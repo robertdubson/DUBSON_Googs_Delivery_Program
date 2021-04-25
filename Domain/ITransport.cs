@@ -13,6 +13,6 @@ namespace Domain
 
         bool InTheShop { get; set; }
 
-        DeliveryType Type { get; set; }
+        IDeliveryType Type { get; set; }
     }
 }

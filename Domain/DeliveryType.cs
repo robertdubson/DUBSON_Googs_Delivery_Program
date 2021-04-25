@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class DeliveryType
+    public class DeliveryType : IDeliveryType
     {
         public int ID { get; set; }
 

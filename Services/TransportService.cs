@@ -54,7 +54,7 @@ namespace Services
 
             // повертаємо усі одиниці транспорту, що підходять для перевезення продукту отриманого типу
             
-            return _transportRepository.GetAll().ToList().FindAll(transport => transport.DeliveryType.ID == _productMapper.FromDomainToEntity(product).DeliveryType.ID).Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
+            return _transportRepository.GetAll().ToList().FindAll(transport => transport.DeliveryType.DeliveryType == _productMapper.FromDomainToEntity(product).DeliveryType.DeliveryType).Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
         
         }
 
@@ -64,7 +64,9 @@ namespace Services
 
             _transportRepository.GetByID(transport.ID).Speed = _transportMapper.FromDomainToEntity(transport).Speed;
 
-            _transportRepository.GetByID(transport.ID).DeliveryType = _transportMapper.FromDomainToEntity(transport).DeliveryType;
+            _transportRepository.GetByID(transport.ID).DeliveryType.DeliveryType = _transportMapper.FromDomainToEntity(transport).DeliveryType.DeliveryType;
+
+            //_transportRepository.Update(_transportMapper.FromDomainToEntity(transport));
 
         }
         

@@ -27,6 +27,7 @@ namespace DataLib
 
         public void AddNewType(DeliveryTypeEntity deliveryType)
         {
+            //typesOfDelivery.Attach(deliveryType);
             typesOfDelivery.Add(deliveryType);
         }
 

@@ -22,7 +22,7 @@ namespace Model
 
         public override string ToString()
         {
-            return Destination.Name + Product.Name + Product.Price + TimeOfOrdering.ToString();
+            return Destination.Name +  " " + Product.Name + " " + Product.Price + " " + TimeOfOrdering.ToString();
         }
     }
 }

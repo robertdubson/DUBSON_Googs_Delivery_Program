@@ -23,6 +23,8 @@ namespace Presenters
 
         List<DeliveryTypeModel> deliveryTypes;
 
+        DeliveryTypeService _deliveryTypeService;
+
         List<ProductModel> products;
 
         IProductView _view;
@@ -41,7 +43,9 @@ namespace Presenters
 
             _productService = new ProductService(_unitOFWork.ProductRepository);
 
-            deliveryTypes = _productService.GetAllTypes().Select(delType => deliveryTypeMapper.FromDomainToModel(delType)).ToList();
+            _deliveryTypeService = new DeliveryTypeService(_unitOFWork.DeliveryTypeRepository);
+
+            deliveryTypes = _deliveryTypeService.GetAllDeliveryTypes().Select(delType => deliveryTypeMapper.FromDomainToModel(delType)).ToList();
 
             products = _productService.GetAllProducts().Select(prod => productMapper.FromDomainToModel(prod)).ToList();
 
@@ -88,7 +92,8 @@ namespace Presenters
         public void FindByParameters() {
 
             _view.DisplayData(deliveryTypes, _productService.FindByParameters(Convert.ToDouble(_view.maxWeight), Convert.ToDouble(_view.minWeight), Convert.ToDouble(_view.minVolume), Convert.ToDouble(_view.maxVolume), Convert.ToDouble(_view.maxPrice), Convert.ToDouble(_view.minPrice)).Select(prod => productMapper.FromDomainToModel(prod)).ToList());
-        
+
+            _unitOFWork.Complete();
         }
 
         public void SelectTheProduct() {
@@ -104,6 +109,8 @@ namespace Presenters
             //List<ProductModel> allProducts = products;
 
             _view.DisplayData(deliveryTypes, _productService.GetProductsByType(deliveryTypeMapper.FromModelToDomain(this._view.SelectedType)).Select(prod => productMapper.FromDomainToModel(prod)).ToList());
+
+            _unitOFWork.Complete();
         
         }
 

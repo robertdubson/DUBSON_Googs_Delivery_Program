@@ -11,7 +11,12 @@ namespace Entity
     {
         
 
-        public string DeliveryType { get; set; } 
+        public string DeliveryType { get; set; }
+
+        public override string ToString()
+        {
+            return DeliveryType;
+        }
 
     }
 }

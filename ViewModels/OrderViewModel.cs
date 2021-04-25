@@ -8,6 +8,8 @@ using Services;
 using System.ComponentModel;
 using DataLib;
 using Mappers;
+using DataLib.UnitOfWork;
+
 namespace ViewModels
 {
     public class OrderViewModel : IViewModel, INotifyPropertyChanged
@@ -22,7 +24,7 @@ namespace ViewModels
 
         public OrderViewModel()
         {
-            _orderService = new OrderService(new DataInitializer().orderRepository);
+            _orderService = new OrderService(new UnitOfWork(new ApplicationContext()).OrderRepository);
             
             orderMapper = new OrderMapper();
 

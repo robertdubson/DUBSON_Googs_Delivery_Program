@@ -55,9 +55,9 @@ namespace TestForEF
 
             unitOfWork.ProductRepository.GetAllTypes().ToList().ForEach(type => Console.WriteLine(type.ID + " " + type.DeliveryType));
 
-            unitOfWork.TransportRepository.GetAll().ToList().ForEach(trans =>Console.WriteLine( trans.ID + " " + trans.Speed));
+            unitOfWork.TransportRepository.GetAll().ToList().ForEach(trans =>Console.WriteLine( trans.ID + " " + trans.Speed + " " + trans.DeliveryType + " " + trans.DeliveryType.ID));
 
-            unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.DeliveryType.DeliveryType + " " + transport.Speed));
+            //unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.DeliveryType.DeliveryType + " " + transport.Speed));
 
             //unitOfWork.OrderRepository.GetAll().ToList().ForEach(order => Console.WriteLine(order.Destination.Name + " " + order.Product.Name + order.Time_Of_Ordering));
 
