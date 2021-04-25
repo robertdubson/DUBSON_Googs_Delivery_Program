@@ -125,7 +125,7 @@ namespace ViewModels
 
             OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(SelectedDestination), _productMapper.FromModelToDomain(CurrentProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(CurrentProduct))));
 
-            orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
+            //orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
 
             MessageText = "Ви замовили продукт " + newOrder.Product.Name + ", що коштує " + newOrder.Product.Price + " $ . Товар буде доставлено до пункту " + newOrder.Destination.Name + " за " + newOrder.TimeNeededForDelivery + " одиниць часу";
         
