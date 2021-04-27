@@ -29,6 +29,8 @@ namespace ViewModels
 
         TransportService transportService;
 
+        TransportMapper _transportMapper;
+
         TransportMapper transportMapper;
 
         OrderMapper _orderMapper;
@@ -45,6 +47,8 @@ namespace ViewModels
         }
 
         ProductService productService;
+
+        UnitOfWork _unitOfWork;
 
         ProductMapper _productMapper;
 
@@ -70,16 +74,19 @@ namespace ViewModels
 
         public ProductViewModel() {
 
-            productService = new ProductService(new UnitOfWork(new ApplicationContext()).ProductRepository);
+            _unitOfWork = new UnitOfWork(new ApplicationContext());
 
-            transportService = new TransportService(new UnitOfWork(new ApplicationContext()).TransportRepository);
+            productService = new ProductService(_unitOfWork.ProductRepository);
 
-            
+            transportService = new TransportService(_unitOfWork.TransportRepository);
+
+            _transportMapper = new TransportMapper();
+
             transportMapper = new TransportMapper();
 
             _productMapper = new ProductMapper();
 
-            destinationService = new DestinationService(new UnitOfWork(new ApplicationContext()).DestinationRepository);
+            destinationService = new DestinationService(_unitOfWork.DestinationRepository);
 
             _destinationMapper = new DestinationMapper();
 
@@ -97,9 +104,8 @@ namespace ViewModels
 
             _orderMapper = new OrderMapper();
 
-            orderService = new OrderService(new UnitOfWork(new ApplicationContext()).OrderRepository);
-            
-            
+            orderService = new OrderService(_unitOfWork.OrderRepository);
+
 
             LoadData();
         
@@ -125,10 +131,28 @@ namespace ViewModels
 
             OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(SelectedDestination), _productMapper.FromModelToDomain(CurrentProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(CurrentProduct))));
 
+            //_unitOfWork.OrderRepository.Add(_orderMapper.FromDomainToEntity(_orderMapper.FromModelToDomain(newOrder)));
+            
+            
+            orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
+            
+            
+            
+            _unitOfWork.Complete();
+
+            newOrder.InvolvedTransport.InTheShop = false;
+
+            //transportService.UpdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
+
+            //_unitOfWork.Complete();
+
+            _unitOfWork.Dispose();
+
             //orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
 
             MessageText = "Ви замовили продукт " + newOrder.Product.Name + ", що коштує " + newOrder.Product.Price + " $ . Товар буде доставлено до пункту " + newOrder.Destination.Name + " за " + newOrder.TimeNeededForDelivery + " одиниць часу";
         
+            
         }
     }
 }

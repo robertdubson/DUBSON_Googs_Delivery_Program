@@ -40,7 +40,7 @@ namespace ViewModels
 
         }
 
-        public List<OrderModel> ModelObjects { get { return modelObjects; } set { modelObjects = value; OnPropertyChanged("modelObjects"); } }
+        public List<OrderModel> ModelObjects { get { return modelObjects; } set { modelObjects = value; OnPropertyChanged("ModelObjects"); } }
 
         public OrderModel CurrentOrder { get { return currentOrder; } set { currentOrder = value; OnPropertyChanged("CurrentOrder"); } }
 

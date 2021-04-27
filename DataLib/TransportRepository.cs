@@ -17,7 +17,10 @@ namespace DataLib
 
             deliveryTypes = context.Set<DeliveryTypeEntity>();
 
-            _DbSet.Include(transport => transport.DeliveryType).ToList();
+            //_DbSet.Include(transport => transport.DeliveryType).ToList();
+
+           _DbSet.Include(transport => transport.DeliveryType).ToList();
+           _DbSet.Include(transport => transport.TransportType).ToList();
         
         }
 

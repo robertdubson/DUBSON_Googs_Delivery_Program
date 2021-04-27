@@ -51,17 +51,109 @@ namespace TestForEF
 
             //unitOfWork.OrderRepository.Add(new OrderEntity(new DestinationEntity() { Name = "kkkk"}, new ProductEntity() { Name = "dfghj"}, DateTime.Now, 12.3, new TransportEntity { Speed = 12}));
 
-            
+            //  TransportTypeEntity type1 = new TransportTypeEntity() { Type = "Truck" };
 
-            unitOfWork.ProductRepository.GetAllTypes().ToList().ForEach(type => Console.WriteLine(type.ID + " " + type.DeliveryType));
+            //  TransportTypeEntity type2 = new TransportTypeEntity() { Type = "Bicycle"};
 
-            unitOfWork.TransportRepository.GetAll().ToList().ForEach(trans =>Console.WriteLine( trans.ID + " " + trans.Speed + " " + trans.DeliveryType + " " + trans.DeliveryType.ID));
+            //  TransportTypeEntity type3 = new TransportTypeEntity() { Type = "Car" };
+
+            //  unitOfWork.TransportTypeRepository.Add(type1);
+
+            //  unitOfWork.TransportTypeRepository.Add(type2);
+
+            //  unitOfWork.TransportTypeRepository.Add(type2);
+
+            //  DeliveryTypeEntity deliveryType1 = unitOfWork.DeliveryTypeRepository.GetByID(1);
+
+            //  DeliveryTypeEntity deliveryType2 = unitOfWork.DeliveryTypeRepository.GetByID(2);
+
+            //  DeliveryTypeEntity deliveryType3 = unitOfWork.DeliveryTypeRepository.GetByID(3);
+
+            //  DeliveryTypeEntity deliveryType4 = unitOfWork.DeliveryTypeRepository.GetByID(4);
+
+            // DeliveryTypeEntity deliveryType5 = unitOfWork.DeliveryTypeRepository.GetByID(5);
+
+            // TransportEntity car1 = new TransportEntity { Speed=70, DeliveryType = deliveryType2, TransportType = type3, InTheShop = true };
+
+            // TransportEntity car2 = new TransportEntity { Speed = 70, DeliveryType = deliveryType2, TransportType = type3, InTheShop = true };
+
+            // TransportEntity car3 = new TransportEntity { Speed = 70, DeliveryType = deliveryType2, TransportType = type3, InTheShop = true };
+
+            // TransportEntity car4 = new TransportEntity { Speed = 70, DeliveryType = deliveryType2, TransportType = type3, InTheShop = true };
+
+            // TransportEntity truck1 = new TransportEntity { Speed = 70, DeliveryType = deliveryType3, TransportType = type1, InTheShop = true };
+
+            // TransportEntity truck2 = new TransportEntity { Speed = 70, DeliveryType = deliveryType3, TransportType = type1, InTheShop = true };
+
+            // TransportEntity truck3 = new TransportEntity { Speed = 70, DeliveryType = deliveryType3, TransportType = type1, InTheShop = true };
+
+            // TransportEntity truck4 = new TransportEntity { Speed = 70, DeliveryType = deliveryType5, TransportType = type1, InTheShop = true };
+
+            // TransportEntity truck5 = new TransportEntity { Speed = 70, DeliveryType = deliveryType5, TransportType = type1, InTheShop = true };
+
+            // TransportEntity truck6 = new TransportEntity { Speed = 70, DeliveryType = deliveryType5, TransportType = type1, InTheShop = true };
+
+            // TransportEntity bicycle1 = new TransportEntity { Speed = 30, DeliveryType = deliveryType4, TransportType = type2, InTheShop = true };
+
+            // TransportEntity bicycle2 = new TransportEntity { Speed = 30, DeliveryType = deliveryType4, TransportType = type2, InTheShop = true };
+
+            // TransportEntity bicycle3 = new TransportEntity { Speed = 30, DeliveryType = deliveryType4, TransportType = type2, InTheShop = true };
+
+            // TransportEntity car5 = new TransportEntity { Speed = 70, DeliveryType = deliveryType1, TransportType = type3, InTheShop = true };
+
+            // TransportEntity car6 = new TransportEntity { Speed = 70, DeliveryType = deliveryType1, TransportType = type3, InTheShop = true };
+
+            //TransportEntity car7 = new TransportEntity { Speed = 70, DeliveryType = deliveryType1, TransportType = type3, InTheShop = true };
+
+            //unitOfWork.TransportRepository.Add(car1);
+
+            // unitOfWork.TransportRepository.Add(car2);
+
+            // unitOfWork.TransportRepository.Add(car3);
+
+            // unitOfWork.TransportRepository.Add(car4);
+
+            // unitOfWork.TransportRepository.Add(car5);
+
+            // unitOfWork.TransportRepository.Add(car6);
+
+            // unitOfWork.TransportRepository.Add(car7);
+
+            // unitOfWork.TransportRepository.Add(truck1);
+
+            // unitOfWork.TransportRepository.Add(truck2);
+
+            // unitOfWork.TransportRepository.Add(truck3);
+
+            // unitOfWork.TransportRepository.Add(truck4);
+
+            // unitOfWork.TransportRepository.Add(truck5);
+
+            // unitOfWork.TransportRepository.Add(truck6);
+
+            // unitOfWork.TransportRepository.Add(bicycle1);
+
+            // unitOfWork.TransportRepository.Add(bicycle2);
+
+            // unitOfWork.TransportRepository.Add(bicycle3);
+
+
+
+            //unitOfWork.ProductRepository.GetAllTypes().ToList().ForEach(type => Console.WriteLine(type.ID + " " + type.DeliveryType));
+
+            //unitOfWork.TransportRepository.GetAll().ToList().ForEach(trans =>Console.WriteLine( trans.ID + " " + trans.Speed + " " + trans.DeliveryType + " " + trans.DeliveryType.ID));
 
             //unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.DeliveryType.DeliveryType + " " + transport.Speed));
 
             //unitOfWork.OrderRepository.GetAll().ToList().ForEach(order => Console.WriteLine(order.Destination.Name + " " + order.Product.Name + order.Time_Of_Ordering));
 
             //unitOfWork.OrderRepository.Delete(1);
+
+            unitOfWork.ProductRepository.GetAll().ToList().ForEach(prod => Console.WriteLine(prod.DeliveryType));
+
+            unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.DeliveryType.DeliveryType));
+
+            unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.TransportType.Type));
 
             unitOfWork.Complete();
 

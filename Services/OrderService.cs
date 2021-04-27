@@ -79,7 +79,7 @@ namespace Services
 
                 IOrder newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
                 
-                AddOrder(newOrder);
+                //AddOrder(newOrder);
 
                 return newOrder;
 
@@ -88,7 +88,7 @@ namespace Services
 
                 IOrder newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
 
-                AddOrder(newOrder);
+                //AddOrder(newOrder);
 
                 return newOrder;
             

@@ -79,7 +79,7 @@ namespace Presenters
         
                 OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(_view.SelectedDestination), _productMapper.FromModelToDomain(SelectedProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(SelectedProduct))));
 
-                //orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
+                orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
 
                 _unitOfWork.Complete();
 

@@ -8,7 +8,7 @@ namespace Domain
 {
     public class TransportType : ITransportType
     {
-        public int ID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int ID { get; set; }
         public string Type { get; set; }
     }
 }

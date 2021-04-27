@@ -23,6 +23,8 @@ namespace DataLib.UnitOfWork
             TransportRepository = new TransportRepository(_context);
 
             DeliveryTypeRepository = new DeliveryTypeRepository(_context);
+
+            TransportTypeRepository = new TransportTypeRepository(_context);
         
         }
 
@@ -35,6 +37,8 @@ namespace DataLib.UnitOfWork
         public ITransportRepository TransportRepository { get; private set; }
 
         public IDeliveryTypeRepository DeliveryTypeRepository { get; private set; }
+
+        public ITransportTypeRepository TransportTypeRepository { get; private set; }
 
         public int Complete()
         {

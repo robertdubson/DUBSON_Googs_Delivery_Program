@@ -18,6 +18,8 @@ namespace DataLib.UnitOfWork
 
         IDeliveryTypeRepository DeliveryTypeRepository { get; }
 
+        ITransportTypeRepository TransportTypeRepository { get; }
+
         int Complete();
     }
 }
