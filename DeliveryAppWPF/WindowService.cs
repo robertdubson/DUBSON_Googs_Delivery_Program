@@ -76,6 +76,8 @@ namespace DeliveryAppWPF
 
         public void Exit() {
 
+            
+            
             mainWindow.Close();
         
         }

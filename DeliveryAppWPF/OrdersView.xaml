@@ -22,6 +22,7 @@
                 Content="Видалити замовлення."
                 
                 Grid.Row="2" Margin="133,52,133,44"
+                Command="{Binding DeleteSelectedOrder}"
                 />
 
         <DataGrid Name="Orders"

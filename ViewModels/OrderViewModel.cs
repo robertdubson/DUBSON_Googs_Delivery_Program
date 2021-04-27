@@ -9,7 +9,7 @@ using System.ComponentModel;
 using DataLib;
 using Mappers;
 using DataLib.UnitOfWork;
-
+using Commands;
 namespace ViewModels
 {
     public class OrderViewModel : IViewModel, INotifyPropertyChanged
@@ -22,11 +22,19 @@ namespace ViewModels
 
         OrderMapper orderMapper;
 
+        public RelayCommand DeleteSelectedOrder { get; set; }
+
+        UnitOfWork _unitOfWork;
+
         public OrderViewModel()
         {
-            _orderService = new OrderService(new UnitOfWork(new ApplicationContext()).OrderRepository);
+            _unitOfWork = new UnitOfWork(new ApplicationContext());
+            
+            _orderService = new OrderService(_unitOfWork.OrderRepository);
             
             orderMapper = new OrderMapper();
+
+            DeleteSelectedOrder = new RelayCommand(DeleteOrder);
 
             LoadData();
         }
@@ -38,6 +46,15 @@ namespace ViewModels
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
+        }
+
+        private void DeleteOrder() {
+
+            _orderService.DeleteOrder(orderMapper.FromModelToDomain(CurrentOrder).ID);
+            
+            _unitOfWork.Complete();
+
+            LoadData();
         }
 
         public List<OrderModel> ModelObjects { get { return modelObjects; } set { modelObjects = value; OnPropertyChanged("ModelObjects"); } }
