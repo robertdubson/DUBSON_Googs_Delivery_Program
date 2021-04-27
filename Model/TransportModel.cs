@@ -14,5 +14,10 @@ namespace Model
         public bool InTheShop { get; set; }
 
         public TransportTypeModel TransportType { get; set; }
+
+        public override string ToString()
+        {
+            return this.TransportType.TransportType;
+        }
     }
 }

@@ -14,6 +14,11 @@ namespace ViewModels
 {
     public class OrderViewModel : IViewModel, INotifyPropertyChanged
     {
+
+        private string _messageText;
+
+        public string MessageText { get { return _messageText; } set { _messageText = value; OnPropertyChanged("MessageText"); } }
+
         List<OrderModel> modelObjects;
 
         OrderModel currentOrder;
@@ -50,11 +55,24 @@ namespace ViewModels
 
         private void DeleteOrder() {
 
-            _orderService.DeleteOrder(orderMapper.FromModelToDomain(CurrentOrder).ID);
-            
-            _unitOfWork.Complete();
+            if (CurrentOrder == null)
+            {
 
-            LoadData();
+                MessageText = "Будь ласка, оберіть замовлення, яке ви хочете видалити.";
+
+            }
+
+            else {
+
+                _orderService.DeleteOrder(orderMapper.FromModelToDomain(CurrentOrder).ID);
+
+                _unitOfWork.Complete();
+
+                LoadData();
+
+            }
+
+            
         }
 
         public List<OrderModel> ModelObjects { get { return modelObjects; } set { modelObjects = value; OnPropertyChanged("ModelObjects"); } }

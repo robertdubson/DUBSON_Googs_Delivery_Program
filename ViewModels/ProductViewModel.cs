@@ -17,7 +17,9 @@ namespace ViewModels
     public class ProductViewModel : INotifyPropertyChanged, IViewModel
     {
 
-        public string MessageText { get; set; }
+        private string _messageText;
+        
+        public string MessageText { get { return _messageText; } set { _messageText = value; OnPropertyChanged("MessageText"); } }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,8 +32,6 @@ namespace ViewModels
         TransportService transportService;
 
         TransportMapper _transportMapper;
-
-        TransportMapper transportMapper;
 
         OrderMapper _orderMapper;
 
@@ -56,17 +56,11 @@ namespace ViewModels
 
         DestinationMapper _destinationMapper;
 
-        //private List<TransportModel> neededTransports;
-
         private List<ProductModel> modelObjects;
-
-        List<DestinationModel> destinations;
 
         DestinationModel _selectedDestination;
 
         public DestinationModel SelectedDestination { get { return _selectedDestination; } 
-            
-            
             
             set { _selectedDestination = value;            
                 OnPropertyChanged("SelectedDestination"); 
@@ -82,15 +76,13 @@ namespace ViewModels
 
             _transportMapper = new TransportMapper();
 
-            transportMapper = new TransportMapper();
+            
 
             _productMapper = new ProductMapper();
 
             destinationService = new DestinationService(_unitOfWork.DestinationRepository);
 
             _destinationMapper = new DestinationMapper();
-
-            //neededTransports = new List<TransportModel>();
 
             modelObjects = new List<ProductModel>();
 
@@ -99,8 +91,6 @@ namespace ViewModels
             new DestinationViewModel();
             
             destinationVM =  DestinationViewModel.Instance;
-
-            //DestinationModelView.parentViewModel = this;
 
             _orderMapper = new OrderMapper();
 
@@ -129,28 +119,37 @@ namespace ViewModels
 
             SelectedDestination = DestinationViewModel.Instance.SelectedDestination;
 
-            OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(SelectedDestination), _productMapper.FromModelToDomain(CurrentProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(CurrentProduct))));
+            if (SelectedDestination == null)
+            {
 
-            //_unitOfWork.OrderRepository.Add(_orderMapper.FromDomainToEntity(_orderMapper.FromModelToDomain(newOrder)));
+                MessageText = "Ви не обрали пункт призначення!";
+
+            }
+            else if (currentProduct == null)
+            {
+
+                MessageText = "Ви не обрали продукт!";
+
+            }
+
+            else {
+                
+                OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(SelectedDestination), _productMapper.FromModelToDomain(CurrentProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(CurrentProduct))));
+
+                orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
+
+                _unitOfWork.Complete();
+
+                newOrder.InvolvedTransport.InTheShop = false;
+
+                //transportService.UpdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
+
+
+                MessageText = "Ви замовили продукт " + newOrder.Product.Name + ", що коштує " + newOrder.Product.Price + " $ . Товар буде доставлено до пункту " + newOrder.Destination.Name + " за " + newOrder.TimeNeededForDelivery + " одиниць часу";
+
+            }
+
             
-            
-            orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
-            
-            
-            
-            _unitOfWork.Complete();
-
-            newOrder.InvolvedTransport.InTheShop = false;
-
-            //transportService.UpdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
-
-            //_unitOfWork.Complete();
-
-            _unitOfWork.Dispose();
-
-            //orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
-
-            MessageText = "Ви замовили продукт " + newOrder.Product.Name + ", що коштує " + newOrder.Product.Price + " $ . Товар буде доставлено до пункту " + newOrder.Destination.Name + " за " + newOrder.TimeNeededForDelivery + " одиниць часу";
         
             
         }

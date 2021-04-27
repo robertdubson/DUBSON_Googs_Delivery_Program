@@ -16,32 +16,41 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="115*"/>
-            <RowDefinition Height="115*" />
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto" MinHeight="106"/>
-            <RowDefinition Height="47*" />
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="*" MinHeight="100"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="*" MinHeight="100"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="15"/>
         </Grid.RowDefinitions>
 
         <ContentControl Content="{Binding CurrentProduct}"
-                        Grid.Row="3" Margin="0,0,0,10"
+                        Grid.Row="3" 
+                        Grid.Column="1"
                         
                         />
-
-        <ContentControl Content="{Binding DestinationModelView}" Grid.Row="4"
-                        Margin="-9,30,39,0"
+        
+            <ContentControl Content="{Binding DestinationModelView}" Grid.Row="4"
+                        Grid.Column="1"
+                        
                         />
         <ContentControl Content="{Binding DestinationModelView.SelectedDestination}"
-                        Margin="217,72,389,5" Grid.Row="1"
+                        Grid.Row="1"
+                        Grid.Column="1"
                         />
 
         <TextBlock Text="Будь ласка, оберіть бажаний продукт: "
-                   Grid.Column="0"
+                   Grid.Column="1"
                    Grid.Row="0"
                    FontSize="20"
                    VerticalAlignment="Center"
@@ -49,19 +58,13 @@
                    />
 
 
-        <TextBox Name="productSearchBar"
-                 
-                 Grid.Row="1"
-                 Grid.Column="0"
-                 Margin="29,22,50,69"
-                 
-                 />
+        
 
 
 
         <DataGrid Name="Products"
                   AutoGenerateColumns="False"
-                  Grid.Column="0"
+                  Grid.Column="1"
                   Grid.Row="2"
                   ItemsSource="{Binding Path=ModelObjects}"
                   SelectedItem="{Binding Path=CurrentProduct, Mode=TwoWay}"
@@ -83,10 +86,12 @@
 
         </DataGrid>
 
-        <TextBlock Text="{Binding MessageText}"
+        <TextBlock Foreground="OrangeRed"  Text="{Binding MessageText}"
                    
-                   FontSize="20"
-                   Margin="29,67,50,21" Grid.Row="1" 
+                   FontSize="15"
+                    Grid.Row="6" 
+                   Grid.Column="1"
+                   
                    >
 
 
@@ -96,8 +101,8 @@
         <Button Name="selectProductButton"
                 Content="Обрати"
                 
-                Grid.Column="0"
-                Grid.Row="5" Margin="15,10"
+                Grid.Column="1"
+                Grid.Row="8" 
                 
                 Command="{Binding CreateOrderCommand}"
                 />

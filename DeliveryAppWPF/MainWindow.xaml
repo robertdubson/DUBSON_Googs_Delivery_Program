@@ -24,8 +24,8 @@
 
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="357.5"/>
-            <ColumnDefinition Width="174"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
 
             <ColumnDefinition Width="347"/>
 
@@ -83,7 +83,7 @@
                 Grid.Row="5"
                     Grid.Column="2" Margin="200,10,38,13"
                     Background="BlueViolet"
-                Command="{Binding Path=ExitCommand}"
+                Command="{Binding ExitCommand}"
                 
                 />
 

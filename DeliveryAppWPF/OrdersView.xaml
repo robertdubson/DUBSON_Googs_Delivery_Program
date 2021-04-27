@@ -17,6 +17,7 @@
             <RowDefinition/>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Name="deleteOrderButt0n"
                 Content="Видалити замовлення."
@@ -24,6 +25,9 @@
                 Grid.Row="2" Margin="133,52,133,44"
                 Command="{Binding DeleteSelectedOrder}"
                 />
+        <TextBlock x:Name="Message" FontSize="15" Grid.Row="3" Text="{Binding MessageText}">
+
+        </TextBlock>
 
         <DataGrid Name="Orders"
                   

@@ -32,6 +32,8 @@ namespace ViewModels
 
         public RelayCommand SetProductsVMCommand { get; set; }
 
+        public RelayCommand ExitCommand { get; set; }
+
         public ApplicationViewModel()
         {
             about = new AboutViewModel();
@@ -42,25 +44,15 @@ namespace ViewModels
 
             products = new ProductViewModel();
 
-            //destinations = new DestinationViewModel();
-
-            
-
-            //products.DestinationModelView = new DestinationViewModel();
-
-            //products.DestinationModelView = new DestinationViewModel();
-
-            _currentWindowViewModel = home;
-
-  
+            _currentWindowViewModel = products;
 
             SetAboutVMCommand = new RelayCommand(SetAboutVM);
 
             SetProductsVMCommand = new RelayCommand(SetProductsVM);
 
             SetOrdersVMCommand = new RelayCommand(SetOrdersVM);
-            //_changeWindowCommand = new RelayCommand(() => ChangeViewModel(currentWindowViewModel));
 
+            ExitCommand = new RelayCommand(Exit);
 
         }
 
@@ -82,6 +74,11 @@ namespace ViewModels
         
         }
 
+        public void Exit() {
+
+            Environment.Exit(0);
+
+        }
 
         public ICommand ChangeWindowCommand { get { if (_changeWindowCommand == null) { _changeWindowCommand = new RelayCommand(() => ChangeViewModel(_currentWindowViewModel)); } return _changeWindowCommand; }  }
 
