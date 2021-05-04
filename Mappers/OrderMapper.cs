@@ -17,6 +17,8 @@ namespace Mappers
 
         TransportMapper transportMapper = new TransportMapper();
 
+        OrderStatusMapper orderStatusMapper = new OrderStatusMapper();
+
         public OrderEntity FromDomainToEntity(IOrder domainObject)
         {
 
@@ -32,7 +34,9 @@ namespace Mappers
 
                 Time_Of_Ordering = domainObject.TimeOfOrdering,
 
-                TimeNeededForDelivery = domainObject.TimeNeededForDelivery
+                TimeNeededForDelivery = domainObject.TimeNeededForDelivery,
+
+                OrderStatus = orderStatusMapper.FromDomainToEntity(domainObject.Status)
 
 
             };
@@ -41,7 +45,7 @@ namespace Mappers
 
         public OrderModel FromDomainToModel(IOrder domainObject)
         {
-            return new OrderModel { ID = domainObject.ID, Destination = destMapper.FromDomainToModel(domainObject.Destination), InvolvedTransport = transportMapper.FromDomainToModel(domainObject.InvolvedTransport), Product = prodMapper.FromDomainToModel(domainObject.Product), TimeOfOrdering = domainObject.TimeOfOrdering, TimeNeededForDelivery = domainObject.TimeNeededForDelivery };
+            return new OrderModel { ID = domainObject.ID, Destination = destMapper.FromDomainToModel(domainObject.Destination), InvolvedTransport = transportMapper.FromDomainToModel(domainObject.InvolvedTransport), Product = prodMapper.FromDomainToModel(domainObject.Product), TimeOfOrdering = domainObject.TimeOfOrdering, TimeNeededForDelivery = domainObject.TimeNeededForDelivery, Status = orderStatusMapper.FromDomainToModel(domainObject.Status) };
         }
 
         public IOrder FromEntityToDomain(OrderEntity entityObject)
@@ -59,7 +63,9 @@ namespace Mappers
 
                 TimeOfOrdering = entityObject.Time_Of_Ordering,
 
-                TimeNeededForDelivery = entityObject.TimeNeededForDelivery
+                TimeNeededForDelivery = entityObject.TimeNeededForDelivery,
+
+                Status = orderStatusMapper.FromEntityToDomain(entityObject.OrderStatus)
 
 
             };
@@ -68,7 +74,7 @@ namespace Mappers
 
         public IOrder FromModelToDomain(OrderModel modelObject)
         {
-            return new Order { ID = modelObject.ID, Destination = destMapper.FromModelToDomain(modelObject.Destination), InvolvedTransport = transportMapper.FromModelToDomain(modelObject.InvolvedTransport), Product = prodMapper.FromModelToDomain(modelObject.Product), TimeNeededForDelivery = modelObject.TimeNeededForDelivery, TimeOfOrdering = modelObject.TimeOfOrdering};
+            return new Order { ID = modelObject.ID, Destination = destMapper.FromModelToDomain(modelObject.Destination), InvolvedTransport = transportMapper.FromModelToDomain(modelObject.InvolvedTransport), Product = prodMapper.FromModelToDomain(modelObject.Product), TimeNeededForDelivery = modelObject.TimeNeededForDelivery, TimeOfOrdering = modelObject.TimeOfOrdering, Status = orderStatusMapper.FromModelToDomain(modelObject.Status)};
         }
     }
 }

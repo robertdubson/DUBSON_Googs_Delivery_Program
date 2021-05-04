@@ -7,13 +7,13 @@ namespace DataLib.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ownedEntities : IMigrationMetadata
+    public sealed partial class cratTableStatus : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ownedEntities));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(cratTableStatus));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104262155496_ownedEntities"; }
+            get { return "202105041119445_cratTableStatus"; }
         }
         
         string IMigrationMetadata.Source

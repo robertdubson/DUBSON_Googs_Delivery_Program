@@ -119,6 +119,7 @@
     <Compile Include="DestinationMapper.cs" />
     <Compile Include="IMapper.cs" />
     <Compile Include="OrderMapper.cs" />
+    <Compile Include="OrderStatusMapper.cs" />
     <Compile Include="ProductMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportMapper.cs" />

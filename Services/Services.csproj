@@ -120,9 +120,11 @@
     <Compile Include="IDeliveryTypeService.cs" />
     <Compile Include="IDestinationService.cs" />
     <Compile Include="IOrderService.cs" />
+    <Compile Include="IOrderStatusService.cs" />
     <Compile Include="IProductService.cs" />
     <Compile Include="ITransportService.cs" />
     <Compile Include="OrderService.cs" />
+    <Compile Include="OrderStatusService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategy\IStrategy.cs" />

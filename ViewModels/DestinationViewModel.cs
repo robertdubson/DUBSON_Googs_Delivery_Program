@@ -34,11 +34,13 @@ namespace ViewModels
 
         DestinationMapper _destinationMapper;
 
+        UnitOfWork _unitOfWork;
+
         public DestinationViewModel()
         {
-            
+            _unitOfWork = new UnitOfWork(new ApplicationContext());
 
-            _destinationService = new DestinationService(new UnitOfWork(new ApplicationContext()).DestinationRepository);
+            _destinationService = new DestinationService(_unitOfWork.DestinationRepository);
 
             _destinationMapper = new DestinationMapper();
 

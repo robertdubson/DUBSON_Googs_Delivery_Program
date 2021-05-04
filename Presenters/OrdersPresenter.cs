@@ -17,6 +17,8 @@ namespace Presenters
 
         OrderService orderService;
 
+        OrderStatusService orderStatusService;
+
         OrderMapper orderMapper;
 
         List<OrderModel> orders;
@@ -31,6 +33,8 @@ namespace Presenters
             _unitOfWork = new UnitOfWork(new ApplicationContext());
 
             orderService = new OrderService(_unitOfWork.OrderRepository);
+
+            orderStatusService = new OrderStatusService(_unitOfWork.OrderStatusRepository);
 
             orderMapper = new OrderMapper();
 

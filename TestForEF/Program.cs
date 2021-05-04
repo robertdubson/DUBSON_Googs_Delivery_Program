@@ -149,11 +149,25 @@ namespace TestForEF
 
             //unitOfWork.OrderRepository.Delete(1);
 
-            unitOfWork.ProductRepository.GetAll().ToList().ForEach(prod => Console.WriteLine(prod.DeliveryType));
+            //unitOfWork.ProductRepository.GetAll().ToList().ForEach(prod => Console.WriteLine(prod.DeliveryType));
 
-            unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.DeliveryType.DeliveryType));
+            //unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.DeliveryType.DeliveryType));
 
-            unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.TransportType.Type));
+            //unitOfWork.TransportRepository.GetAll().ToList().ForEach(transport => Console.WriteLine(transport.TransportType.Type));
+
+            //OrderStatusEntity statusWating = new OrderStatusEntity() { Status = "Очікується" };
+
+            //OrderStatusEntity statusCompleted = new OrderStatusEntity { Status = "Доставлено" };
+
+            //OrderStatusEntity statusDenied = new OrderStatusEntity { Status = "Скасовано" };
+
+            //unitOfWork.OrderStatusRepository.Add(statusWating);
+
+            //unitOfWork.OrderStatusRepository.Add(statusCompleted);
+
+            //unitOfWork.OrderStatusRepository.Add(statusDenied);
+
+            unitOfWork.OrderStatusRepository.GetAll().ToList().ForEach(stat => Console.WriteLine(stat.Status + " " + stat.ID));
 
             unitOfWork.Complete();
 

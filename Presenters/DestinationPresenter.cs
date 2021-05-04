@@ -28,11 +28,15 @@ namespace Presenters
 
         TransportMapper _transportMapper;
 
+        OrderStatusMapper _orderStatusMapper;
+
         DestinationService destinationService;
 
         TransportService transportService;
 
         OrderService orderService;
+
+        OrderStatusService OrderStatusService;
 
         UnitOfWork _unitOfWork;
 
@@ -50,6 +54,8 @@ namespace Presenters
 
             _orderMapper = new OrderMapper();
 
+            _orderStatusMapper = new OrderStatusMapper();
+
             _unitOfWork = new UnitOfWork(new ApplicationContext());
 
             destinationService = new DestinationService(_unitOfWork.DestinationRepository);
@@ -57,6 +63,8 @@ namespace Presenters
             transportService = new TransportService(_unitOfWork.TransportRepository);
 
             orderService = new OrderService(_unitOfWork.OrderRepository);
+
+            OrderStatusService = new OrderStatusService(_unitOfWork.OrderStatusRepository);
 
             destinations = destinationService.GetAllDestinations().Select(dest => _destinationMapper.FromDomainToModel(dest)).ToList();
 
@@ -79,6 +87,8 @@ namespace Presenters
         
                 OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(_view.SelectedDestination), _productMapper.FromModelToDomain(SelectedProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(SelectedProduct))));
 
+                newOrder.Status = _orderStatusMapper.FromDomainToModel(OrderStatusService.GetStatusByID(1));
+
                 orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
 
                 _unitOfWork.Complete();
@@ -87,7 +97,7 @@ namespace Presenters
 
 
                 newOrder.InvolvedTransport.InTheShop = false;
-                
+
                 transportService.UpdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
 
                 _view.DisplayCurrentOrderInfo(newOrder);

@@ -78,8 +78,11 @@ namespace Services
                 strategyContext.CurrentStrategy = new NoTransportLogic();
 
                 IOrder newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
+
+                newOrder.Status = new OrderStatus() { ID = 0, Status = "В обробці" };
                 
                 //AddOrder(newOrder);
+
 
                 return newOrder;
 
@@ -87,6 +90,8 @@ namespace Services
             else {
 
                 IOrder newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
+
+                newOrder.Status = new OrderStatus() { ID = 0, Status = "В обробці" };
 
                 //AddOrder(newOrder);
 

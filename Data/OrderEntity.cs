@@ -18,6 +18,8 @@ namespace Entity
 
         public double TimeNeededForDelivery { get; set; }
 
+        public OrderStatusEntity OrderStatus { get; set; }
+
         public OrderEntity(DestinationEntity dest, ProductEntity prod, DateTime orderTime, double timeOfDelivery, TransportEntity involvedTransport) {
 
             Destination = dest;

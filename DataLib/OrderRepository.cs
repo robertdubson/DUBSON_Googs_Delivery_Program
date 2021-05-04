@@ -17,11 +17,13 @@ namespace DataLib
         
             _DbSet = context.Set<OrderEntity>();
 
-            _DbSet.Include(transport => transport.InvolvedTransport).ToList();
+            _DbSet.Include(order => order.InvolvedTransport).ToList();
 
-            _DbSet.Include(prod => prod.Product).ToList();
+            _DbSet.Include(order => order.Product).ToList();
 
-            _DbSet.Include(dest => dest.Destination).ToList();
+            _DbSet.Include(order => order.Destination).ToList();
+
+            _DbSet.Include(order => order.OrderStatus).ToList();
 
         }
 

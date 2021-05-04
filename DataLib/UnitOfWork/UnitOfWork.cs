@@ -25,6 +25,8 @@ namespace DataLib.UnitOfWork
             DeliveryTypeRepository = new DeliveryTypeRepository(_context);
 
             TransportTypeRepository = new TransportTypeRepository(_context);
+
+            OrderStatusRepository = new OrderStatusRepository(_context);
         
         }
 
@@ -39,6 +41,8 @@ namespace DataLib.UnitOfWork
         public IDeliveryTypeRepository DeliveryTypeRepository { get; private set; }
 
         public ITransportTypeRepository TransportTypeRepository { get; private set; }
+
+        public IOrderStatusRepository OrderStatusRepository { get; private set; }
 
         public int Complete()
         {

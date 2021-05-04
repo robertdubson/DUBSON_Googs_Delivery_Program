@@ -8,7 +8,7 @@ using System.Windows.Input;
 using Commands;
 namespace ViewModels
 {
-    public class ApplicationViewModel : INotifyPropertyChanged
+    public class ApplicationViewModel : INotifyPropertyChanged, IViewModel
     {
         public ICommand _changeWindowCommand;
 
@@ -80,7 +80,7 @@ namespace ViewModels
 
         }
 
-        public ICommand ChangeWindowCommand { get { if (_changeWindowCommand == null) { _changeWindowCommand = new RelayCommand(() => ChangeViewModel(_currentWindowViewModel)); } return _changeWindowCommand; }  }
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -96,12 +96,7 @@ namespace ViewModels
 
         public IViewModel CurrentWindowViewModel { get { return _currentWindowViewModel; } set {  _currentWindowViewModel = value; OnPropertyChanged("CurrentWindowViewModel");  } }
 
-        private void ChangeViewModel(IViewModel viewModel) {
-
-            
-
-            
-        }
+        
     
     }
 }

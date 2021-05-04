@@ -116,7 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDeliveryType.cs" />
+    <Compile Include="IOrderStatus.cs" />
     <Compile Include="ITransportType.cs" />
+    <Compile Include="OrderStatus.cs" />
     <Compile Include="Transport.cs" />
     <Compile Include="Destination.cs" />
     <Compile Include="IDestination.cs" />

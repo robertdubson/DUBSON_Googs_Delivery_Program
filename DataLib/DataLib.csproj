@@ -131,6 +131,7 @@
     <Compile Include="IDeliveryTypeRepository.cs" />
     <Compile Include="IDestinationRepository.cs" />
     <Compile Include="IOrderRepository.cs" />
+    <Compile Include="IOrderStatusRepository.cs" />
     <Compile Include="IProductRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ITransportRepository.cs" />
@@ -147,12 +148,13 @@
     <Compile Include="Migrations\202104262035004_NewTransportType.designer.cs">
       <DependentUpon>202104262035004_NewTransportType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104262155496_ownedEntities.cs" />
-    <Compile Include="Migrations\202104262155496_ownedEntities.designer.cs">
-      <DependentUpon>202104262155496_ownedEntities.cs</DependentUpon>
+    <Compile Include="Migrations\202105041119445_cratTableStatus.cs" />
+    <Compile Include="Migrations\202105041119445_cratTableStatus.designer.cs">
+      <DependentUpon>202105041119445_cratTableStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OrderRepository.cs" />
+    <Compile Include="OrderStatusRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -181,8 +183,8 @@
     <EmbeddedResource Include="Migrations\202104262035004_NewTransportType.resx">
       <DependentUpon>202104262035004_NewTransportType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104262155496_ownedEntities.resx">
-      <DependentUpon>202104262155496_ownedEntities.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105041119445_cratTableStatus.resx">
+      <DependentUpon>202105041119445_cratTableStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

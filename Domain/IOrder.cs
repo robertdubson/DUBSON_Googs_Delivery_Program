@@ -20,6 +20,8 @@ namespace Domain
 
         double TimeNeededForDelivery { get; set; }
 
+        IOrderStatus Status { get; set; }
+
 
     }
 }

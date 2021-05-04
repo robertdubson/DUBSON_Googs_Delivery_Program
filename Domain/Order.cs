@@ -20,6 +20,8 @@ namespace Domain
         
         public double TimeNeededForDelivery { get; set; }
 
+        public IOrderStatus Status { get; set; }
+
         public Order(IDestination destination, ITransport transport, IProduct product, DateTime time, double timeNeededForDelivery) {
 
             

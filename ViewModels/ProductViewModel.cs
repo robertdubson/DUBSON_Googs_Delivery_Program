@@ -33,14 +33,17 @@ namespace ViewModels
 
         TransportMapper _transportMapper;
 
+        OrderStatusMapper _orderStatusMapper;
+
         OrderMapper _orderMapper;
 
         OrderService orderService;
 
+        OrderStatusService OrderStatusService;
+
         public RelayCommand CreateOrderCommand { get; set; }
 
         public void OnPropertyChanged(string propertyName) {
-
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
@@ -60,11 +63,7 @@ namespace ViewModels
 
         DestinationModel _selectedDestination;
 
-        public DestinationModel SelectedDestination { get { return _selectedDestination; } 
-            
-            set { _selectedDestination = value;            
-                OnPropertyChanged("SelectedDestination"); 
-            } }
+        public DestinationModel SelectedDestination { get { return _selectedDestination; } set { _selectedDestination = value; OnPropertyChanged("SelectedDestination"); } }
 
         public ProductViewModel() {
 
@@ -74,10 +73,12 @@ namespace ViewModels
 
             transportService = new TransportService(_unitOfWork.TransportRepository);
 
+            OrderStatusService = new OrderStatusService(_unitOfWork.OrderStatusRepository);
+
+            _orderStatusMapper = new OrderStatusMapper();
+
             _transportMapper = new TransportMapper();
-
-            
-
+  
             _productMapper = new ProductMapper();
 
             destinationService = new DestinationService(_unitOfWork.DestinationRepository);
@@ -96,7 +97,6 @@ namespace ViewModels
 
             orderService = new OrderService(_unitOfWork.OrderRepository);
 
-
             LoadData();
         
         }
@@ -105,8 +105,6 @@ namespace ViewModels
 
         public ProductModel CurrentProduct { get { return currentProduct; } set { currentProduct = value; OnPropertyChanged("CurrentProduct"); } }
 
-       
-
         public void LoadData() {
 
             modelObjects = productService.GetAllProducts().Select(prod => _productMapper.FromDomainToModel(prod)).ToList();
@@ -114,8 +112,6 @@ namespace ViewModels
         }
 
         public void CreateAnOrder() {
-
-            //DestinationModelView = new DestinationViewModel();
 
             SelectedDestination = DestinationViewModel.Instance.SelectedDestination;
 
@@ -136,6 +132,8 @@ namespace ViewModels
                 
                 OrderModel newOrder = _orderMapper.FromDomainToModel(orderService.CreateAnOrder(_destinationMapper.FromModelToDomain(SelectedDestination), _productMapper.FromModelToDomain(CurrentProduct), transportService.GetSuitableTransport(_productMapper.FromModelToDomain(CurrentProduct))));
 
+                newOrder.Status = _orderStatusMapper.FromDomainToModel(OrderStatusService.GetStatusByID(1));
+                
                 orderService.AddOrder(_orderMapper.FromModelToDomain(newOrder));
 
                 _unitOfWork.Complete();
@@ -143,7 +141,6 @@ namespace ViewModels
                 newOrder.InvolvedTransport.InTheShop = false;
 
                 //transportService.UpdateTransport(_transportMapper.FromModelToDomain(newOrder.InvolvedTransport));
-
 
                 MessageText = "Ви замовили продукт " + newOrder.Product.Name + ", що коштує " + newOrder.Product.Price + " $ . Товар буде доставлено до пункту " + newOrder.Destination.Name + " за " + newOrder.TimeNeededForDelivery + " одиниць часу";
 

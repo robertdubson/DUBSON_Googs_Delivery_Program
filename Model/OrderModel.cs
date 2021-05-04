@@ -20,9 +20,11 @@ namespace Model
 
         public double TimeNeededForDelivery { get; set; }
 
+        public OrderStatusModel Status { get; set; }
+
         public override string ToString()
         {
-            return Destination.Name +  " " + Product.Name + " " + Product.Price + " " + TimeOfOrdering.ToString();
+            return Destination.Name +  " " + Product.Name + " " + Product.Price + " " + TimeOfOrdering.ToString() + " " + Status.Status;
         }
     }
 }

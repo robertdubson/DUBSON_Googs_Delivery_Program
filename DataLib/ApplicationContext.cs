@@ -25,6 +25,7 @@ namespace DataLib
 
             modelBuilder.Entity<TransportTypeEntity>().ToTable("TransportType");
 
+            modelBuilder.Entity<OrderStatusEntity>().ToTable("OrderStatus");
            
 
             // modelBuilder.Entity<OrderEntity>().
