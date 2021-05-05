@@ -8,5 +8,20 @@ namespace ViewModels
 {
     public class HomeViewModel : IViewModel
     {
+        public string _aboutText;
+
+
+        
+        public string AboutText { get { return _aboutText; } set { _aboutText = value; OnPropertyChanged("AboutText"); } }
+
+        public void LoadData()
+        {
+            
+        }
+
+        public void OnPropertyChanged(string propertyName)
+        {
+            
+        }
     }
 }

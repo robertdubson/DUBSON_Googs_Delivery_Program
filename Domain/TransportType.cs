@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class TransportType : ITransportType
+    public class TransportType
     {
         public int ID { get; set; }
         public string Type { get; set; }

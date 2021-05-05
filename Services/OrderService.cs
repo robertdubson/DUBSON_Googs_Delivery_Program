@@ -31,7 +31,7 @@ namespace Services
         
         
         }
-        public void AddOrder(IOrder order)
+        public void AddOrder(Order order)
         {
             _orderRepository.Add(_orderMapper.FromDomainToEntity(order));
         }
@@ -41,24 +41,24 @@ namespace Services
             _orderRepository.Delete(ID);
         }
 
-        public void DeleteOrder(IOrder order)
+        public void DeleteOrder(Order order)
         {
             _orderRepository.Delete(_orderMapper.FromDomainToEntity(order));
         }
 
-        public IOrder GetOrderByID(int ID)
+        public Order GetOrderByID(int ID)
         {
             return _orderMapper.FromEntityToDomain(_orderRepository.GetByID(ID));
         }
 
-        public IOrder GetOrderByInvolvedTransport(ITransport transport) {
+        public Order GetOrderByInvolvedTransport(Transport transport) {
 
             return _orderMapper.FromEntityToDomain(_orderRepository.GetByInvolvedTransport(_transportMapper.FromDomainToEntity(transport)));       
         
         }
 
        
-        public List<IOrder> GetAllOrders() {
+        public List<Order> GetAllOrders() {
 
             return _orderRepository.GetAll().Select(ord => _orderMapper.FromEntityToDomain(ord)).ToList();
         
@@ -66,9 +66,9 @@ namespace Services
 
         
 
-        public IOrder CreateAnOrder(IDestination destination, IProduct product, List<ITransport> suitableTransport) {
+        public Order CreateAnOrder(Destination destination, Product product, List<Transport> suitableTransport) {
 
-            Func<ITransport, IOrder> getOrderByTransport = GetOrderByInvolvedTransport;
+            Func<Transport, Order> getOrderByTransport = GetOrderByInvolvedTransport;
 
             StrategyContext strategyContext = new StrategyContext(new StandartLogic());
 
@@ -77,7 +77,7 @@ namespace Services
  
                 strategyContext.CurrentStrategy = new NoTransportLogic();
 
-                IOrder newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
+                Order newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
 
                 newOrder.Status = new OrderStatus() { ID = 0, Status = "В обробці" };
                 
@@ -89,7 +89,7 @@ namespace Services
             }
             else {
 
-                IOrder newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
+                Order newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
 
                 newOrder.Status = new OrderStatus() { ID = 0, Status = "В обробці" };
 

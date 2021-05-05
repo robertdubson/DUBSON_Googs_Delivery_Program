@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Product : IProduct
+    public class Product
     {
         public string Name { get; set; }
         public double Weight { get; set; }
@@ -14,7 +14,7 @@ namespace Domain
         public double Price { get; set; }
         public double TimeForPreparation { get; set; }
         public int ID { get; set; }
-        public IDeliveryType Type { get; set; }
+        public DeliveryType Type { get; set; }
 
         public Product(int ID, string name, double weight, double volume, double price, double timeForPreparation, DeliveryType type) {
 

@@ -9,7 +9,7 @@ using Model;
 
 namespace Mappers
 {
-    public class OrderMapper : IMapper<OrderEntity, IOrder, OrderModel>
+    public class OrderMapper : IMapper<OrderEntity, Order, OrderModel>
     {
         DestinationMapper destMapper = new DestinationMapper();
 
@@ -19,7 +19,7 @@ namespace Mappers
 
         OrderStatusMapper orderStatusMapper = new OrderStatusMapper();
 
-        public OrderEntity FromDomainToEntity(IOrder domainObject)
+        public OrderEntity FromDomainToEntity(Order domainObject)
         {
 
             return new OrderEntity
@@ -43,12 +43,12 @@ namespace Mappers
 
         }
 
-        public OrderModel FromDomainToModel(IOrder domainObject)
+        public OrderModel FromDomainToModel(Order domainObject)
         {
             return new OrderModel { ID = domainObject.ID, Destination = destMapper.FromDomainToModel(domainObject.Destination), InvolvedTransport = transportMapper.FromDomainToModel(domainObject.InvolvedTransport), Product = prodMapper.FromDomainToModel(domainObject.Product), TimeOfOrdering = domainObject.TimeOfOrdering, TimeNeededForDelivery = domainObject.TimeNeededForDelivery, Status = orderStatusMapper.FromDomainToModel(domainObject.Status) };
         }
 
-        public IOrder FromEntityToDomain(OrderEntity entityObject)
+        public Order FromEntityToDomain(OrderEntity entityObject)
         {
 
             return new Order()
@@ -72,7 +72,7 @@ namespace Mappers
 
         }
 
-        public IOrder FromModelToDomain(OrderModel modelObject)
+        public Order FromModelToDomain(OrderModel modelObject)
         {
             return new Order { ID = modelObject.ID, Destination = destMapper.FromModelToDomain(modelObject.Destination), InvolvedTransport = transportMapper.FromModelToDomain(modelObject.InvolvedTransport), Product = prodMapper.FromModelToDomain(modelObject.Product), TimeNeededForDelivery = modelObject.TimeNeededForDelivery, TimeOfOrdering = modelObject.TimeOfOrdering, Status = orderStatusMapper.FromModelToDomain(modelObject.Status)};
         }

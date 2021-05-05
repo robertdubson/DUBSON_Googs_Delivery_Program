@@ -22,7 +22,6 @@ namespace DataLib
 
         public void Add(EntityName example)
         {
-            //_DbSet.Attach(example);
             _DbSet.Add(example);
         }
 
@@ -38,8 +37,7 @@ namespace DataLib
         }
 
         public IEnumerable<EntityName> GetAll()
-        {
-            //return _DbSet.AsNoTracking().ToList();
+        {            
             return _DbSet.ToList();
         }
 

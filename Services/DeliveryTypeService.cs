@@ -10,36 +10,36 @@ namespace Services
 {
     public class DeliveryTypeService : IDeliveryTypeService
     {
-
-        private readonly IDeliveryTypeRepository _deliveryTypeRepository;
+        private readonly IDeliveryTypeRepository DeliveryTypeRepository;
 
         DeliveryTypeMapper _deliveryTypeMapper;
 
-        public DeliveryTypeService(IDeliveryTypeRepository deliveryTypeRepository) {
+        public DeliveryTypeService(IDeliveryTypeRepository repository) {
 
-            _deliveryTypeRepository = deliveryTypeRepository;
+            DeliveryTypeRepository = repository;
 
-            _deliveryTypeMapper = new DeliveryTypeMapper();        
+            _deliveryTypeMapper = new DeliveryTypeMapper();
+        
         }
 
-        public void AddDeliveryType(IDeliveryType deliveryType)
+        public void AddDeliveryType(DeliveryType deliveryType)
         {
-            _deliveryTypeRepository.Add(_deliveryTypeMapper.FromDomainToEntity(deliveryType));   
+            DeliveryTypeRepository.Add(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
         }
 
-        public void DeleteDeliveryType(IDeliveryType deliveryType)
+        public void DeleteDeliveryType(DeliveryType deliveryType)
         {
-            _deliveryTypeRepository.Delete(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
+            DeliveryTypeRepository.Delete(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
         }
 
-        public List<IDeliveryType> GetAllDeliveryTypes()
+        public List<DeliveryType> GetAllDeliveryTypes()
         {
-            return _deliveryTypeRepository.GetAll().ToList().Select(delType => _deliveryTypeMapper.FromEntityToDomain(delType)).ToList();
+            return DeliveryTypeRepository.GetAll().ToList().Select(delType => _deliveryTypeMapper.FromEntityToDomain(delType)).ToList();
         }
 
-        public void UpdateDeliveryType(IDeliveryType deliveryType)
+        public void UpdateDeliveryType(DeliveryType deliveryType)
         {
-            _deliveryTypeRepository.Update(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
+            DeliveryTypeRepository.Update(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
         }
     }
 }

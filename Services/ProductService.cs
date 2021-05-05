@@ -28,7 +28,7 @@ namespace Services
         
         }
 
-        public void AddProduct(IProduct product)
+        public void AddProduct(Product product)
         {
             _productRepository.Add(_productMapper.FromDomainToEntity(product));
         }
@@ -38,32 +38,32 @@ namespace Services
             _productRepository.Delete(ID);
         }
 
-        public List<IProduct> GetAllProducts()
+        public List<Product> GetAllProducts()
         {
             return _productRepository.GetAll().Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         }
 
-        public List<IDeliveryType> GetAllTypes()
+        public List<DeliveryType> GetAllTypes()
         {
             return _productRepository.GetAllTypes().Select(deliveryType => _deliveryTypeMapper.FromEntityToDomain(deliveryType)).ToList();
         }
 
-        public IProduct GetProductByID(int ID)
+        public Product GetProductByID(int ID)
         {
             return _productMapper.FromEntityToDomain(_productRepository.GetByID(ID));
         }
 
         
 
-        public List<IProduct> GetProductsByType(IDeliveryType delType) {
+        public List<Product> GetProductsByType(DeliveryType delType) {
 
             return _productRepository.GetAll().ToList().FindAll(prod => prod.DeliveryType.ID == _deliveryTypeMapper.FromDomainToEntity(delType).ID).Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         
         }
 
-        public List<IProduct> FindByText(string text) {
+        public List<Product> FindByText(string text) {
 
-            List<IProduct> suitableProducts = new List<IProduct>();
+            List<Product> suitableProducts = new List<Product>();
 
             if (text == "")
             {
@@ -77,7 +77,7 @@ namespace Services
                 foreach (char ch in text)
                 {
 
-                    foreach (IProduct prod in this.GetAllProducts())
+                    foreach (Product prod in this.GetAllProducts())
                     {
 
                         if (prod.ToString().Contains(ch))
@@ -95,11 +95,11 @@ namespace Services
         
         }
 
-        public List<IProduct> FindByParameters(double maxWeight, double minWeight, double minVolume, double maxVolume, double maxPrice, double minPrice) {
+        public List<Product> FindByParameters(double maxWeight, double minWeight, double minVolume, double maxVolume, double maxPrice, double minPrice) {
 
-            List<IProduct> resultList = new List<IProduct>();
+            List<Product> resultList = new List<Product>();
 
-            foreach (IProduct prod in this.GetAllProducts()) {
+            foreach (Product prod in this.GetAllProducts()) {
 
                 if (prod.Price > minPrice) {
 

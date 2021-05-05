@@ -11,14 +11,14 @@ namespace Services
 {
     public interface IDestinationService
     {
-        void AddDestination(IDestination destination);
+        void AddDestination(Destination destination);
 
-        IDestination GetDestinationByID(int ID);
+        Destination GetDestinationByID(int ID);
 
         void DeleteDestination(int ID);
 
         
 
-        List<IDestination> GetAllDestinations();
+        List<Destination> GetAllDestinations();
     }
 }

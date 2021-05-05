@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Destination : IDestination
+    public class Destination
     {
         public double Distance { get; set; }
 

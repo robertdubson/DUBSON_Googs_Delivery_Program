@@ -9,15 +9,15 @@ namespace Services
 {
     public interface IOrderStatusService
     {
-        IEnumerable<IOrderStatus> GetAllStatuses();
+        IEnumerable<OrderStatus> GetAllStatuses();
 
         void DeleteStatus(int ID);
 
-        IOrderStatus GetStatusByID(int ID);
+        OrderStatus GetStatusByID(int ID);
 
-        void AddStatus(IOrderStatus status);
+        void AddStatus(OrderStatus status);
 
-        void UpdateStatus(IOrderStatus status);
+        void UpdateStatus(OrderStatus status);
 
         
     }

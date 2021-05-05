@@ -8,12 +8,12 @@ namespace Services
 {
     public interface IDeliveryTypeService
     {
-        List<IDeliveryType> GetAllDeliveryTypes();
+        List<DeliveryType> GetAllDeliveryTypes();
 
-        void UpdateDeliveryType(IDeliveryType deliveryType);
+        void UpdateDeliveryType(DeliveryType deliveryType);
 
-        void DeleteDeliveryType(IDeliveryType deliveryType);
+        void DeleteDeliveryType(DeliveryType deliveryType);
 
-        void AddDeliveryType(IDeliveryType deliveryType);
+        void AddDeliveryType(DeliveryType deliveryType);
     }
 }

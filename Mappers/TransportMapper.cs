@@ -9,7 +9,7 @@ using Model;
 
 namespace Mappers
 {
-    public class TransportMapper : IMapper<TransportEntity, ITransport, TransportModel>
+    public class TransportMapper : IMapper<TransportEntity, Transport, TransportModel>
     {
         DeliveryTypeMapper deliveryTypeMapper;
 
@@ -23,7 +23,7 @@ namespace Mappers
         
         }
 
-        public ITransport FromEntityToDomain(TransportEntity entityObject) {
+        public Transport FromEntityToDomain(TransportEntity entityObject) {
 
             return new Transport
             {
@@ -39,7 +39,7 @@ namespace Mappers
   
         }
 
-        public TransportEntity FromDomainToEntity(ITransport domainObject) {
+        public TransportEntity FromDomainToEntity(Transport domainObject) {
 
 
             return new TransportEntity
@@ -56,12 +56,12 @@ namespace Mappers
 
         }
 
-        public TransportModel FromDomainToModel(ITransport domainObject)
+        public TransportModel FromDomainToModel(Transport domainObject)
         {
             return new TransportModel { ID = domainObject.ID, DeliveryType = deliveryTypeMapper.FromDomainToModel(domainObject.Type), InTheShop = domainObject.InTheShop, Speed = domainObject.Speed, TransportType = _transportTypeMapper.FromDomainToModel(domainObject.TransportType) };
         }
 
-        public ITransport FromModelToDomain(TransportModel modelObject)
+        public Transport FromModelToDomain(TransportModel modelObject)
         {
             return new Transport { ID = modelObject.ID, Type = deliveryTypeMapper.FromModelToDomain(modelObject.DeliveryType), InTheShop = modelObject.InTheShop, Speed = modelObject.Speed, TransportType = _transportTypeMapper.FromModelToDomain(modelObject.TransportType) };
         }

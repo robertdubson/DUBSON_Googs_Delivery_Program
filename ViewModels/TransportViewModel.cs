@@ -45,5 +45,10 @@ namespace ViewModels
             modelObjects = _transportService.GetAllTransports().Select(transport => _transportMapper.FromDomainToModel(transport)).ToList();
         
         }
+
+        public void LoadData() { 
+        
+        
+        }
     }
 }

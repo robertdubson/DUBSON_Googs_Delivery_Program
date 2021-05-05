@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Order : IOrder
+    public class Order
     {
         public int ID { get; set; }
         
-        public IDestination Destination { get; set; }
+        public Destination Destination { get; set; }
 
-        public ITransport InvolvedTransport { get; set; }
+        public Transport InvolvedTransport { get; set; }
         
-        public IProduct Product { get; set; }
+        public Product Product { get; set; }
         
         public DateTime TimeOfOrdering { get; set; }
         
         public double TimeNeededForDelivery { get; set; }
 
-        public IOrderStatus Status { get; set; }
+        public OrderStatus Status { get; set; }
 
-        public Order(IDestination destination, ITransport transport, IProduct product, DateTime time, double timeNeededForDelivery) {
+        public Order(Destination destination, Transport transport, Product product, DateTime time, double timeNeededForDelivery) {
 
             
 

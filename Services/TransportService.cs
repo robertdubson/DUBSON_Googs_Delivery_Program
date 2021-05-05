@@ -28,7 +28,7 @@ namespace Services
         
         }
 
-        public void Add(ITransport transport)
+        public void Add(Transport transport)
         {
             _transportRepository.Add(_transportMapper.FromDomainToEntity(transport));
         }
@@ -38,19 +38,19 @@ namespace Services
             _transportRepository.Delete(ID);
         }
 
-        public ITransport GetTransportByID(int ID)
+        public Transport GetTransportByID(int ID)
         {
             return _transportMapper.FromEntityToDomain(_transportRepository.GetByID(ID));
         }
 
         
 
-        public List<ITransport> GetAllTransports() {
+        public List<Transport> GetAllTransports() {
 
             return _transportRepository.GetAll().Select(transport => _transportMapper.FromEntityToDomain(transport)).ToList();
         }
 
-        public List<ITransport> GetSuitableTransport(IProduct product) {
+        public List<Transport> GetSuitableTransport(Product product) {
 
             // повертаємо усі одиниці транспорту, що підходять для перевезення продукту отриманого типу
             
@@ -58,7 +58,7 @@ namespace Services
         
         }
 
-        public void UpdateTransport(ITransport transport) {
+        public void UpdateTransport(Transport transport) {
 
             _transportRepository.GetByID(transport.ID).InTheShop = _transportMapper.FromDomainToEntity(transport).InTheShop;
 

@@ -115,16 +115,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDeliveryType.cs" />
-    <Compile Include="IOrderStatus.cs" />
-    <Compile Include="ITransportType.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="Transport.cs" />
     <Compile Include="Destination.cs" />
-    <Compile Include="IDestination.cs" />
-    <Compile Include="IProduct.cs" />
-    <Compile Include="ITransport.cs" />
-    <Compile Include="IOrder.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="DeliveryType.cs" />

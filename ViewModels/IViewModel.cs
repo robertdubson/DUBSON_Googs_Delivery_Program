@@ -8,5 +8,10 @@ namespace ViewModels
 {
     public interface IViewModel
     {
+        void LoadData();
+
+        void OnPropertyChanged(string propertyName);
+
+        
     }
 }

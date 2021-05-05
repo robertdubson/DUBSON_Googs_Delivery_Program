@@ -96,7 +96,7 @@ namespace ViewModels
 
         public IViewModel CurrentWindowViewModel { get { return _currentWindowViewModel; } set {  _currentWindowViewModel = value; OnPropertyChanged("CurrentWindowViewModel");  } }
 
-        
+        public void LoadData() { }
     
     }
 }

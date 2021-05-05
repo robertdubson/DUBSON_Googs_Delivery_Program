@@ -12,21 +12,21 @@ namespace Services
 {
     public interface IProductService
     {
-        void AddProduct(IProduct product);
+        void AddProduct(Product product);
 
-        IProduct GetProductByID(int ID);
+        Product GetProductByID(int ID);
 
         void DeleteProduct(int ID);
 
         
 
-        List<IProduct> GetAllProducts();
+        List<Product> GetAllProducts();
 
-        List<IDeliveryType> GetAllTypes();
+        List<DeliveryType> GetAllTypes();
 
-        List<IProduct> FindByText(string text);
+        List<Product> FindByText(string text);
 
-        List<IProduct> FindByParameters(double maxWeight, double minWeight, double minVolume, double maxVolume, double maxPrice, double minPrice);
+        List<Product> FindByParameters(double maxWeight, double minWeight, double minVolume, double maxVolume, double maxPrice, double minPrice);
 
     }
 }

@@ -12,9 +12,9 @@ namespace Services
 {
     public interface IOrderService
     {
-        void AddOrder(IOrder order);
+        void AddOrder(Order order);
 
-        IOrder GetOrderByID(int ID);
+        Order GetOrderByID(int ID);
 
         void DeleteOrder(int ID);
 

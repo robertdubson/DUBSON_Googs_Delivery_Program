@@ -9,14 +9,14 @@ namespace Services.Strategy
 {
     public class NoTransportLogic : IStrategy
     {
-        public IOrder CreateAnOrder(IDestination destination, IProduct product, List<ITransport> suitableTransport, Func<ITransport, IOrder> getOrderByTransport)
+        public Order CreateAnOrder(Destination destination, Product product, List<Transport> suitableTransport, Func<Transport, Order> getOrderByTransport)
         {
-            List<ITransport> currentTransports = suitableTransport;
+            List<Transport> currentTransports = suitableTransport;
 
             List<DateTime> timesOfDelivery = new List<DateTime>();
 
 
-            Dictionary<DateTime, ITransport> dateTransportDictionary = new Dictionary<DateTime, ITransport>();
+            Dictionary<DateTime, Transport> dateTransportDictionary = new Dictionary<DateTime, Transport>();
 
             currentTransports.ForEach(transport => dateTransportDictionary.Add(getOrderByTransport(transport).TimeOfOrdering.AddSeconds(getOrderByTransport(transport).TimeNeededForDelivery), transport));
 

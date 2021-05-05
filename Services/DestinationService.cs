@@ -26,7 +26,7 @@ namespace Services
         }
 
         
-        public void AddDestination(IDestination destination)
+        public void AddDestination(Destination destination)
         {
             _destinationRepository.Add(_destinationMapper.FromDomainToEntity(destination));
         }
@@ -36,12 +36,12 @@ namespace Services
             _destinationRepository.Delete(ID);
         }
 
-        public List<IDestination> GetAllDestinations()
+        public List<Destination> GetAllDestinations()
         {
             return _destinationRepository.GetAll().Select(dest => _destinationMapper.FromEntityToDomain(dest)).ToList();
         }
 
-        public IDestination GetDestinationByID(int ID)
+        public Destination GetDestinationByID(int ID)
         {
             return _destinationMapper.FromEntityToDomain(_destinationRepository.GetByID(ID));
         }

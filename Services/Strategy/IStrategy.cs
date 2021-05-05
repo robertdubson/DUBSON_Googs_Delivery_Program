@@ -8,6 +8,6 @@ namespace Services.Strategy
 {
     public interface IStrategy
     {
-        IOrder CreateAnOrder(IDestination destination, IProduct product, List<ITransport> suitableTransport, Func<ITransport, IOrder> getOrderByTransport);
+        Order CreateAnOrder(Destination destination, Product product, List<Transport> suitableTransport, Func<Transport, Order> getOrderByTransport);
     }
 }

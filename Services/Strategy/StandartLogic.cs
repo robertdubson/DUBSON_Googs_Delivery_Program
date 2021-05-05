@@ -9,15 +9,15 @@ namespace Services.Strategy
 {
     public class StandartLogic : IStrategy
     {
-        public IOrder CreateAnOrder(IDestination destination, IProduct product, List<ITransport> suitableTransport, Func<ITransport, IOrder> getOrderByTransport)
+        public Order CreateAnOrder(Destination destination, Product product, List<Transport> suitableTransport, Func<Transport, Order> getOrderByTransport)
         {
-            List<ITransport> currentTransports = suitableTransport;
+            List<Transport> currentTransports = suitableTransport;
 
             List<DateTime> timesOfDelivery = new List<DateTime>();
 
-            Dictionary<DateTime, ITransport> dateTransportDictionary = new Dictionary<DateTime, ITransport>();
+            Dictionary<DateTime, Transport> dateTransportDictionary = new Dictionary<DateTime, Transport>();
 
-            ITransport selectedTransport = suitableTransport.FindAll(transport => transport.InTheShop).ToList().ElementAt(0);
+            Transport selectedTransport = suitableTransport.FindAll(transport => transport.InTheShop).ToList().ElementAt(0);
 
             double timeNeededForDelivery = 0;
 

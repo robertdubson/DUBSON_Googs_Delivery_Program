@@ -8,24 +8,24 @@ using Entity;
 using Domain;
 namespace Mappers
 {
-    public class OrderStatusMapper : IMapper<OrderStatusEntity, IOrderStatus, OrderStatusModel>
+    public class OrderStatusMapper : IMapper<OrderStatusEntity, OrderStatus, OrderStatusModel>
     {
-        public OrderStatusEntity FromDomainToEntity(IOrderStatus domainObject)
+        public OrderStatusEntity FromDomainToEntity(OrderStatus domainObject)
         {
             return new OrderStatusEntity() { ID = domainObject.ID, Status = domainObject.Status };
         }
 
-        public OrderStatusModel FromDomainToModel(IOrderStatus domainObject)
+        public OrderStatusModel FromDomainToModel(OrderStatus domainObject)
         {
             return new OrderStatusModel() { ID = domainObject.ID, Status = domainObject.Status };
         }
 
-        public IOrderStatus FromEntityToDomain(OrderStatusEntity entityObject)
+        public OrderStatus FromEntityToDomain(OrderStatusEntity entityObject)
         {
             return new OrderStatus() { ID = entityObject.ID, Status = entityObject.Status };
         }
 
-        public IOrderStatus FromModelToDomain(OrderStatusModel modelObject)
+        public OrderStatus FromModelToDomain(OrderStatusModel modelObject)
         {
             return new OrderStatus() { ID = modelObject.ID, Status = modelObject.Status };
         }

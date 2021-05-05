@@ -9,27 +9,27 @@ using Model;
 
 namespace Mappers
 {
-    public class DestinationMapper : IMapper<DestinationEntity, IDestination, DestinationModel>
+    public class DestinationMapper : IMapper<DestinationEntity, Destination, DestinationModel>
     {
         
 
-        public DestinationEntity FromDomainToEntity(IDestination domainObject) {
+        public DestinationEntity FromDomainToEntity(Destination domainObject) {
 
             return new DestinationEntity() { DistanceFromCenter = domainObject.Distance, Name = domainObject.Name, ID = domainObject.ID };
         
         }
 
-        public DestinationModel FromDomainToModel(IDestination domainObject)
+        public DestinationModel FromDomainToModel(Destination domainObject)
         {
             return new DestinationModel { ID = domainObject.ID, Distance = domainObject.Distance, Name = domainObject.Name };
         }
 
-        public IDestination FromEntityToDomain(DestinationEntity entityObject)
+        public Destination FromEntityToDomain(DestinationEntity entityObject)
         {
             return new Destination { Distance = entityObject.DistanceFromCenter, Name = entityObject.Name, ID = entityObject.ID };
         }
 
-        public IDestination FromModelToDomain(DestinationModel modelObject)
+        public Destination FromModelToDomain(DestinationModel modelObject)
         {
             return new Destination { Distance = modelObject.Distance, ID = modelObject.ID, Name = modelObject.Name };
         }

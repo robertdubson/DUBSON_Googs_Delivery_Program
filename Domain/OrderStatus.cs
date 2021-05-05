@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class OrderStatus : IOrderStatus
+    public class OrderStatus
     {
         public int ID { get; set; }
 

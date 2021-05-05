@@ -12,17 +12,17 @@ namespace Services
 {
     public interface ITransportService
     {
-        void Add(ITransport transport);
+        void Add(Transport transport);
 
-        ITransport GetTransportByID(int ID);
+        Transport GetTransportByID(int ID);
 
         void DeleteTransport(int ID);
 
-        void UpdateTransport(ITransport transport);
+        void UpdateTransport(Transport transport);
 
-        List<ITransport> GetSuitableTransport(IProduct product);
+        List<Transport> GetSuitableTransport(Product product);
 
-        List<ITransport> GetAllTransports();
+        List<Transport> GetAllTransports();
 
     }
 }

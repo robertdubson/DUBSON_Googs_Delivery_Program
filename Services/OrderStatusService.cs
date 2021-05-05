@@ -22,7 +22,7 @@ namespace Services
         
         }
 
-        public void AddStatus(IOrderStatus status)
+        public void AddStatus(OrderStatus status)
         {
             OrderStatusRepository.Add(_orderStatusMapper.FromDomainToEntity(status));
         }
@@ -32,17 +32,17 @@ namespace Services
             OrderStatusRepository.Delete(ID);
         }
 
-        public IEnumerable<IOrderStatus> GetAllStatuses()
+        public IEnumerable<OrderStatus> GetAllStatuses()
         {
             return OrderStatusRepository.GetAll().ToList().Select(ordStatus => _orderStatusMapper.FromEntityToDomain(ordStatus));
         }
 
-        public IOrderStatus GetStatusByID(int ID)
+        public OrderStatus GetStatusByID(int ID)
         {
             return _orderStatusMapper.FromEntityToDomain(OrderStatusRepository.GetByID(ID));
         }
 
-        public void UpdateStatus(IOrderStatus status)
+        public void UpdateStatus(OrderStatus status)
         {
             OrderStatusRepository.Update(_orderStatusMapper.FromDomainToEntity(status));
         }
