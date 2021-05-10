@@ -23,13 +23,13 @@ namespace ViewModels
 
         OrderModel currentOrder;
 
-        OrderService _orderService;
+        IOrderService _orderService;
 
         OrderMapper orderMapper;
 
         public RelayCommand DeleteSelectedOrder { get; set; }
 
-        UnitOfWork _unitOfWork;
+        IUnitOfWork _unitOfWork;
 
         public OrderViewModel()
         {
@@ -42,6 +42,20 @@ namespace ViewModels
             DeleteSelectedOrder = new RelayCommand(DeleteOrder);
 
             LoadData();
+        }
+
+        public OrderViewModel(IUnitOfWork unitOfWork, IOrderService orderService) {
+
+            _unitOfWork = unitOfWork;
+
+            _orderService = orderService;
+
+            orderMapper = new OrderMapper();
+
+            DeleteSelectedOrder = new RelayCommand(DeleteOrder);
+
+            LoadData();
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

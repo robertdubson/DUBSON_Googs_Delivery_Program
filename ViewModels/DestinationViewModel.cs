@@ -26,7 +26,7 @@ namespace ViewModels
 
         List<DestinationModel> modelObjects;
 
-        DestinationService _destinationService;
+        IDestinationService _destinationService;
 
         private static DestinationViewModel instance;
 
@@ -34,7 +34,7 @@ namespace ViewModels
 
         DestinationMapper _destinationMapper;
 
-        UnitOfWork _unitOfWork;
+        IUnitOfWork _unitOfWork;
 
         public DestinationViewModel()
         {
@@ -51,6 +51,24 @@ namespace ViewModels
             LoadData();
 
             instance = this;
+        }
+
+        public DestinationViewModel(IUnitOfWork unitOfWork, IDestinationService destinationService) {
+
+            _unitOfWork = unitOfWork;
+
+            _destinationService = destinationService;
+
+            _destinationMapper = new DestinationMapper();
+
+            modelObjects = new List<DestinationModel>();
+
+            //_selectedDestination = new DestinationModel();
+
+            LoadData();
+
+            instance = this;
+
         }
 
         public DestinationModel SelectedDestination { get { return _selectedDestination; } set { _selectedDestination = value; OnPropertyChanged("SelectedDestination"); } }

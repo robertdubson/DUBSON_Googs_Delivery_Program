@@ -14,7 +14,7 @@ namespace ViewModels
     {
         TransportMapper _transportMapper;
 
-        TransportService _transportService;
+        ITransportService _transportService;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

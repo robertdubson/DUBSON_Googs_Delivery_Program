@@ -123,10 +123,5 @@ namespace Services
         
         }
 
-        //public List<IProduct> FindByParameters(double maxWeight, double minWeight, double minVolume, double maxVolume, double maxPrice, double minPrice) {
-
-            //return this.GetAllProducts().FindAll(prod => (prod.Weight >= minWeight) && (prod.Weight <= maxWeight) && (prod.Volume >= minVolume) && (prod.Volume <= maxVolume) && (prod.Price >= minPrice) && (prod.Price <= maxPrice));
-        
-        //}
     }
 }

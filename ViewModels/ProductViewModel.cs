@@ -29,7 +29,7 @@ namespace ViewModels
 
         public DestinationViewModel DestinationModelView { get { return destinationVM; }  }
 
-        TransportService transportService;
+        ITransportService transportService;
 
         TransportMapper _transportMapper;
 
@@ -37,9 +37,9 @@ namespace ViewModels
 
         OrderMapper _orderMapper;
 
-        OrderService orderService;
+        IOrderService orderService;
 
-        OrderStatusService OrderStatusService;
+        IOrderStatusService OrderStatusService;
 
         public RelayCommand CreateOrderCommand { get; set; }
 
@@ -49,13 +49,13 @@ namespace ViewModels
 
         }
 
-        ProductService productService;
+        IProductService productService;
 
-        UnitOfWork _unitOfWork;
+        IUnitOfWork _unitOfWork;
 
         ProductMapper _productMapper;
 
-        DestinationService destinationService;
+        IDestinationService destinationService;
 
         DestinationMapper _destinationMapper;
 
@@ -99,6 +99,42 @@ namespace ViewModels
 
             LoadData();
         
+        }
+
+        public ProductViewModel(IUnitOfWork unitOfWork, ITransportService inTransportService, IOrderService inOrderService, IProductService inProductService, IOrderStatusService inOrderStatusService, IDestinationService inDestinationService) {
+
+            _unitOfWork = unitOfWork;
+
+            productService = inProductService;
+
+            transportService = inTransportService;
+
+            OrderStatusService = inOrderStatusService;
+
+            _orderStatusMapper = new OrderStatusMapper();
+
+            _transportMapper = new TransportMapper();
+
+            _productMapper = new ProductMapper();
+
+            destinationService = inDestinationService;
+
+            _destinationMapper = new DestinationMapper();
+
+            modelObjects = new List<ProductModel>();
+
+            CreateOrderCommand = new RelayCommand(CreateAnOrder);
+
+            new DestinationViewModel();
+
+            destinationVM = DestinationViewModel.Instance;
+
+            _orderMapper = new OrderMapper();
+
+            orderService = inOrderService;
+
+            LoadData();
+
         }
 
         public List<ProductModel> ModelObjects { get { return modelObjects; } set { modelObjects = value; OnPropertyChanged("modelObjects"); } }

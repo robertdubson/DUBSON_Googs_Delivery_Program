@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Commands;
+using Services.DependencyInjection;
+using Services;
+using DataLib.UnitOfWork;
 namespace ViewModels
 {
     public class ApplicationViewModel : INotifyPropertyChanged, IViewModel
@@ -36,6 +39,10 @@ namespace ViewModels
 
         public ApplicationViewModel()
         {
+            DependencyRegistration container = new DependencyRegistration();
+
+            container.Build();
+            
             about = new AboutViewModel();
 
             home = new HomeViewModel();

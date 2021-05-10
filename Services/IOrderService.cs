@@ -18,8 +18,10 @@ namespace Services
 
         void DeleteOrder(int ID);
 
-        
+        Order CreateAnOrder(Destination destination, Product product, List<Transport> suitableTransport);
 
+        Order GetOrderByInvolvedTransport(Transport transport);
 
+        List<Order> GetAllOrders();
     }
 }
