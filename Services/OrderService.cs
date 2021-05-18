@@ -76,7 +76,7 @@ namespace Services
  
                 strategyContext.CurrentStrategy = new NoTransportLogic();
 
-                Order newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
+                Order newOrder = strategyContext.CurrentStrategy.ProcessTheOrder(destination, product, suitableTransport, getOrderByTransport);
 
                 newOrder.Status = new OrderStatus() { ID = 0, Status = "В обробці" };
 
@@ -85,7 +85,7 @@ namespace Services
             }
             else {
 
-                Order newOrder = strategyContext.CurrentStrategy.CreateAnOrder(destination, product, suitableTransport, getOrderByTransport);
+                Order newOrder = strategyContext.CurrentStrategy.ProcessTheOrder(destination, product, suitableTransport, getOrderByTransport);
 
                 newOrder.Status = new OrderStatus() { ID = 0, Status = "В обробці" };
 

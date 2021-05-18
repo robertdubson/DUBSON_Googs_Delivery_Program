@@ -9,7 +9,7 @@ namespace Services.Strategy
 {
     public class NoTransportLogic : IStrategy
     {
-        public Order CreateAnOrder(Destination destination, Product product, List<Transport> suitableTransport, Func<Transport, Order> getOrderByTransport)
+        public Order ProcessTheOrder(Destination destination, Product product, List<Transport> suitableTransport, Func<Transport, Order> getOrderByTransport)
         {
             List<Transport> currentTransports = suitableTransport;
 
@@ -29,8 +29,6 @@ namespace Services.Strategy
             double timeNeededForDelivry = theLeastTime.Subtract(DateTime.Now).TotalSeconds + destination.Distance / dateTransportDictionary[theLeastTime].Speed + product.TimeForPreparation + getOrderByTransport(dateTransportDictionary[theLeastTime]).Destination.Distance / dateTransportDictionary[theLeastTime].Speed;
 
             Order newOrder = new Order(destination, dateTransportDictionary[theLeastTime], product, DateTime.Now, timeNeededForDelivry);
-
-            
 
             return newOrder;
         }

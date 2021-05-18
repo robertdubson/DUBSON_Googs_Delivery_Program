@@ -9,7 +9,7 @@ namespace Services.Strategy
 {
     public class StandartLogic : IStrategy
     {
-        public Order CreateAnOrder(Destination destination, Product product, List<Transport> suitableTransport, Func<Transport, Order> getOrderByTransport)
+        public Order ProcessTheOrder(Destination destination, Product product, List<Transport> suitableTransport, Func<Transport, Order> getOrderByTransport)
         {
             List<Transport> currentTransports = suitableTransport;
 
