@@ -8,6 +8,7 @@ using Model;
 using Mappers;
 using DataLib;
 using System.ComponentModel;
+using DataLib.UnitOfWork;
 namespace ViewModels
 {
     public class TransportViewModel : IViewModel, INotifyPropertyChanged
@@ -15,6 +16,8 @@ namespace ViewModels
         TransportMapper _transportMapper;
 
         ITransportService _transportService;
+
+        IUnitOfWork _unitOfWork;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -39,7 +42,7 @@ namespace ViewModels
         public TransportViewModel()
         {
 
-            _transportService = new TransportService(new DataInitializer().transportRepository);
+            _transportService = new TransportService(_unitOfWork);
             _transportMapper = new TransportMapper();
             
             modelObjects = _transportService.GetAllTransports().Select(transport => _transportMapper.FromDomainToModel(transport)).ToList();

@@ -41,9 +41,9 @@ namespace Presenters
 
             _unitOFWork = new UnitOfWork(new ApplicationContext());
 
-            _productService = new ProductService(_unitOFWork.ProductRepository);
+            _productService = new ProductService(_unitOFWork);
 
-            _deliveryTypeService = new DeliveryTypeService(_unitOFWork.DeliveryTypeRepository);
+            _deliveryTypeService = new DeliveryTypeService(_unitOFWork);
 
             deliveryTypes = _deliveryTypeService.GetAllDeliveryTypes().Select(delType => deliveryTypeMapper.FromDomainToModel(delType)).ToList();
 

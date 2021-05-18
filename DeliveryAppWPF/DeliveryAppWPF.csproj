@@ -240,6 +240,14 @@
       <Project>{b6842f17-8c5d-4432-9222-daf61e9b4679}</Project>
       <Name>Commands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataLib\DataLib.csproj">
+      <Project>{b6e598a5-53f8-4f0a-b8a5-b56f2005dff0}</Project>
+      <Name>DataLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{90403b8f-a5db-49eb-b130-75175fcaf7e6}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{6a50f153-3578-4754-8693-fc896afd3d3c}</Project>
       <Name>ViewModels</Name>

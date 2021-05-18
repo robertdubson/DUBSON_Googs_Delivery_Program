@@ -32,9 +32,9 @@ namespace Presenters
 
             _unitOfWork = new UnitOfWork(new ApplicationContext());
 
-            orderService = new OrderService(_unitOfWork.OrderRepository);
+            orderService = new OrderService(_unitOfWork);
 
-            orderStatusService = new OrderStatusService(_unitOfWork.OrderStatusRepository);
+            orderStatusService = new OrderStatusService(_unitOfWork);
 
             orderMapper = new OrderMapper();
 

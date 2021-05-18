@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Commands;
 using Services.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Services;
 using DataLib.UnitOfWork;
 namespace ViewModels
@@ -60,6 +61,33 @@ namespace ViewModels
             SetOrdersVMCommand = new RelayCommand(SetOrdersVM);
 
             ExitCommand = new RelayCommand(Exit);
+
+        }
+
+        public ApplicationViewModel(IServiceProvider serviceProvider) {
+
+            about = new AboutViewModel();
+
+            home = new HomeViewModel();
+
+            orders = new OrderViewModel(serviceProvider.GetService<IUnitOfWork>(), serviceProvider.GetService<IOrderService>());
+
+            products = new ProductViewModel(serviceProvider.GetService<IUnitOfWork>(), serviceProvider.GetService<ITransportService>(), serviceProvider.GetService<IOrderService>(), 
+            
+            serviceProvider.GetService<IProductService>(), serviceProvider.GetService<IOrderStatusService>(), 
+            
+            serviceProvider.GetService<IDestinationService>());
+
+            _currentWindowViewModel = products;
+
+            SetAboutVMCommand = new RelayCommand(SetAboutVM);
+
+            SetProductsVMCommand = new RelayCommand(SetProductsVM);
+
+            SetOrdersVMCommand = new RelayCommand(SetOrdersVM);
+
+            ExitCommand = new RelayCommand(Exit);
+
 
         }
 

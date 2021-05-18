@@ -7,57 +7,57 @@ using System.Threading.Tasks;
 using Entity;
 using DataLib;
 using Mappers;
-
+using DataLib.UnitOfWork;
 namespace Services
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _productRepository;
-
         ProductMapper _productMapper;
 
         DeliveryTypeMapper _deliveryTypeMapper;
 
-        public ProductService(IProductRepository repository) {
+        IUnitOfWork _unitOfWork;
 
-            _productRepository = repository;
+        public ProductService(IUnitOfWork unitOfWork) {
+
+            _unitOfWork = unitOfWork;
 
             _productMapper = new ProductMapper();
 
             _deliveryTypeMapper = new DeliveryTypeMapper();
-        
+
         }
 
         public void AddProduct(Product product)
         {
-            _productRepository.Add(_productMapper.FromDomainToEntity(product));
+            _unitOfWork.ProductRepository.Add(_productMapper.FromDomainToEntity(product));
         }
 
         public void DeleteProduct(int ID)
         {
-            _productRepository.Delete(ID);
+            _unitOfWork.ProductRepository.Delete(ID);
         }
 
         public List<Product> GetAllProducts()
         {
-            return _productRepository.GetAll().Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
+            return _unitOfWork.ProductRepository.GetAll().Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         }
 
         public List<DeliveryType> GetAllTypes()
         {
-            return _productRepository.GetAllTypes().Select(deliveryType => _deliveryTypeMapper.FromEntityToDomain(deliveryType)).ToList();
+            return _unitOfWork.ProductRepository.GetAllTypes().Select(deliveryType => _deliveryTypeMapper.FromEntityToDomain(deliveryType)).ToList();
         }
 
         public Product GetProductByID(int ID)
         {
-            return _productMapper.FromEntityToDomain(_productRepository.GetByID(ID));
+            return _productMapper.FromEntityToDomain(_unitOfWork.ProductRepository.GetByID(ID));
         }
 
         
 
         public List<Product> GetProductsByType(DeliveryType delType) {
 
-            return _productRepository.GetAll().ToList().FindAll(prod => prod.DeliveryType.ID == _deliveryTypeMapper.FromDomainToEntity(delType).ID).Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
+            return _unitOfWork.ProductRepository.GetAll().ToList().FindAll(prod => prod.DeliveryType.ID == _deliveryTypeMapper.FromDomainToEntity(delType).ID).Select(prod => _productMapper.FromEntityToDomain(prod)).ToList();
         
         }
 

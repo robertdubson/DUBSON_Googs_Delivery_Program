@@ -69,11 +69,11 @@ namespace ViewModels
 
             _unitOfWork = new UnitOfWork(new ApplicationContext());
 
-            productService = new ProductService(_unitOfWork.ProductRepository);
+            productService = new ProductService(_unitOfWork);
 
-            transportService = new TransportService(_unitOfWork.TransportRepository);
+            transportService = new TransportService(_unitOfWork);
 
-            OrderStatusService = new OrderStatusService(_unitOfWork.OrderStatusRepository);
+            OrderStatusService = new OrderStatusService(_unitOfWork);
 
             _orderStatusMapper = new OrderStatusMapper();
 
@@ -81,7 +81,7 @@ namespace ViewModels
   
             _productMapper = new ProductMapper();
 
-            destinationService = new DestinationService(_unitOfWork.DestinationRepository);
+            destinationService = new DestinationService(_unitOfWork);
 
             _destinationMapper = new DestinationMapper();
 
@@ -95,7 +95,7 @@ namespace ViewModels
 
             _orderMapper = new OrderMapper();
 
-            orderService = new OrderService(_unitOfWork.OrderRepository);
+            orderService = new OrderService(_unitOfWork);
 
             LoadData();
         
@@ -125,7 +125,7 @@ namespace ViewModels
 
             CreateOrderCommand = new RelayCommand(CreateAnOrder);
 
-            new DestinationViewModel();
+            new DestinationViewModel(_unitOfWork, destinationService);
 
             destinationVM = DestinationViewModel.Instance;
 

@@ -7,43 +7,43 @@ using System.Threading.Tasks;
 using Mappers;
 using DataLib;
 using Entity;
-
+using DataLib.UnitOfWork;
 
 namespace Services
 {
     public class DestinationService : IDestinationService
     {
-        private readonly IDestinationRepository _destinationRepository;
-
         DestinationMapper _destinationMapper;
 
-        public DestinationService(IDestinationRepository repository) {
+        IUnitOfWork _unitOfWork;
 
-            _destinationRepository = repository;
+        public DestinationService(IUnitOfWork unitOfWork) {
+
+            _unitOfWork = unitOfWork;
 
             _destinationMapper = new DestinationMapper();
-        
+
         }
 
         
         public void AddDestination(Destination destination)
         {
-            _destinationRepository.Add(_destinationMapper.FromDomainToEntity(destination));
+            _unitOfWork.DestinationRepository.Add(_destinationMapper.FromDomainToEntity(destination));
         }
 
         public void DeleteDestination(int ID)
         {
-            _destinationRepository.Delete(ID);
+            _unitOfWork.DestinationRepository.Delete(ID);
         }
 
         public List<Destination> GetAllDestinations()
         {
-            return _destinationRepository.GetAll().Select(dest => _destinationMapper.FromEntityToDomain(dest)).ToList();
+            return _unitOfWork.DestinationRepository.GetAll().Select(dest => _destinationMapper.FromEntityToDomain(dest)).ToList();
         }
 
         public Destination GetDestinationByID(int ID)
         {
-            return _destinationMapper.FromEntityToDomain(_destinationRepository.GetByID(ID));
+            return _destinationMapper.FromEntityToDomain(_unitOfWork.DestinationRepository.GetByID(ID));
         }
 
         

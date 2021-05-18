@@ -58,13 +58,13 @@ namespace Presenters
 
             _unitOfWork = new UnitOfWork(new ApplicationContext());
 
-            destinationService = new DestinationService(_unitOfWork.DestinationRepository);
+            destinationService = new DestinationService(_unitOfWork);
 
-            transportService = new TransportService(_unitOfWork.TransportRepository);
+            transportService = new TransportService(_unitOfWork);
 
-            orderService = new OrderService(_unitOfWork.OrderRepository);
+            orderService = new OrderService(_unitOfWork);
 
-            OrderStatusService = new OrderStatusService(_unitOfWork.OrderStatusRepository);
+            OrderStatusService = new OrderStatusService(_unitOfWork);
 
             destinations = destinationService.GetAllDestinations().Select(dest => _destinationMapper.FromDomainToModel(dest)).ToList();
 

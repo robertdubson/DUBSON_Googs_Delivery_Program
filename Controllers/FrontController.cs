@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Services;
 using Domain;
 using DataLib;
-
+using DataLib.UnitOfWork;
 namespace Controllers
 {
     public class FrontController
@@ -15,13 +15,17 @@ namespace Controllers
         ProductService _productService;
         DestinationService _destinationService;
 
+        IUnitOfWork unitOfWork;
+
         public FrontController(DataInitializer dataInitializer) {
 
-            _transportService = new TransportService(dataInitializer.transportRepository);
+            //unitOfWork = new UnitOfWork(new ApplicationContext());
+            
+            _transportService = new TransportService(unitOfWork);
 
-            _productService = new ProductService(dataInitializer.productRepository);
+            _productService = new ProductService(unitOfWork);
 
-            _destinationService = new DestinationService(dataInitializer.destinationRepository);
+            _destinationService = new DestinationService(unitOfWork);
         
         
         }

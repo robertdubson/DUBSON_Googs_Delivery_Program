@@ -6,40 +6,46 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLib;
 using Mappers;
+using DataLib.UnitOfWork;
 namespace Services
 {
     public class DeliveryTypeService : IDeliveryTypeService
     {
-        private readonly IDeliveryTypeRepository DeliveryTypeRepository;
+        
 
         DeliveryTypeMapper _deliveryTypeMapper;
 
-        public DeliveryTypeService(IDeliveryTypeRepository repository) {
+        IUnitOfWork _unitOfWork;
 
-            DeliveryTypeRepository = repository;
+        public DeliveryTypeService(IUnitOfWork unitOfWork) {
+
+            _unitOfWork = unitOfWork;
+
 
             _deliveryTypeMapper = new DeliveryTypeMapper();
-        
+
         }
 
         public void AddDeliveryType(DeliveryType deliveryType)
         {
-            DeliveryTypeRepository.Add(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
+            _unitOfWork.DeliveryTypeRepository.Add(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
+
         }
 
         public void DeleteDeliveryType(DeliveryType deliveryType)
         {
-            DeliveryTypeRepository.Delete(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
+            _unitOfWork.DeliveryTypeRepository.Delete(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
+
         }
 
         public List<DeliveryType> GetAllDeliveryTypes()
         {
-            return DeliveryTypeRepository.GetAll().ToList().Select(delType => _deliveryTypeMapper.FromEntityToDomain(delType)).ToList();
+            return _unitOfWork.DeliveryTypeRepository.GetAll().ToList().Select(delType => _deliveryTypeMapper.FromEntityToDomain(delType)).ToList();
         }
 
         public void UpdateDeliveryType(DeliveryType deliveryType)
         {
-            DeliveryTypeRepository.Update(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
+            _unitOfWork.DeliveryTypeRepository.Update(_deliveryTypeMapper.FromDomainToEntity(deliveryType));
         }
     }
 }

@@ -35,7 +35,7 @@ namespace ViewModels
         {
             _unitOfWork = new UnitOfWork(new ApplicationContext());
             
-            _orderService = new OrderService(_unitOfWork.OrderRepository);
+            _orderService = new OrderService(_unitOfWork);
             
             orderMapper = new OrderMapper();
 

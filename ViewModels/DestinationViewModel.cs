@@ -40,7 +40,7 @@ namespace ViewModels
         {
             _unitOfWork = new UnitOfWork(new ApplicationContext());
 
-            _destinationService = new DestinationService(_unitOfWork.DestinationRepository);
+            _destinationService = new DestinationService(_unitOfWork);
 
             _destinationMapper = new DestinationMapper();
 
