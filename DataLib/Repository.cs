@@ -36,9 +36,9 @@ namespace DataLib
             Context.SaveChanges();
         }
 
-        public IEnumerable<EntityName> GetAll()
+        public IQueryable<EntityName> GetAll()
         {            
-            return _DbSet.ToList();
+            return _DbSet;
         }
 
         public EntityName GetByID(int ID)

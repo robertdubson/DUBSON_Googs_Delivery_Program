@@ -10,7 +10,7 @@ namespace DataLib
     {
         //List<EntityName> Context { get; set; }
 
-        IEnumerable<EntityName> GetAll();
+        IQueryable<EntityName> GetAll();
         
         
         void Add(EntityName example);
