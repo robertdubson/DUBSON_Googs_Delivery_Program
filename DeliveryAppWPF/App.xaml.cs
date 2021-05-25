@@ -53,7 +53,7 @@ namespace DeliveryAppWPF
             collection.AddScoped<IOrderStatusRepository, OrderStatusRepository>();
 
             // реєструємо залежності для одиниці роботи
-            collection.AddScoped<IUnitOfWork, UnitOfWork>(action => { return new UnitOfWork(new ApplicationContext()); });
+            collection.AddSingleton<IUnitOfWork, UnitOfWork>(action => { return new UnitOfWork(new ApplicationContext()); });
 
 
         }
