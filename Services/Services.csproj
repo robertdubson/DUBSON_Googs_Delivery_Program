@@ -130,6 +130,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategy\IStrategy.cs" />
     <Compile Include="Strategy\NoTransportLogic.cs" />
+    <Compile Include="Strategy\PreprocessedOrder.cs" />
     <Compile Include="Strategy\StandartLogic.cs" />
     <Compile Include="Strategy\StrategyContext.cs" />
     <Compile Include="TransportService.cs" />
