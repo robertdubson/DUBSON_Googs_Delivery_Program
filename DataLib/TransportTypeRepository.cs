@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Entity;
 namespace DataLib
 {
-    public class TransportTypeRepository :  Repository<TransportTypeEntity>, ITransportTypeRepository
+    public class TransportTypeRepository :  Repository<TransportTypeEntity, int>, ITransportTypeRepository
     {
         public TransportTypeRepository(DbContext context) : base(context) { 
         

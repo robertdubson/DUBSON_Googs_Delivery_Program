@@ -7,7 +7,7 @@ using Entity;
 
 namespace DataLib
 {
-    public interface IOrderRepository : IRepository<OrderEntity>
+    public interface IOrderRepository : IRepository<OrderEntity, int>
     {
         OrderEntity GetByInvolvedTransport(TransportEntity transport);
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 namespace DataLib
 {
-    public interface IOrderStatusRepository : IRepository<OrderStatusEntity>
+    public interface IOrderStatusRepository : IRepository<OrderStatusEntity, int>
     {
     }
 }

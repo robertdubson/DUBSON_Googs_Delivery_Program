@@ -9,7 +9,7 @@ using Entity;
 
 namespace DataLib
 {
-    public class DestinationRepository : Repository<DestinationEntity>, IDestinationRepository
+    public class DestinationRepository : Repository<DestinationEntity, int>, IDestinationRepository
     {
         //public List<DestinationEntity> Context { get; set; }
 

@@ -7,7 +7,7 @@ using Entity;
 
 namespace DataLib
 {
-    public interface ITransportRepository : IRepository<TransportEntity>
+    public interface ITransportRepository : IRepository<TransportEntity, int>
     {
     }
 }

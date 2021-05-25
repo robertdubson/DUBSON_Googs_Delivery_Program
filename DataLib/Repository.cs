@@ -6,47 +6,47 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 namespace DataLib
 {
-    public class Repository<EntityName> : IRepository<EntityName> where EntityName : class
+    public class Repository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : class
     {
         private readonly DbContext Context;
 
-        public DbSet<EntityName> _DbSet;
+        public DbSet<TEntity> _DbSet;
 
         public Repository(DbContext context) {
 
             Context = context;
 
-            _DbSet = Context.Set<EntityName>();
+            _DbSet = Context.Set<TEntity>();
         
         }
 
-        public void Add(EntityName example)
+        public void Add(TEntity example)
         {
             _DbSet.Add(example);
         }
 
-        public void Delete(int ID)
+        public void Delete(TKey ID)
         {
-            _DbSet.Remove(Context.Set<EntityName>().Find(ID));
+            _DbSet.Remove(Context.Set<TEntity>().Find(ID));
         }
 
-        public void Delete(EntityName example)
+        public void Delete(TEntity example)
         {
             Context.Entry(example).State = EntityState.Deleted;
             Context.SaveChanges();
         }
 
-        public IQueryable<EntityName> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {            
-            return _DbSet;
+            return _DbSet.ToList();
         }
 
-        public EntityName GetByID(int ID)
+        public TEntity GetByID(TKey ID)
         {
             return _DbSet.Find(ID);
         }
 
-        public void Update(EntityName example)
+        public void Update(TEntity example)
         {
             Context.Entry(example).State = EntityState.Modified;
             Context.SaveChanges();

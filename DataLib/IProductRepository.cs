@@ -7,7 +7,7 @@ using Entity;
 
 namespace DataLib
 {
-    public interface IProductRepository : IRepository<ProductEntity>
+    public interface IProductRepository : IRepository<ProductEntity, int>
     {
         
         IEnumerable<DeliveryTypeEntity> GetAllTypes();

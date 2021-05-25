@@ -10,6 +10,7 @@ using DataLib;
 using DataLib.UnitOfWork;
 using Services;
 using ViewModels;
+using System.Data.Entity;
 namespace DeliveryAppWPF
 {
     /// <summary>
@@ -31,6 +32,10 @@ namespace DeliveryAppWPF
 
         public void ConfigureServices(IServiceCollection collection) {
 
+
+            //collection.AddDbContext<DbContext>(options => { }, ServiceLifetime.Scoped, ServiceLifetime.Scoped);
+
+
             // реєструємо залежності для сервісів            
             collection.AddSingleton<IDestinationService, DestinationService>();
             collection.AddSingleton<IOrderService, OrderService>();
@@ -48,13 +53,13 @@ namespace DeliveryAppWPF
             collection.AddScoped<IOrderStatusRepository, OrderStatusRepository>();
 
             // реєструємо залежності для одиниці роботи
-            collection.AddScoped<IUnitOfWork, UnitOfWork>();
+            collection.AddScoped<IUnitOfWork, UnitOfWork>(action => { return new UnitOfWork(new ApplicationContext()); });
 
 
         }
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
+       protected override void OnStartup(StartupEventArgs e)
+       {
             base.OnStartup(e);
             MainWindow window = new MainWindow() { DataContext = new ApplicationViewModel(ServiceProvider) };
             window.Show();

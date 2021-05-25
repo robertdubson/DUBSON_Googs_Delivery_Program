@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 namespace DataLib
 {
-    public interface IDestinationRepository : IRepository<DestinationEntity>
+    public interface IDestinationRepository : IRepository<DestinationEntity, int>
     {
     }
 }

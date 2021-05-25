@@ -7,7 +7,7 @@ using Entity;
 using System.Data.Entity;
 namespace DataLib
 {
-    public class TransportRepository : Repository<TransportEntity>, ITransportRepository
+    public class TransportRepository : Repository<TransportEntity, int>, ITransportRepository
     {
         DbSet<DeliveryTypeEntity> deliveryTypes;
 

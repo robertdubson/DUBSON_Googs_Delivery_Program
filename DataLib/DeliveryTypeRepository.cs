@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace DataLib
 {
-    public class DeliveryTypeRepository :  Repository<DeliveryTypeEntity>, IDeliveryTypeRepository
+    public class DeliveryTypeRepository :  Repository<DeliveryTypeEntity, int>, IDeliveryTypeRepository
     {
         public DeliveryTypeRepository(DbContext context) : base(context) { 
         

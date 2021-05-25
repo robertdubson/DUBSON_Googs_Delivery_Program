@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 namespace DataLib
 {
-    public interface ITransportTypeRepository : IRepository<TransportTypeEntity>
+    public interface ITransportTypeRepository : IRepository<TransportTypeEntity, int>
     {
     }
 }

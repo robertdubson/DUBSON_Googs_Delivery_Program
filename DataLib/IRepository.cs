@@ -6,24 +6,21 @@ using System.Threading.Tasks;
 
 namespace DataLib
 {
-    public interface IRepository<EntityName>
+    public interface IRepository<TEntity, TKey>
     {
         //List<EntityName> Context { get; set; }
 
-        IQueryable<EntityName> GetAll();
-        
-        
-        void Add(EntityName example);
+        IEnumerable<TEntity> GetAll();
+               
+        void Add(TEntity example);
 
-        EntityName GetByID(int ID);
+        TEntity GetByID(TKey ID);
 
-        void Update(EntityName example);
+        void Update(TEntity example);
 
-        void Delete(int ID);
+        void Delete(TKey ID);
 
-        void Delete(EntityName example);
-
-        
+        void Delete(TEntity example);
 
     }
 }

@@ -28,7 +28,7 @@ namespace DeliveryAppWPF
 
             //this.DataContext = windowService;
 
-            this.DataContext = new ApplicationViewModel();
+            //this.DataContext = new ApplicationViewModel();
         
         }
         

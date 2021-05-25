@@ -28,6 +28,8 @@ namespace Services
 
             _transportMapper = new TransportMapper();
 
+            _orderMapper = new OrderMapper();
+
         }
 
         public void AddOrder(Order order)

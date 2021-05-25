@@ -7,7 +7,7 @@ using Entity;
 using System.Data.Entity;
 namespace DataLib
 {
-    public class OrderStatusRepository : Repository<OrderStatusEntity>, IOrderStatusRepository
+    public class OrderStatusRepository : Repository<OrderStatusEntity, int>, IOrderStatusRepository
     {
         public OrderStatusRepository(DbContext context) : base(context) { 
         

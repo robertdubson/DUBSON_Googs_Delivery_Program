@@ -7,7 +7,7 @@ using Entity;
 using System.Data.Entity;
 namespace DataLib
 {
-    public class ProductRepository : Repository<ProductEntity>, IProductRepository
+    public class ProductRepository : Repository<ProductEntity, int>, IProductRepository
     {
         //public List<ProductEntity> Context { get; set; }
 

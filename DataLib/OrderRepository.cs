@@ -7,7 +7,7 @@ using Entity;
 using System.Data.Entity;
 namespace DataLib
 {
-    public class OrderRepository : Repository<OrderEntity>, IOrderRepository
+    public class OrderRepository : Repository<OrderEntity, int>, IOrderRepository
     {
         //private readonly DbContext Context;
 
